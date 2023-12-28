@@ -1,0 +1,51 @@
+# settings
+set icons true
+set findlen 2
+
+
+#previewer ctpv
+set sixel true
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+# cmds-----------
+
+#### a g y s######
+# basic
+map DD :delete
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
+map R reload
+# a------
+map ad push %mkdir<space>
+map af push $nvim<space>
+map ax $chmod +x $f
+# z------
+# map zf $echo $f |clip
+# map zF $echo $dir |clip
+# s------
+map sS calcdirsize ; set info size 
+
+# g-----
+map glg $lazygit
+map gf $fzf -e
+# open-----------
+map gb $bash $f
+map gov $nvim $f
+map goV $nvim
+map gop $python $f
+map goc $code $f
+map goC $code $dir 
+# copy----------------
+map y
+map yy copy
+map yp yank_path
+map yn yank_name
+map yd yank_dir
+
+cmd yank_path ${{ set -f readlink -f $f |wl-copy}}
+cmd yank_name ${{ set -f basename "$(readlink -f "$f")" | wl-copy}}
+cmd yank_dir ${{ echo -n $fx | wl-copy }}
+# quick copy
+map y1 $cp $fx ~/dotfiles

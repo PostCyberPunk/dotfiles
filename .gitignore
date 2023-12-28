@@ -1,0 +1,10 @@
+
+hypr/configs/GPU.conf
+hypr/configs/Monitors.conf
+1tui/.config/tmux/plugins
+2gui-hypr/gtk-3.0/bookmarks
+2gui-hypr/hypr/configs/GPU.conf
+2gui-hypr/hypr/configs/Monitors.conf
+2gui-hypr/waybar/config
+2gui-hypr/waybar/style.css
+fcitx5/conf/cached_layouts
