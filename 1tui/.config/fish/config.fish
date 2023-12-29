@@ -27,7 +27,7 @@ function fish_user_key_bindings
     # bind -M command \e\[1\;3Q fish_default_key_bindings
     for mode in default insert command
         bind -M $mode \en nvim
-        bind -M $mode \co lfcd
+        bind -M $mode \co lfcd .
         bind -M $mode \cH backward-kill-word
     end
 end

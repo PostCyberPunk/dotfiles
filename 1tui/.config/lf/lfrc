@@ -22,7 +22,7 @@ map R reload
 # a------
 map ad push %mkdir<space>
 map ae push %echo<space>
-map af push $nvim<space>
+map an push $nvim<space>
 map ax $chmod +x $f
 # z------
 # s------
@@ -30,8 +30,9 @@ map sS calcdirsize ; set info size
 
 # g-----
 map glg $lazygit
-map gf $dirname $f|fd .|fzf
-map gF $dirname $f|fd -H .|fzf
+map gff $dirname $f|fd .|fzf
+map gfh $dirname $f|fd -H .|fzf
+map gfl $dirname $f|fd -H .|fzf
 # open-----------
 map gb $bash $f
 map gov $nvim $f
