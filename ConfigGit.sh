@@ -3,7 +3,7 @@ read -p "User:" uname
 read -p "email:" umail
 
 git config --global user.name $uname
-git config --global user.mail $umail
+git config --global user.email $umail
 git config --global init.defaultBranch main
 
 ############gco
