@@ -1,6 +1,6 @@
 stow -nv 2gui-hypr
 read -p "Stow your config and initilize Hypyland?:(y/N)" dostow
-if [ $dostow=[yY] ]; then
+if [[ $dostow = [yY] ]]; then
 	stow -v 2gui-hypr
 	echo "Stowed"
 else
