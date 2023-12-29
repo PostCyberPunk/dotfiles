@@ -1,1 +1,13 @@
 set chafasixel
+#priority bat 100
+remove bat
+#remove highlight
+preview bat text/* {{
+bat \
+	--color always        \
+	--paging never        \
+	--terminal-width "$w" \
+	--wrap character      \
+	-- "$f"
+  }}
+#remove source_highlight

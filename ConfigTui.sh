@@ -4,11 +4,11 @@ if [[ "$EUID" = 0 ]]; then
 fi
 read -p "Install Modern Unix Collection?" munix
 if [[ $munix = "y" ]]; then
-	yay -S --needed duf dust fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync
+	yay -S --needed duf dust fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync bat
 fi
 read -p "Install LF Preview?" lfcp
 if [[ $lfcp = "y" ]]; then
-	yay -S --needed ctpv-git chafa atool perl-image-exiftool jq glow ffmpegthumbnailer git-delta poppler glmark2
+	yay -S --needed ctpv-git chafa atool perl-image-exiftool jq glow ffmpegthumbnailer git-delta poppler glmark2 bat
 fi
 rm -r ~/.config/fish
 stow -nv 1tui
