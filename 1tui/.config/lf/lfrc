@@ -13,23 +13,25 @@ set cleaner ctpvclear
 
 #### a g y s######
 # basic
+map d
+map dd cut
 map DD :delete
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
 map R reload
 # a------
 map ad push %mkdir<space>
+map ae push %echo<space>
 map af push $nvim<space>
 map ax $chmod +x $f
 # z------
-# map zf $echo $f |clip
-# map zF $echo $dir |clip
 # s------
 map sS calcdirsize ; set info size 
 
 # g-----
 map glg $lazygit
-map gf $fzf -e
+map gf $dirname $f|fd .|fzf
+map gF $dirname $f|fd -H .|fzf
 # open-----------
 map gb $bash $f
 map gov $nvim $f
@@ -40,12 +42,10 @@ map goC $code $dir
 # copy----------------
 map y
 map yy copy
-map yp yank_path
-map yn yank_name
-map yd yank_dir
 
-cmd yank_path ${{ set -f readlink -f $f |wl-copy}}
-cmd yank_name ${{ set -f basename "$(readlink -f "$f")" | wl-copy}}
-cmd yank_dir ${{ echo -n $fx | wl-copy }}
+map yf $echo $f |wl-copy
+map yp $dirname $f |wl-copy
+map yn $basename $f |wl-copy
+
 # quick copy
 map y1 $cp $fx ~/dotfiles
