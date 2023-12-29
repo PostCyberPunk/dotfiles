@@ -1,8 +1,8 @@
 # settings
 set icons true
 set findlen 2
-
-
+# set drawbox
+set ratios 1:2
 #previewer ctpv
 set sixel true
 set previewer ctpv
@@ -10,7 +10,16 @@ set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
 # cmds-----------
-
+###########
+map P ${{
+    src=$(cat ~/.local/share/lf/files)
+    src=$(echo $src|choose 1)
+    if [[ -z $src ]]; then
+      lf -remote "send $id echo No file selected"
+      exit 0
+    fi
+    lf -remote "send $id echo $src."
+}}
 #### a g y s######
 # basic
 map d
@@ -19,20 +28,28 @@ map DD :delete
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
 map R reload
+map <enter> shell
 # a------
 map ad push %mkdir<space>
-map ae push %echo<space>
+cmd mkfile $(echo $1>> $2)
+map ae push :mkfile<space>
 map an push $nvim<space>
 map ax $chmod +x $f
 # z------
+map z1 set ratios 1:2
+map z2 set ratios 1:1:2
 # s------
 map sS calcdirsize ; set info size 
 
 # g-----
 map glg $lazygit
-map gff $dirname $f|fd .|fzf
-map gfh $dirname $f|fd -H .|fzf
-map gfl $dirname $f|fd -H .|fzf
+map gff $dirname $f|fd .|fzf --preview 'bat -n --color=always {}'
+map gfh $dirname $f|fd -H .|fzf --preview 'bat -n --color=always {}'
+map gfl $dirname $f|fd -H . --type l |fzf --preview 'bat -n --color=always {}'
+map gL follow_link
+cmd follow_link %{{
+  lf -remote "send ${id} select '$(readlink $f)'"
+}}
 # open-----------
 map gb $bash $f
 map gov $nvim $f
@@ -50,3 +67,72 @@ map yn $basename $f |wl-copy
 
 # quick copy
 map y1 $cp $fx ~/dotfiles
+# pager
+map i $bat --paging=always $f   
+############ tips ###########
+############ Dynamically set number of columns
+# map z1 %{{lf -remote "send $id set ratios 1:2"}}
+# map z1 on-redraw
+# cmd on-redraw %{{
+#     lf -remote "send $id set statfmt \"[Buzz]$(eza -ld --color=always "$f")\""
+    # if [ $lf_width -le 80 ]; then
+    #     lf -remote "send $id set ratios 1:2"
+    # elif [ $lf_width -le 160 ]; then
+    #     lf -remote "send $id set ratios 1:2:3"
+    # else
+    #     lf -remote "send $id set ratios 1:2:3:5"
+    # fi
+# }}
+###########
+# y (select for copy) and P to paste soft-link
+# d (select for cut) and P to paste hard-link
+cmd link %{{
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+    if [ "$#" -lt 1 ]; then
+        lf -remote "send $id echo no files to link"
+        exit 0
+    fi
+    case "$mode" in
+        # symbolically copy mode is indicating a soft link
+        copy) ln -sf -t . -- "$@";;
+        # while a move mode is indicating a hard link
+        move) ln -t . -- "$@";;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
+}}
+cmd slink ${{
+    src=$(cat ~/.local/share/lf/files)
+    src=$(echo $src|choose 1)
+    if [[ -z $src ]]; then
+      lf -remote "send $id echo No file selected"
+      exit 0
+    fi
+    fname=$(basename $src)
+    tar="$PWD/$fname"
+    sudo ln -sf $src $tar
+    echo "link created:$tar->$src"
+}}
+map asl :slink
+########### repeat last cmd
+map zpp :read; cmd-history-prev; cmd-enter
+########### fzf
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf  --reverse --header='Jump to location')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-f> :fzf_jump
+###########eza
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
+}}
