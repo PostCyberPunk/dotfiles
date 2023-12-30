@@ -38,5 +38,5 @@ end
 # set pure_enable_single_line_prompt true
 # set pure_shorten_prompt_current_directory_length 1
 # set --global tide_prompt_min_cols 300
-# set --global tide_prompt_transient_enabled false
+set --global tide_prompt_transient_enabled false
 fish_add_path home/buzz/.spicetify
