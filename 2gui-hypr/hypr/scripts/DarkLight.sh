@@ -8,8 +8,8 @@ hypr_config_path="$HOME/.config/hypr"
 dunst_config="$HOME/.config/dunst"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 dunst_notif="$HOME/.config/dunst/images/bell.png"
-dark_rofi_pywal="$HOME/.cache/wal/colors-rofi-dark.rasi"
-light_rofi_pywal="$HOME/.cache/wal/colors-rofi-light.rasi"
+# dark_rofi_pywal="$HOME/.cache/wal/colors-rofi-dark.rasi"
+# light_rofi_pywal="$HOME/.cache/wal/colors-rofi-light.rasi"
 
 pkill swaybg
 
@@ -65,11 +65,11 @@ else
 fi
 
 # Set Rofi Themes
-if [ "$next_mode" = "Dark" ]; then
-    ln -sf $dark_rofi_pywal "$HOME/.config/rofi/pywal-color/pywal-theme.rasi"
-else
-    ln -sf $light_rofi_pywal "$HOME/.config/rofi/pywal-color/pywal-theme.rasi"
-fi
+# if [ "$next_mode" = "Dark" ]; then
+#     ln -sf $dark_rofi_pywal "$HOME/.config/rofi/pywal-color/pywal-theme.rasi"
+# else
+#     ln -sf $light_rofi_pywal "$HOME/.config/rofi/pywal-color/pywal-theme.rasi"
+# fi
 
 # Set Dynamic Wallpaper for Dark Mode
 if [ "$next_mode" = "Dark" ]; then
