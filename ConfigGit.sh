@@ -9,8 +9,9 @@ if [[ ! -z $jmail ]]; then
 	git config --global user.email $umail
 fi
 git config --global init.defaultBranch main
+git config --global pull.rebase true
 
-if [[ choice = 2 ]]; then
+if [[ choice -eq 2 ]]; then
 	############gcm
 	yay -S --needed git-credential-manager
 	git-credential-manager configure
@@ -18,7 +19,7 @@ if [[ choice = 2 ]]; then
 	git config --global credential.cacheOptions "--timeout 3600"
 	# git config --global credential.helper git-credential-manager
 	echo "use git-credential-manager"
-elif [[ choice = 1 ]]; then
+elif [[ choice -eq 1 ]]; then
 	############gco
 	yay -S --needed git-credential-oauth
 	git-credential-oauth configure
