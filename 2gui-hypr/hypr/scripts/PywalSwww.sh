@@ -18,13 +18,14 @@ for output in "${monitor_outputs[@]}"; do
 	if [ -f "$cache_file" ]; then
 		# Get the wallpaper path from the cache file
 		wallpaper_path=$(cat "$cache_file")
-
+		if [[ -z "wallpaper_path" ]]; then
+			continue
+		fi
 		# Copy the wallpaper to the location Rofi can access
 		if ln -sf "$wallpaper_path" "$HOME/.config/rofi/.current_wallpaper"; then
 			ln_success=true # Set the flag to true upon successful execution
+			break           # Exit the loop after processing the first found monitor output
 		fi
-
-		break # Exit the loop after processing the first found monitor output
 	fi
 done
 
