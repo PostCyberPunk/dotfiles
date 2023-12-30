@@ -7,6 +7,6 @@ make && sudo make install
 if [[ $ilap = [Yy] ]]; then
 	sudo ln -sf ~/dotfiles/keyd/laptop.conf /etc/keyd/laptop.conf
 fi
-udo ln -sf ~/dotfiles/keyd/redox.conf /etc/keyd/redox.conf
+sudo ln -sf ~/dotfiles/keyd/redox.conf /etc/keyd/redox.conf
 sudo systemctl enable keyd && sudo systemctl start keyd
 date

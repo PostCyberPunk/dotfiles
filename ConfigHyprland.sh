@@ -1,8 +1,8 @@
-stow -nv 2gui-hypr
-read -p "Stow your config and initilize Hypyland?:(y/N)" dostow
+dotinker=$(pwd)/lib/dotinker.sh
+dotinker -n 2gui-hypr
+read -p "Link your config and initilize Hypyland?:(y/N)" dostow
 if [[ $dostow = [yY] ]]; then
-	stow -v 2gui-hypr
-	echo "Stowed"
+	dotinker 2gui-hypr && echo "Linked"
 else
 	exit 0
 fi
