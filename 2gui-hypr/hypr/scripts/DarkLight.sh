@@ -56,13 +56,13 @@ set_waybar_style "$next_mode"
 notify_user "$next_mode"
 
 # Change background for dunst
-if [ "$next_mode" = "Dark" ]; then
-    sed -i '/background = /s/.*/    background = "#00000095"/' "${dunst_config}/dunstrc"
-    sed -i '/foreground = /s/.*/    foreground = "#fafafa"/' "${dunst_config}/dunstrc"
-else
-    sed -i '/background = /s/.*/    background = "#ffffff99"/' "${dunst_config}/dunstrc"
-    sed -i '/foreground = /s/.*/    foreground = "#00000095"/' "${dunst_config}/dunstrc"
-fi
+# if [ "$next_mode" = "Dark" ]; then
+#     sed -i '/background = /s/.*/    background = "#00000095"/' "${dunst_config}/dunstrc"
+#     sed -i '/foreground = /s/.*/    foreground = "#fafafa"/' "${dunst_config}/dunstrc"
+# else
+#     sed -i '/background = /s/.*/    background = "#ffffff99"/' "${dunst_config}/dunstrc"
+#     sed -i '/foreground = /s/.*/    foreground = "#00000095"/' "${dunst_config}/dunstrc"
+# fi
 
 # Set Rofi Themes
 # if [ "$next_mode" = "Dark" ]; then
