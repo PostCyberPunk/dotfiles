@@ -26,7 +26,7 @@ function fish_user_key_bindings
     # bind -M defualt \e\[1\;3Q fish_vi_key_bindings
     # bind -M command \e\[1\;3Q fish_default_key_bindings
     for mode in default insert command
-        bind -M $mode \en nvim
+        bind -M $mode \en 'fish_commandline_prepend | nvim'
         bind -M $mode \co lfcd .
         bind -M $mode \cH backward-kill-word
     end
@@ -34,4 +34,9 @@ end
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-fish_add_path /home/buzz/.spicetify
+########### pure ########### 
+# set pure_enable_single_line_prompt true
+# set pure_shorten_prompt_current_directory_length 1
+# set --global tide_prompt_min_cols 300
+# set --global tide_prompt_transient_enabled false
+fish_add_path home/buzz/.spicetify
