@@ -5,11 +5,7 @@ wallpaper_base_path="$HOME/Pictures/wallpapers/Dynamic-Wallpapers"
 dark_wallpapers="$wallpaper_base_path/Dark"
 light_wallpapers="$wallpaper_base_path/Light"
 hypr_config_path="$HOME/.config/hypr"
-dunst_config="$HOME/.config/dunst"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
-dunst_notif="$HOME/.config/dunst/images/bell.png"
-# dark_rofi_pywal="$HOME/.cache/wal/colors-rofi-dark.rasi"
-# light_rofi_pywal="$HOME/.cache/wal/colors-rofi-light.rasi"
 
 pkill swaybg
 
@@ -22,7 +18,7 @@ effect="--transition-bezier .43,1.19,1,.4 --transition-fps 60 --transition-type 
 
 # Function to notify user
 notify_user() {
-    dunstify -u low -i "$dunst_notif" "Switching to $1 mode"
+    notify-send -e -u low -i "$notify_icon" "Switching to $1 mode"
 }
 
 # Function to set Waybar style
@@ -54,15 +50,6 @@ fi
 set_waybar_style "$next_mode"
 
 notify_user "$next_mode"
-
-# Change background for dunst
-# if [ "$next_mode" = "Dark" ]; then
-#     sed -i '/background = /s/.*/    background = "#00000095"/' "${dunst_config}/dunstrc"
-#     sed -i '/foreground = /s/.*/    foreground = "#fafafa"/' "${dunst_config}/dunstrc"
-# else
-#     sed -i '/background = /s/.*/    background = "#ffffff99"/' "${dunst_config}/dunstrc"
-#     sed -i '/foreground = /s/.*/    foreground = "#00000095"/' "${dunst_config}/dunstrc"
-# fi
 
 # Set Rofi Themes
 # if [ "$next_mode" = "Dark" ]; then
@@ -149,8 +136,8 @@ ${SCRIPTSDIR}/PywalSwww.sh &
 sleep 2
 ${SCRIPTSDIR}/Refresh.sh 
 
-dunstify -u low -i "$dunst_notif" "GTK theme set to $selected_theme"
-dunstify -u low -i "$dunst_notif" "Icon theme set to $selected_icon"
+notify-send -e -u low -i "$notify_icon" "GTK theme set to $selected_theme"
+notify-send -e -u low -i "$notify_icon" "Icon theme set to $selected_icon"
 
 exit 0
 

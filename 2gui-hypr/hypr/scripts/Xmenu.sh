@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory for icons
-iDIR="$HOME/.config/dunst/icons"
+iDIR="$HOME/.config/swaync/icons"
 rofiSH="$HOME/.config/rofi/scripts"
 scriptsDir="$HOME/.config/hypr/scripts"
 yes='Yes'
@@ -44,8 +44,7 @@ declare -A menu_options=(
 
 # Function for displaying notifications
 notification() {
-	# dunstify -u normal -i "$iDIR/palette.png" "CMD: $@"
-	notify-send "$@"
+	notify-send -e -u low "$@"
 }
 
 confirm_cmd() {

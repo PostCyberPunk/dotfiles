@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dunst_notif="$HOME/.config/dunst/images/bell.png"
+notify_icon="$HOME/.config/swaync/images/bell.png"
 
 # NOTE: find the right device using hyprctl devices
 HYPRLAND_DEVICE="cust0001:00-06cb:cdad-touchpad"
@@ -14,7 +14,7 @@ export STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
 enable_touchpad() {
 	printf "true" >"$STATUS_FILE"
 
-	dunstify -u low -i "$dunst_notif" "Enabling Touchpad"
+  notify-send -e -u low -i "$notify_icon" "Enabling Touchpad"
 
 	hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" true
 }
@@ -22,7 +22,7 @@ enable_touchpad() {
 disable_touchpad() {
 	printf "false" >"$STATUS_FILE"
 
-	dunstify -u low -i "$dunst_notif" "Disabling Touchpad"
+  notify-send -e -u low -i "$notify_icon" "Disabling Touchpad"
 
 	hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" false
 }
