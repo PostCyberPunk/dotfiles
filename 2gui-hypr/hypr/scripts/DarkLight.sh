@@ -42,11 +42,11 @@ set_waybar_style() {
 }
 
 # Determine current wallpaper mode
-if [ "$(cat ~/.cache/.wallpaper_mode)" = "Light" ]; then
-    next_mode="Dark"
+if [ "$(cat ~/.cache/.wallpaper_mode)" = "Dark" ]; then
+    next_mode="Light"
     wallpaper_path="$dark_wallpapers"
 else
-    next_mode="Light"
+    next_mode="Dark"
     wallpaper_path="$light_wallpapers"
 fi
 
