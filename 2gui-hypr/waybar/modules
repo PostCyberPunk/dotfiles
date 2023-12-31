@@ -344,7 +344,7 @@
 },
 
 "mpris": {
-	"format": "{player_icon} ",
+	"format": "{player_icon} <i>{dynamic}</i>",
 	"format-paused": "{status_icon} <i>{dynamic}</i>",
 	"on-click-middle": "playerctl play-pause",
     "on-click": "playerctl previous",

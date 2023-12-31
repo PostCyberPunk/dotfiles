@@ -8,7 +8,7 @@ alias n="nvim"
 alias b="bat"
 alias lc="lfcd"
 alias lg="lazygit"
-alias slf="sudo -u buzz lf"
+alias slf="sudo -u $USER lf"
 alias t="tmux"
 # keybinds
 function fish_user_key_bindings
