@@ -43,9 +43,8 @@ map sS calcdirsize ; set info size
 
 # g-----
 map glg $lazygit
-map gff $dirname $f|fd .|fzf --preview 'bat -n --color=always {}'
-map gfh $dirname $f|fd -H .|fzf --preview 'bat -n --color=always {}'
-map gfl $dirname $f|fd -H . --type l |fzf --preview 'bat -n --color=always {}'
+map <c-o> :fzf_jump --type=d -H
+map gff push :fzf_jump<space>
 map gL follow_link
 cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
@@ -86,26 +85,9 @@ map i $bat --paging=always $f
 ###########
 # y (select for copy) and P to paste soft-link
 # d (select for cut) and P to paste hard-link
-cmd link %{{
-    set -- $(cat ~/.local/share/lf/files)
-    mode="$1"
-    shift
-    if [ "$#" -lt 1 ]; then
-        lf -remote "send $id echo no files to link"
-        exit 0
-    fi
-    case "$mode" in
-        # symbolically copy mode is indicating a soft link
-        copy) ln -sf -t . -- "$@";;
-        # while a move mode is indicating a hard link
-        move) ln -t . -- "$@";;
-    esac
-    rm ~/.local/share/lf/files
-    lf -remote "send clear"
-}}
 cmd slink ${{
-    src=$(cat ~/.local/share/lf/files)
-    src=$(echo $src|choose 1)
+    fss=$(cat ~/.local/share/lf/files)
+    src=$(echo $fss | choose 1)
     if [[ -z $src ]]; then
       lf -remote "send $id echo No file selected"
       exit 0
@@ -120,7 +102,7 @@ map asl :slink
 map zpp :read; cmd-history-prev; cmd-enter
 ########### fzf
 cmd fzf_jump ${{
-    res="$(find . -maxdepth 1 | fzf  --reverse --header='Jump to location')"
+    res=$(fish -c "fzf_pcp_normal $f//$1")
     if [ -n "$res" ]; then
         if [ -d "$res" ]; then
             cmd="cd"
@@ -131,7 +113,8 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-f> :fzf_jump
+map <c-f> :fzf_jump  -d=3
+map <a-f> :fzf_jump  -H
 ###########eza
 cmd on-select &{{
     lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
