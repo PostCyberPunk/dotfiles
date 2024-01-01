@@ -8,6 +8,6 @@ function fzf_pcp_previewer
     else if file --mime-type $argv | grep -qF /directory
         eza -lA --icons --color=always $argv
     else
-        file --mime-type $argv
+        exiftool $argv
     end
 end

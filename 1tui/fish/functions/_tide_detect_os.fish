@@ -43,8 +43,8 @@ function _tide_detect_os_linux_cases -a file key
             printf %s\n  C70036 D4D4D4 # from debian logo https://www.debian.org/logos/openlogo-nd-100.png
         case devuan
             printf %s\n  $defaultColor # logo is monochromatic
-        case elementary
-            printf %s\n  000000 D4D4D4 # https://elementary.io/brand, encouraged to be monochromatic
+        case ry
+            printf %s\n  000000 D4D4D4 # https://ry.io/brand, encouraged to be monochromatic
         case fedora
             printf %s\n  FFFFFF 294172 # from logo https://fedoraproject.org/w/uploads/2/2d/Logo_fedoralogo.png
         case gentoo

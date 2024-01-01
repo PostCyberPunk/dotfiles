@@ -1,6 +1,3 @@
-set fish_greeting
-set -gx EDITOR /usr/bin/nvim
-set -gx VISUAL /usr/bin/nvim
 ########### alias###########
 alias md="mkdir"
 alias l="eza -lA --icons"
@@ -14,7 +11,7 @@ alias t="tmux"
 function fish_user_key_bindings
     bind \ce 'fish_commandline_prepend "sudo -E nvim"'
     bind \e\cv 'fish_commandline_prepend "proxychains"'
-    bind \e\cm 'fish_commandline_append " -h|nvim"'
+    bind \e\cm 'fish_commandline_append " -h|nvim -RMn"'
     bind \e\v 'fish_commandline_append " |wl-copy"'
     # bind \ex 'fish_commandline_prepend "pacman -S --needed"'
     bind \e\ci 'fish_commandline_prepend "sudo pacman -S --needed"'
@@ -23,10 +20,11 @@ function fish_user_key_bindings
     bind -M insert \cn down-or-search
     bind -M insert \cf forward-char
     bind -M insert \ef forward-word
-    bind -M insert \cr history-pager
+    # bind -M insert \cr history-pager
     # bind -M defualt \e\[1\;3Q fish_vi_key_bindings
     # bind -M command \e\[1\;3Q fish_default_key_bindings
     for mode in default insert command
+        bind \e\cq exit
         bind -M $mode \en 'fish_commandline_prepend | nvim'
         bind -M $mode \co lfcd .
         bind -M $mode \cH backward-kill-word
@@ -47,17 +45,29 @@ set --global tide_prompt_transient_enabled true
 # set --global tide_character_vi_icon_default 
 # set --global tide_character_vi_icon_default 
 # set --global tide_character_vi_icon_default 󰻃
-set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 
+set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 󰁎
 set --global tide_character_icon 
-set fzf_preview_file_cmd fzf_pcp_previewer
 ############ path ###########
 fish_add_path home/buzz/.spicetify
 ########### Variables ###########
-# set LS_COLORS "$(vivid generate catppuccin-mocha)"
+set fish_greeting
+set -gx EDITOR /usr/bin/nvim
+set -gx VISUAL /usr/bin/nvim
+
+###fish fzf
+set fzf_preview_file_cmd fzf_pcp_previewer
+set fish_fzf_default_opts --cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"
+for temp_mode in fzf_directory_opts fzf_git_log_opts fzf_git_status_opts fzf_history_opts fzf_processes_opts fzf_variables_opts
+    set $temp_mode $fish_fzf_default_opts
+end
 ########### Enviromental ###########
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
+export FZF_DEFAULT_OPTS='--bind "ctrl-y:execute-silent(echo -n $(pwd)/{} | wl-copy)+abort"'
 ########### Fix ###########
 fish_vi_key_bindings
 set -g fish_cursor_insert line
 set -g fish_cursor_default block
 set -g fish_cursor_replace underscore
+abbr --add dotdot --regex '^\.\.+$' --function multicd
