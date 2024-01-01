@@ -1,17 +1,19 @@
 /* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
 
-@import '../../.cache/wal/colors-waybar.css';
+/* @import '../../.cache/wal/colors-waybar.css'; */
+/* @import './mocha.css'; */
 
-@define-color noti-border-color @color2;
-@define-color noti-bg rgba(0, 0, 0, 0.8);
-@define-color noti-bg-alt #111111;
-@define-color noti-bg-hover @color2;
-@define-color text-color @color2;
-@define-color text-color-alt @color7;
+@define-color noti-border-color #585b70;
+@define-color noti-bg rgba(30, 30, 46, 0.95);
+@define-color noti-bg-alt #181825;
+/* @define-color noti-bg-center rgba(30, 30, 46, 0.5); */
+@define-color noti-bg-hover #6c7086;
+@define-color text-color #cdd6f4;
+@define-color text-color-alt #a6adc8;
 @define-color text-color-disabled rgba(150, 150, 150, 0.8);
 
 * {
-    font-family: FiraCode;
+     font-family: "ProFontIIx Nerd Font Mono";
     font-weight: Bolder;
 }
 
@@ -36,7 +38,7 @@
     background: @noti-bg;
     padding: 3px 10px 3px 6px;
     border-radius: 10px;
-    border: 2px solid @noti-border-color;
+    border: 1px solid @noti-border-color;
     margin: 0px;
 }
 
@@ -47,7 +49,7 @@
 }
 
 .close-button {
-    background: #f7768e;
+    background: #eba0ac;
     color: @noti-bg;
     text-shadow: none;
     padding: 0;
@@ -58,7 +60,7 @@
 
 .close-button:hover {
     box-shadow: none;
-    background: #f7768e;
+    background: #eba0ac;
     transition: all .15s ease-in-out;
     border: none
 }
@@ -89,12 +91,12 @@
 
 .notification-action:first-child {
     border-bottom-left-radius: 10px;
-    background: #1b1b2b
+    background: #1e1e2e
 }
 
 .notification-action:last-child {
     border-bottom-right-radius: 10px;
-    background: #1b1b2b
+    background: #1e1e2e
 }
 
 .inline-reply {
@@ -135,7 +137,7 @@
 }
 
 .summary {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 200;
     background: transparent;
     color: @text-color-alt;
@@ -162,7 +164,7 @@
 .control-center {
     background: @noti-bg;
     border: 2px solid @noti-border-color;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .control-center-list {
