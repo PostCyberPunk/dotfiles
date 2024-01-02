@@ -24,7 +24,9 @@ map P ${{
 # basic
 map d
 map dd cut
-map DD :delete
+# map DF %echo "Confirm Delelte $f (y/N)"&& read -n 1 -l choice&&[ $choice = "y" ]&&rm -rf "$f"
+map DF $(read -n 1 -p "Confirm Delelte $f (y/N)" choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
+map DS :delete
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
 map R reload
@@ -64,7 +66,7 @@ map yy copy
 map yf $echo "$f" |wl-copy
 map yp $dirname "$f" |wl-copy
 map yn $basename "$f" |wl-copy
-map yz !atool -xD "$f"
+map yz !atool -x
 map yd $atool -x "$fs" 
 # quick copy
 map y1 $cp $fx ~/dotfiles
