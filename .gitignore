@@ -1,4 +1,3 @@
-fcitx5/conf/cached_layouts
 1tui/tmux/plugins
 1tui/lazygit/state.yml
 1tui/fish/fish_variables
@@ -12,3 +11,4 @@ fcitx5/conf/cached_layouts
 2gui-hypr/cava/shaders
 2gui-hypr/cava
 2gui-hypr/rofi/.current_wallpaper
+2gui-hypr/fcitx5/conf/cached_layouts
