@@ -6,26 +6,28 @@ alias b="bat"
 alias lc="lfcd"
 alias lg="lazygit"
 alias slf="sudo -u $USER lf"
-alias t="tmux"
+alias t="zellij"
 # keybinds
 function fish_user_key_bindings
     bind \ce 'fish_commandline_prepend "sudo -E nvim"'
-    bind \e\cv 'fish_commandline_prepend "proxychains"'
-    bind \e\cm 'fish_commandline_append " -h|nvim -RMn"'
+    bind \e\cv 'fish_commandline_prepend "proxychains "'
+    bind \e\[1\;3P 'fish_commandline_append " -h|nvim -RMn"'
     bind \e\v 'fish_commandline_append " |wl-copy"'
     # bind \ex 'fish_commandline_prepend "pacman -S --needed"'
     bind \e\ci 'fish_commandline_prepend "sudo pacman -S --needed"'
     bind \e\cy 'fish_commandline_prepend "yay -S --needed"'
     bind -M insert \cp up-or-search
     bind -M insert \cn down-or-search
-    bind -M insert \cf forward-word
-    bind -M insert \ef forward-char
+    bind -M insert \ef forward-word
+    bind -M insert \cf forward-char
     # bind -M insert \cr history-pager
     # bind -M defualt \e\[1\;3Q fish_vi_key_bindings
     # bind -M command \e\[1\;3Q fish_default_key_bindings
     for mode in default insert command
-        bind \e\cq exit
-        bind -M $mode \en 'fish_commandline_prepend | nvim'
+        bind -M $mode \c_ accept-autosuggestion execute
+        bind -M $mode \e/ 'fish_commandline_prepend "history delete -eC \"";fish_commandline_append "\""'
+        # bind -M $mode \e\cq exit
+        bind -M $mode \en 'fish_commandline_append "| nvim"'
         bind -M $mode \co lfcd .
         bind -M $mode \cH backward-kill-word
     end
