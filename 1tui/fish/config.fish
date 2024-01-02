@@ -18,8 +18,8 @@ function fish_user_key_bindings
     bind \e\cy 'fish_commandline_prepend "yay -S --needed"'
     bind -M insert \cp up-or-search
     bind -M insert \cn down-or-search
-    bind -M insert \cf forward-char
-    bind -M insert \ef forward-word
+    bind -M insert \cf forward-word
+    bind -M insert \ef forward-char
     # bind -M insert \cr history-pager
     # bind -M defualt \e\[1\;3Q fish_vi_key_bindings
     # bind -M command \e\[1\;3Q fish_default_key_bindings
