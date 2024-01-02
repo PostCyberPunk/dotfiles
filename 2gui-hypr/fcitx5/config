@@ -1,20 +1,19 @@
 [Hotkey]
 # Enumerate when press trigger key repeatedly
-EnumerateWithTriggerKeys=True
+EnumerateWithTriggerKeys=False
+# Temporally switch between first and current Input Method
+AltTriggerKeys=
 # Enumerate Input Method Forward
 EnumerateForwardKeys=
 # Enumerate Input Method Backward
 EnumerateBackwardKeys=
 # Skip first input method while enumerating
 EnumerateSkipFirst=False
+# Toggle embedded preedit
+TogglePreedit=
 
 [Hotkey/TriggerKeys]
 0=Super+space
-1=Zenkaku_Hankaku
-2=Hangul
-
-[Hotkey/AltTriggerKeys]
-0=Shift_L
 
 [Hotkey/EnumerateGroupForwardKeys]
 0=Super+space
@@ -39,9 +38,6 @@ EnumerateSkipFirst=False
 
 [Hotkey/NextCandidate]
 0=Tab
-
-[Hotkey/TogglePreedit]
-0=Control+Alt+P
 
 [Behavior]
 # Active By Default
@@ -73,7 +69,7 @@ PreloadInputMethod=True
 # Allow input method in the password field
 AllowInputMethodForPassword=False
 # Show preedit text when typing password
-ShowPreeditForPassword=False
+ShowPreeditForPassword=True
 # Interval of saving user data in minutes
 AutoSavePeriod=30
 
