@@ -1,3 +1,8 @@
+yay -S --needed catppuccin-cursors-mocha catppuccin-gtk-theme-mocha
+mkdir -p ~/Temp/
+git clone --depth=1 -b mocha "https://github.com/PostCyberPunk/Catppuccin-GTK-Theme"
+mkdir -p ~/.icons
+cp -r Catppuccin-GTK-Theme/Catppuccin-Mocha/ ~/.icons
 dotinker=$(pwd)/lib/dotinker.sh
 dotinker -n 2gui-hypr
 read -p "Link your config and initilize Hypyland?:(y/N)" dostow
