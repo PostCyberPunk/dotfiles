@@ -1,6 +1,5 @@
 # settings
 set icons true
-set findlen 2
 # set drawbox
 set ratios 1:2
 #previewer ctpv
@@ -20,6 +19,8 @@ map P ${{
     fi
     lf -remote "send $id echo $src."
 }}
+map f :set findlen 2;find
+map F :set findlen 3;find
 #### a g y s######
 # basic
 map d
