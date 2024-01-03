@@ -1,3 +1,5 @@
+#############tips###########
+#[ ] jump back and forth
 # settings
 set icons true
 # set drawbox
@@ -21,6 +23,10 @@ map P ${{
 }}
 map f :set findlen 2;find
 map F :set findlen 3;find
+#######visual mode######
+map v :invert-below
+map V :invert
+map <c-a> :unselect;invert
 #### a g y s######
 # basic
 map d
@@ -43,7 +49,6 @@ map z1 set ratios 1:2
 map z2 set ratios 1:1:2
 # s------
 map sS calcdirsize ; set info size 
-
 # g-----
 map glg $lazygit
 map <c-o> :fzf_jump --type=d -H
@@ -69,6 +74,17 @@ map yp $dirname "$f" |wl-copy
 map yn $basename "$f" |wl-copy
 map yz !atool -x
 map yd $atool -x "$fs" 
+map ys ${{
+
+sfs="$HOME/.local/share/lf/files"
+if [[ $(head -n 1 $sfs) = "copy" ]]; then
+  while read -r line ; do
+  rsync --recursive --progress "$line" $(dirname "$f")
+  done < <(tail -n +2 "$sfs")
+  else
+    echo "Use move insted of copy"
+fi
+  }}
 # quick copy
 map y1 $cp $fx ~/dotfiles
 # pager
