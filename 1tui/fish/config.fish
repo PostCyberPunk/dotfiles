@@ -33,6 +33,11 @@ function fish_user_key_bindings
     end
 end
 if status is-interactive
+    fish_vi_key_bindings
+    set -g fish_cursor_insert line
+    set -g fish_cursor_default block
+    set -g fish_cursor_replace underscore
+    # set -g fish_vi_force_cursor
     # Commands to run in interactive sessions can go here
     # if string match -q -- 'tmux*' $TERM
     #     set -g fish_vi_force_cursor 1
@@ -68,8 +73,4 @@ end
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export FZF_DEFAULT_OPTS='--bind "ctrl-y:execute-silent(echo -n $(pwd)/{} | wl-copy)+abort"'
 ########### Fix ###########
-fish_vi_key_bindings
-set -g fish_cursor_insert line
-set -g fish_cursor_default block
-set -g fish_cursor_replace underscore
 abbr --add dotdot --regex '^\.\.+$' --function multicd

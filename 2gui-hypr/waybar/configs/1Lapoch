@@ -55,7 +55,7 @@
 //"margin-bottom": 0,
 
 "modules-left": [
-	"custom/menu",  
+//	"custom/menu",  
 	"wlr/taskbar",
 	"hyprland/window",
 	 ],
