@@ -1,20 +1,20 @@
 #!/bin/bash
 #set -x
 # Paths
-wallpaper_base_path="$HOME/Pictures/wallpapers/Dynamic-Wallpapers"
-dark_wallpapers="$wallpaper_base_path/Dark"
-light_wallpapers="$wallpaper_base_path/Light"
+# wallpaper_base_path="$HOME/Pictures/wallpapers/Dynamic-Wallpapers"
+# dark_wallpapers="$wallpaper_base_path/Dark"
+# light_wallpapers="$wallpaper_base_path/Light"
 hypr_config_path="$HOME/.config/hypr"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 
-pkill swaybg
+# pkill swaybg
 
 # Initialize swww if needed
-swww query || swww init
+# swww query || swww init
 
 # Set swww options
-swww="swww img"
-effect="--transition-bezier .43,1.19,1,.4 --transition-fps 60 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
+# swww="swww img"
+# effect="--transition-bezier .43,1.19,1,.4 --transition-fps 60 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
 
 # Function to notify user
 notify_user() {
@@ -40,16 +40,16 @@ set_waybar_style() {
 # Determine current wallpaper mode
 if [ "$(cat ~/.cache/.wallpaper_mode)" = "Dark" ]; then
     next_mode="Light"
-    wallpaper_path="$dark_wallpapers"
+    # wallpaper_path="$dark_wallpapers"
 else
     next_mode="Dark"
-    wallpaper_path="$light_wallpapers"
+    # wallpaper_path="$light_wallpapers"
 fi
 
 # Call the function after determining the mode
-set_waybar_style "$next_mode"
+# set_waybar_style "$next_mode"
 
-notify_user "$next_mode"
+# notify_user "$next_mode"
 
 # Set Rofi Themes
 # if [ "$next_mode" = "Dark" ]; then
@@ -59,21 +59,21 @@ notify_user "$next_mode"
 # fi
 
 # Set Dynamic Wallpaper for Dark Mode
-if [ "$next_mode" = "Dark" ]; then
-    next_wallpaper="$(find "${dark_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
-fi
+# if [ "$next_mode" = "Dark" ]; then
+#     next_wallpaper="$(find "${dark_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
+# fi
+#
+# # Set Dynamic Wallpaper for Light Mode
+# if [ "$next_mode" = "Light" ]; then
+#     next_wallpaper="$(find "${light_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
+# fi
 
-# Set Dynamic Wallpaper for Light Mode
-if [ "$next_mode" = "Light" ]; then
-    next_wallpaper="$(find "${light_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
-fi
 
-
-$swww "${next_wallpaper}" $effect
+# $swww "${next_wallpaper}" $effect
 
 # This is a referrence point for next cycle
-echo "$next_mode" > ~/.cache/.wallpaper_mode
-echo "$next_wallpaper" > ~/.cache/.current_wallpaper
+# echo "$next_mode" > ~/.cache/.wallpaper_mode
+# echo "$next_wallpaper" > ~/.cache/.current_wallpaper
 
 # GTK themes and icons switching
 set_custom_gtk_theme() {
@@ -129,15 +129,15 @@ set_custom_gtk_theme() {
 }
 
 # Call the function to set GTK theme and icon theme based on mode
-set_custom_gtk_theme "$next_mode"
+# set_custom_gtk_theme "$next_mode"
 
 # Run remaining scripts
 ${SCRIPTSDIR}/PywalSwww.sh &
 sleep 2
 ${SCRIPTSDIR}/Refresh.sh 
 
-notify-send -e -u low -i "$notify_icon" "GTK theme set to $selected_theme"
-notify-send -e -u low -i "$notify_icon" "Icon theme set to $selected_icon"
+# notify-send -e -u low -i "$notify_icon" "GTK theme set to $selected_theme"
+# notify-send -e -u low -i "$notify_icon" "Icon theme set to $selected_icon"
 
 exit 0
 
