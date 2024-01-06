@@ -1,5 +1,5 @@
 read -p "Install laptop conf?" ilap
-yay -S --needed gcc
+yay -S --noconfirm  --needed gcc
 mkdir -p ~/Temp
 git clone https://github.com/rvaiya/keyd ~/Temp/keyd
 cd ~/Temp/keyd

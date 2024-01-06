@@ -2,7 +2,7 @@ read -n 1 -p "Do you want to install Catppuccin-GTK-Theme,Cursor and icons?(y/N)
 if [[ $itheme = [yY] ]]; then
 	echo
 	echo "Install Themes......"
-	yay -S --needed catppuccin-cursors-mocha catppuccin-gtk-theme-mocha
+	yay -S --noconfirm --needed catppuccin-cursors-mocha catppuccin-gtk-theme-mocha
 	mkdir -p ~/Temp
 	git clone --depth=1 -b mocha "https://github.com/PostCyberPunk/Catppuccin-GTK-Theme" ~/Temp/CatIcon
 	mkdir -p ~/.icons
