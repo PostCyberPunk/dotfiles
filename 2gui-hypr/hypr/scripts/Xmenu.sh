@@ -80,8 +80,8 @@ main() {
 			rofi -dmenu -config ~/.config/rofi/config-long.rasi \
 				-p "Rofi" \
 				-mesg "Hello" \
-				-no-sort \
-				""
+				-max-history-size 0 \
+				-auto-select
 	)
 
 	if [ -z "$choice" ]; then
