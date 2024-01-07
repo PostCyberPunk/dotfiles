@@ -42,6 +42,7 @@ declare -A menu_options=(
 	["sp Spotify"]="spotify"
 	["ml MonitorLayout"]="$scriptsDir/MonitorLayout.sh"
 	["gpu GPU Switcher"]="$scriptsDir/GPU.sh"
+
 )
 
 # Function for displaying notifications
