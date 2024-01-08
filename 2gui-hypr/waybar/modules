@@ -488,7 +488,18 @@
     "tooltip": true,
     "tooltip-format": "Change wallpaper or style"
 },
+"custom/touchpad":{
+    "exec":"[ $(cat ~/.cache/pcp_hypr_var/touchpad) = '0' ]&&echo ''||echo ''",
+    "interval":"once",
+    "signal":3,
+    "format":"{}",
+    "format-icons":{
+        "off":"",
+        "on":""
+      }
+  },
       
+    //"format-icons":["",""]
 "custom/keybinds": {
     "format":"󰺁 HINT!",
     "tooltip": false,

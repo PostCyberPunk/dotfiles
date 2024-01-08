@@ -73,6 +73,7 @@ window#waybar.hidden {
 #window,
 #wireplumber,
 #workspaces,
+#custom-touchpad,
 #custom-backlight,
 #custom-cycle_wall,
 #custom-keybinds,
@@ -241,6 +242,9 @@ window#waybar.hidden {
   color: @mauve;
 }
 
+#custom-touchpad {
+  color: @mauve;
+}
 #custom-light_dark {
   color: @mauve;
 }
