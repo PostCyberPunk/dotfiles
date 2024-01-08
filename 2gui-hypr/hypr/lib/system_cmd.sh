@@ -1,3 +1,4 @@
+#!/bin/bash
 source ~/.config/hypr/lib/ref.sh
 source ~/.config/hypr/lib/utils.sh
 #waybar
@@ -14,9 +15,11 @@ get_var() {
 set_var() {
 	echo "$2" >$var_dir/$1
 }
+
 noti_n() {
 	notify-send -e -u low "$1"
 }
+
 refresh_waybar() {
 	_ps=(waybar rofi)
 	for _prs in "${_ps[@]}"; do
@@ -39,6 +42,7 @@ restart_waybar_if_needed() {
 	fi
 	refresh_waybar &
 }
+
 lock_screen() {
 	LOCKCONFIG="$HOME/.config/swaylock/config"
 	sleep 0.5s

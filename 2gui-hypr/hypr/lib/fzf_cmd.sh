@@ -10,6 +10,7 @@ wallpaper_switcher() {
 		--preview='kitten icat --clear --transfer-mode=memory --place="$FZF_PREVIEW_COLUMNS"x"$FZF_PREVIEW_LINES"@$(math $COLUMNS+5)x1 --align center --stdin=no -z -1 {}')
 	change_wallpaper $result
 }
+
 clipboard_manager() {
 	result=$(cliphist list | fzf --reverse -m)
 	echo "$result" | while read -r line; do

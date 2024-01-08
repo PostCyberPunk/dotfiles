@@ -1,18 +1,19 @@
+#!/bin/bash
 source ~/.config/hypr/lib/ref.sh
 source ~/.config/hypr/lib/system_cmd.sh
+
 toggle_split_ratio() {
 	varname="split_ratio"
 	mstate=$(get_var $varname)
 	if [[ $mstate = "1" ]]; then
 		hyprctl dispatch splitratio exact 0.7
-		echo "1"
 		set_var $varname 0
 	else
-		echo "2"
 		hyprctl dispatch splitratio exact 0.5
 		set_var $varname 1
 	fi
 }
+
 toggle_blur() {
 	STATE=$(hyprctl -j getoption decoration:blur:passes | jq ".int")
 
@@ -26,10 +27,12 @@ toggle_blur() {
 		noti_n "Normal blur"
 	fi
 }
+
 change_wallpaper() {
 	ln -sf "$(pwd)/$1" "$HOME/.config/rofi/.current_wallpaper"
 	swww query || swww init && swww img $1 $SWWW_PARAMS
 }
+
 change_layout() {
 	LAYOUT=$(hyprctl -j getoption general:layout | jq '.str' | sed 's/"//g')
 
@@ -54,6 +57,7 @@ change_layout() {
 
 	esac
 }
+
 toggle_term() {
 	result=$(hyprctl -j clients | jq -c '.[] | select(.initialTitle == "FTQCT") | .pid')
 	if [[ -z $result ]]; then
