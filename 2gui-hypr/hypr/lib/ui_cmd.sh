@@ -54,4 +54,12 @@ change_layout() {
 
 	esac
 }
-
+toggle_term() {
+	result=$(hyprctl -j clients | jq -c '.[] | select(.initialTitle == "FTQCT") | .pid')
+	if [[ -z $result ]]; then
+		kitty -T "FTQCT" --class floating &
+		exit 0
+	else
+		hyprctl dispatch togglespecialworkspace FTQCT
+	fi
+}

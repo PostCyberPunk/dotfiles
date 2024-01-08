@@ -1,4 +1,5 @@
 source ~/.config/hypr/lib/ref.sh
+source ~/.config/hypr/lib/utils.sh
 #waybar
 init_var() {
 	varfile=~/.config/hypr/lib/variable.txt
