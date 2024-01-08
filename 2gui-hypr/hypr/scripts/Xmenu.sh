@@ -3,7 +3,9 @@
 # Directory for icons
 iDIR="$HOME/.config/swaync/icons"
 rofiSH="$HOME/.config/rofi/scripts"
+RunCMD="$HOME/.config/hypr/scripts/RunCMD.sh"
 scriptsDir="$HOME/.config/hypr/scripts"
+rofiDir="$scriptsDir/Rofi"
 yes='Yes'
 no='No'
 # Note: You can add more options below with the following format:
@@ -13,19 +15,19 @@ no='No'
 declare -A menu_options=(
 	["nv Neovim"]="fish -c nvim"
 	["bm Bottom"]="fish -c btm"
-	["emj RofiEmoji"]="$scriptsDir/RofiEmoji.sh"
+	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
 	["wp WallpaperSelect"]="kitty -T FTQCW --class floating bash $HOME/.config/hypr/HyprTools/WallpaerSwitcher.sh"
 	["wb ToggleWaybar"]="killall -SIGUSR1 waybar"
-	["wbs WaybarStyles"]="$scriptsDir/WaybarStyles.sh"
-	["wbl WaybarLayout"]="$scriptsDir/WaybarLayout.sh"
-	["gm GameMode"]="$scriptsDir/GameMode.sh"
-	["rd RofiBeats"]="$scriptsDir/RofiBeats.sh"
-	["blur ChangeBlur"]="$scriptsDir/ChangeBlur.sh"
+	["wbs WaybarStyles"]="$rofiDir/WaybarStyles.sh"
+	["wbl WaybarLayout"]="$rofiDir/WaybarLayout.sh"
+	["gm GameMode"]="$RunCMD toggle_gamemode"
+	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
+	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["tr Translation"]="fish -c rofi_trans"
 	["PO Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
-	["rfs Refesh All"]="$scriptsDir/Refresh.sh "
+	["rfs Refesh All"]="$RunCMD refresh_waybar"
 	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
 	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
@@ -39,8 +41,8 @@ declare -A menu_options=(
 	["fz FuzzyFind"]="kitty fzf -e"
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
-	["ml MonitorLayout"]="$scriptsDir/MonitorLayout.sh"
-	["gpu GPU Switcher"]="$scriptsDir/GPU.sh"
+	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
+	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
 
 )
 

@@ -524,7 +524,7 @@
       
 "custom/lock": {
     "format": "",
-    "on-click": "~/.config/hypr/scripts/LockScreen.sh",
+    "on-click": "~/.config/hypr/scripts/RunCMD.sh.sh lock_screen",
     "tooltip": false,
 },
     
@@ -545,8 +545,8 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "scroll-step": 5.0,
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "~/.config/hypr/scripts/System/Volume.sh --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/System/Volume.sh --dec",
     "smooth-scrolling-threshold": 1,
     "tooltip":true
 },
@@ -554,7 +554,7 @@
 "custom/power": {
     "format": "⏻ ",
     "tooltip": false,
-	  "on-click": "~/.config/hypr/scripts/Wlogout.sh",
+	  "on-click": "~/.config/hypr/scripts/System/Wlogout.sh",
     "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh",
 },
   

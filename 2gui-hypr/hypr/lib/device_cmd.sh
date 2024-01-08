@@ -15,11 +15,47 @@ disable_touchpad() {
 
 toggle_touchpad() {
 	mstate=$(get_var touchpad)
-  echo "$mstate"
+	echo "$mstate"
 	if [[ $mstate = "1" ]]; then
 		enable_touchpad
 	else
 		disable_touchpad
 	fi
-  pkill -RTMIN+3 waybar
+	pkill -RTMIN+3 waybar
 }
+
+toggle_wifi() {
+	wifi="$(nmcli r wifi | awk 'FNR = 2 {print $1}')"
+	if [ "$wifi" == "enabled" ]; then
+		rfkill block all &
+		noti_n 'airplane mode: active'
+	else
+		rfkill unblock all &
+		noti_n 'airplane mode: inactive'
+	fi
+}
+
+toggle_gamemode() {
+	HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
+	if [ "$HYPRGAMEMODE" = 1 ]; then
+		hyprctl --batch "\
+        keyword animations:enabled 0;\
+        keyword decoration:drop_shadow 0;\
+        keyword decoration:blur:passes 0;\
+        keyword general:gaps_in 0;\
+        keyword general:gaps_out 0;\
+        keyword general:border_size 1;\
+        keyword decoration:rounding 0"
+		# swww kill
+		noti_n "gamemode enabled. All animations off"
+		exit
+	else
+		swww init && swww img "$HOME/.config/rofi/.current_wallpaper"
+		sleep 0.5
+    refresh_waybar
+		noti_n "gamemode disabled. All animations normal"
+		exit
+	fi
+	hyprctl reload
+}
+

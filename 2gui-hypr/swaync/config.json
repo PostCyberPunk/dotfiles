@@ -71,7 +71,7 @@
                 },
                 {
                     "label": "󰌾",
-                    "command": "~/.config/hypr/scripts/LockScreen.sh"
+                    "command": "~/.config/hypr/scripts/RunCMD.sh lock_screen"
                 },
                 {
                     "label": "󰍃",

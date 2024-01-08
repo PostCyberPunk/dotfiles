@@ -8,7 +8,7 @@ config_dir="$HOME/.config/waybar/configs"
 waybar_config="$HOME/.config/waybar/config"
 scripts_dir="$HOME/.config/hypr/scripts"
 rofi_config="$HOME/.config/rofi/config-waybar-layout.rasi"
-
+RunCMD=$HOME/.config/hypr/scripts/RunCMD.sh
 # Function to display menu options
 menu() {
     options=()
@@ -31,7 +31,7 @@ restart_waybar_if_needed() {
         pkill waybar
         sleep 0.1  # Delay for Waybar to completely terminate
     fi
-    "${scripts_dir}/Refresh.sh" &
+    $RunCMD refresh_waybar &
 }
 
 # Main function
