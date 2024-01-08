@@ -40,6 +40,6 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 
 	# Create a marker file to indicate that the script has been executed.
 	touch ~/.config/hypr/.initial_startup_done
-
+  mkdir -p ~/.cache/pcp_hypr_var
 	exit
 fi

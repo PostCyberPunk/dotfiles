@@ -1,5 +1,5 @@
 # Define directories
-source ~/.config/hypr/lib/funcs.sh
+source ~/.config/hypr/lib/system_cmd.sh
 config_dir="$HOME/.config/hypr/lib/GPU"
 target_file="$HOME/.config/hypr/configs/GPU.conf"
 rofi_config="$HOME/.config/rofi/config-long.rasi"
