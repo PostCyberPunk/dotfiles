@@ -20,3 +20,6 @@ get_var() {
 set_var() {
 	echo "$2" >$var_dir/$1
 }
+noti_n(){
+	notify-send -e -u low "$1"
+}

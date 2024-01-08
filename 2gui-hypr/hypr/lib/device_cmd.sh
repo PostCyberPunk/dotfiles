@@ -2,13 +2,13 @@ source ~/.config/hypr/lib/ref.sh
 source ~/.config/hypr/lib/system_cmd.sh
 
 enable_touchpad() {
-	notify-send -e -u low "Enabling Touchpad"
+	noti_n "Enabling Touchpad"
 	set_var touchpad "0"
 	hyprctl keyword "device:$touchpad_id:enabled" true
 }
 
 disable_touchpad() {
-	notify-send -e -u low "Disabling Touchpad"
+	noti_n "Disabling Touchpad"
 	set_var touchpad "1"
 	hyprctl keyword "device:$touchpad_id:enabled" false
 }
