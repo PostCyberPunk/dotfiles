@@ -564,7 +564,7 @@
     "exec": "checkupdates | wc -l",
 //    "return-type": "json",
     "format": "󰮯 {}",
- //   "on-click": "~/.config/hypr/scripts/systemupdate.sh up",
+   "on-click": "checkupdates | wc -l",
     "interval": 86400, // once every day
     "tooltip": true,
 },
