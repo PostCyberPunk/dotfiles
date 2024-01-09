@@ -59,11 +59,36 @@ change_layout() {
 }
 
 toggle_term() {
-	result=$(hyprctl -j clients | jq -c '.[] | select(.initialTitle == "FTQCT") | .pid')
+	tname="FTQCT$1"
+	result=$(hyprctl -j clients | jq -c ".[] | select(.initialTitle == \"$tname\") | .pid")
+	focused=$(hyprctl -j clients | jq -c ".[] | select(.initialTitle == \"$tname\") | .focusHistoryID")
 	if [[ -z $result ]]; then
-		kitty -T "FTQCT" --class floating &
+		kitty -T $tname --class floating $2 &
 		exit 0
 	else
-		hyprctl dispatch togglespecialworkspace FTQCT
+		hyprctl dispatch pin pid:$result
+		if [[ $focused -eq 0 ]]; then
+			hyprctl dispatch movetoworkspacesilent special:FTQCT
+		else
+			hyprctl dispatch focuswindow pid:$result
+		fi
+		# hyprctl dispatch togglespecialworkspace FTQCT
 	fi
+}
+toggle_term_sp() {
+	tname="FTQCS$1"
+	result=$(hyprctl -j clients | jq -c ".[] | select(.initialTitle == \"$tname\") | .pid")
+	if [[ -z $result ]]; then
+		kitty -T $tname --class floating $2 &
+		exit 0
+	else
+		hyprctl dispatch togglespecialworkspace $tname
+	fi
+}
+open_term_sp(){
+	tname="FTQCS$1"
+	result=$(hyprctl -j clients | jq -c ".[] | select(.initialTitle == \"$tname\") | .pid")
+	if [[ -z $result ]]; then
+		kitty -T "FTQCS$1" --class floating $2 &
+  fi
 }
