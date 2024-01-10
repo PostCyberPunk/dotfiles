@@ -34,8 +34,7 @@ map <c-a> :unselect;invert
 # basic
 map d
 map dd cut
-# map DF %(echo "Confirm Delelte $f; (y/N)";read -n 1 choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
-map DF %(echo "Confirm Delelte $f (y/N)";read -n 1 choice&&[ $choice = "y" ]&&echo "yes:$f"||echo Canceled)
+map DF %(echo "Confirm Delelte $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&echo "yes:$f"||echo Canceled)
 map DS :delete
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
