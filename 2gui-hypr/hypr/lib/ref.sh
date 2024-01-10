@@ -4,6 +4,7 @@ scripts_dir="$HOME/.config/hypr/scripts"
 
 touchpad_id="cust0001:00-06cb:cdad-touchpad"
 wallpaper_dir=$HOME/Pictures/wallpapers
+wallpaper_cache=$HOME/.config/rofi/.current_wallpaper
 
 SWWW_FPS=60
 SWWW_TYPE="simple"
