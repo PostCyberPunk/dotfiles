@@ -146,3 +146,7 @@ set cursorpreviewfmt "\033[7;90m"
 cmd reconfig ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
   }}
+########### CMDmodes
+cmap <a-l> cmd-word 
+cmap <a-h> cmd-word-back
+cmap <a-w> cmd-delete-unix-word
