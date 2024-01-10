@@ -7,7 +7,8 @@ extens=""
 after_apply() {
 	# restart_waybar_if_needed
 	hyprctl dispatch forcerendererreload
-	notify-send $0
+  hyprctl reload
+	notify-send $1
 }
 source ~/.config/hypr/lib/applets/linker.sh
 # config_dir="$HOME/.config/waybar/style"

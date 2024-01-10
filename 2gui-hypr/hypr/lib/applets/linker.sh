@@ -18,7 +18,7 @@ menu() {
 # Apply selected style
 apply_link() {
 	ln -sf "$config_dir/$1$extens" "$target_file"
-	after_apply
+	after_apply $1
 }
 
 # Main function
