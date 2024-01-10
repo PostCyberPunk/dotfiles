@@ -189,7 +189,7 @@ window#waybar.hidden {
   background-color : @red;
 }
 #workspaces button.visible{
-  background-color : @peach;
+  background-color : @surface1;
 }
 
 #workspaces button.active {

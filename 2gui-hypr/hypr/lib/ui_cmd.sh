@@ -28,8 +28,12 @@ toggle_blur() {
 	fi
 }
 
+_link_wallpaper() {
+	ln -sf "$PWD/$1" "$wallpaper_cache"
+}
 change_wallpaper() {
-	ln -sf "$(pwd)/$1" "$HOME/.config/rofi/.current_wallpaper"
+  mv -f "$wallpaper_cache" "$wallpaper_cache-bak"
+  _link_wallpaper $1 || mv -f "$wallpaper_cache-bak" "$wallpaper_cache"
 	swww query || swww init && swww img $1 $SWWW_PARAMS
 }
 
@@ -85,10 +89,10 @@ toggle_term_sp() {
 		hyprctl dispatch togglespecialworkspace $tname
 	fi
 }
-open_term_sp(){
+open_term_sp() {
 	tname="FTQCS$1"
 	result=$(hyprctl -j clients | jq -c ".[] | select(.initialTitle == \"$tname\") | .pid")
 	if [[ -z $result ]]; then
 		kitty -T "FTQCS$1" --class floating $2 &
-  fi
+	fi
 }
