@@ -4,7 +4,10 @@
 set icons true
 # set drawbox
 set ratios 1:2
-#previewer ctpv
+# set sortby time
+set info time
+#
+#######previewer ctpv
 set sixel true
 set previewer ctpv
 set cleaner ctpvclear
@@ -31,8 +34,8 @@ map <c-a> :unselect;invert
 # basic
 map d
 map dd cut
-# map DF %echo "Confirm Delelte $f (y/N)"&& read -n 1 -l choice&&[ $choice = "y" ]&&rm -rf "$f"
-map DF $(read -n 1 -p "Confirm Delelte $f (y/N)" choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
+# map DF %(echo "Confirm Delelte $f; (y/N)";read -n 1 choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
+map DF %(echo "Confirm Delelte $f (y/N)";read -n 1 choice&&[ $choice = "y" ]&&echo "yes:$f"||echo Canceled)
 map DS :delete
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
@@ -51,7 +54,6 @@ map z2 set ratios 1:1:2
 map sS calcdirsize ; set info size 
 # g-----
 map glg $lazygit
-map <c-o> :fzf_jump --type=d -H
 map gff push :fzf_jump<space>
 map gL follow_link
 cmd follow_link %{{
@@ -134,6 +136,7 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
+map <c-o> :fzf_jump --type=d -H
 map <c-f> :fzf_jump  -d=3
 map <a-f> :fzf_jump  -H
 ###########eza
