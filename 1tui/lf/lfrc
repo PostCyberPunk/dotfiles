@@ -13,7 +13,33 @@ set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
-# cmds-----------
+# EventCMD-----------
+############# Print PWD on Tittle
+ cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $PWD\007" > /dev/tty
+}}
+
+# also run at startup
+on-cd
+############ Dynamically set number of columns
+# map z1 %{{lf -remote "send $id set ratios 1:2"}}
+# map z1 on-redraw
+# cmd on-redraw %{{
+#     lf -remote "send $id set statfmt \"[Buzz]$(eza -ld --color=always "$f")\""
+    # if [ $lf_width -le 80 ]; then
+    #     lf -remote "send $id set ratios 1:2"
+    # elif [ $lf_width -le 160 ]; then
+    #     lf -remote "send $id set ratios 1:2:3"
+    # else
+    #     lf -remote "send $id set ratios 1:2:3:5"
+    # fi
+# }}
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
+}}
 ###########
 map P ${{
     src=$(cat ~/.local/share/lf/files)
