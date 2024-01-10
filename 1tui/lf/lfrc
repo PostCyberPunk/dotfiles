@@ -4,92 +4,30 @@
 set icons true
 # set drawbox
 set ratios 1:2
-#previewer ctpv
+# set sortby time
+set info time
+#
+set cursorpreviewfmt "\033[7;90m"
+cmd reconfig ${{
+    lf -remote "send $id source ~/.config/lf/lfrc"
+  }}
+#######previewer ctpv
 set sixel true
 set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
-# cmds-----------
-###########
-map P ${{
-    src=$(cat ~/.local/share/lf/files)
-    src=$(echo $src|choose 1)
-    if [[ -z $src ]]; then
-      lf -remote "send $id echo No file selected"
-      exit 0
-    fi
-    lf -remote "send $id echo $src."
+# EventCMD-----------
+############# Print PWD on Tittle
+ cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    printf "\033]0; $PWD\007" > /dev/tty
 }}
-map f :set findlen 2;find
-map F :set findlen 3;find
-#######visual mode######
-map v :invert-below
-map V :invert
-map <c-a> :unselect;invert
-#### a g y s######
-# basic
-map d
-map dd cut
-# map DF %echo "Confirm Delelte $f (y/N)"&& read -n 1 -l choice&&[ $choice = "y" ]&&rm -rf "$f"
-map DF $(read -n 1 -p "Confirm Delelte $f (y/N)" choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
-map DS :delete
-map J :updir; set dironly true; down; set dironly false; open
-map K :updir; set dironly true; up; set dironly false; open
-map R reload
-map <enter> shell
-# a------
-map ad push %mkdir<space>
-cmd mkfile $(echo $1>> $2)
-map ae push :mkfile<space>
-map an push $nvim<space>
-map ax $chmod +x "$f"
-# z------
-map z1 set ratios 1:2
-map z2 set ratios 1:1:2
-# s------
-map sS calcdirsize ; set info size 
-# g-----
-map glg $lazygit
-map <c-o> :fzf_jump --type=d -H
-map gff push :fzf_jump<space>
-map gL follow_link
-cmd follow_link %{{
-  lf -remote "send ${id} select '$(readlink $f)'"
-}}
-# open-----------
-map gb $bash "$f"
-map gov $nvim $fx
-map goV $nvim $dir
-map gop $python "$f"
-map goc $code "$f"
-map goC $code $dir 
-map goa $exiftool "$f"|nvim -RMn 
-# copy----------------
-map y
-map yy copy
 
-map yf $echo "$f" |wl-copy
-map yp $dirname "$f" |wl-copy
-map yn $basename "$f" |wl-copy
-map yz !atool -x
-map yd $atool -x "$fs" 
-map ys ${{
-
-sfs="$HOME/.local/share/lf/files"
-if [[ $(head -n 1 $sfs) = "copy" ]]; then
-  while read -r line ; do
-  rsync --recursive --progress "$line" $(dirname "$f")
-  done < <(tail -n +2 "$sfs")
-  else
-    echo "Use move insted of copy"
-fi
-  }}
-# quick copy
-map y1 $cp $fx ~/dotfiles
-# pager
-map i $bat --paging=always "$f"   
-############ tips ###########
+# also run at startup
+on-cd
 ############ Dynamically set number of columns
 # map z1 %{{lf -remote "send $id set ratios 1:2"}}
 # map z1 on-redraw
@@ -103,9 +41,213 @@ map i $bat --paging=always "$f"
     #     lf -remote "send $id set ratios 1:2:3:5"
     # fi
 # }}
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
+}}
 ###########
-# y (select for copy) and P to paste soft-link
-# d (select for cut) and P to paste hard-link
+#######this is a test####
+map PP ${{
+    src=$(cat ~/.local/share/lf/files)
+    src=$(echo $src|choose 1)
+    if [[ -z $src ]]; then
+      lf -remote "send $id echo No file selected"
+      exit 0
+    fi
+    lf -remote "send $id echo $src."
+}}
+map PC :pcptest
+cmd pcptest ${{
+echo $fs
+  }}
+###### Locate File
+map f :set findlen 2;find
+map F :set findlen 3;find
+#######visual mode Selection######
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
+map v :invert-below
+
+map VV :invert
+map <c-a> :unselect;invert
+
+map VF :select-files
+map VD :select-dirs
+
+cmd select-files &{{
+    get_files() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_files)"
+}}
+
+cmd select-dirs &{{
+    get_dirs() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_dirs)"
+}}
+#### fzf
+cmd fzf_jump ${{
+    res=$(fish -c "fzf_pcp_normal $f//$1")
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-o> :fzf_jump --type=d -H
+map <c-f> :fzf_jump  -d=3
+map <a-f> :fzf_jump  -H
+############ Copy paste ############
+map yx :swapmode
+map dx :swapmode
+cmd swapmode ${{
+    cfile="$HOME/.local/share/lf/files"
+    if [[ $(head -n 1 $cfile) = "copy" ]]; then
+      sed -i '1s/.*/move/' $cfile
+    else
+      sed -i '1s/.*/copy/' $cfile
+    fi
+    lf -remote "send $id sync"
+  }}
+########### Add To Clipboard
+map da :clip-add move
+map dA :clip-remove move
+map ya :clip-add copy
+map yA :clip-remove copy
+cmd clip-add %{{
+    if [[ -z $fs ]]; then 
+      lf -remote "send $id echoerr Select some file first"
+    fi
+    file=~/.local/share/lf/files
+    fss=$(cat ~/.local/share/lf/files)
+
+    operation=$(echo $fss | choose 0)
+    if [[ $operation != "$1" ]]; then
+      lf -remote "send $id echoerr Wrong mode"
+      exit 1
+    fi
+
+    while read line; do
+      if ! grep -Fxq "$line" $file; then
+        echo "$line" >>$file
+      fi
+    done <<<"$fs"
+
+    lf -remote "send $id echo Added selcted files from Clipboard"
+    lf -remote "send $id unselect"
+    lf -remote "send $id sync"
+}}
+cmd clip-remove ${{
+    if [[ -z $fs ]]; then 
+      lf -remote "send $id echoerr Select some file first"
+    fi
+    file=~/.local/share/lf/files
+    fss=$(cat $file)
+    operation=$(echo $fss | choose 0)
+    if [ "$operation" != "$1" ]; then
+      lf -remote "send $id echoerr Wrong mode"
+      exit 1
+    fi
+    # Read the file and remove lines that match any line in the string
+    while read line; do
+      if ! grep -Fxq "$line" <<<"$fs"; then
+        echo "$line"
+      fi
+    done <$file >"$file.new"
+    mv -f "$file.new" $file
+    lf -remote "send $id echo Removed selcted files from Clipboard"
+    lf -remote "send $id unselect"
+    lf -remote "send $id sync"
+}}
+## Cut
+map d
+map dd cut
+map dzh UnzipHere
+cmd UnzipHere !atool -X "$PWD" "$fs"
+map dzz Unzip
+cmd Unzip !atool -x "$f"
+## copy
+map y
+map yy copy
+
+### copy name
+cmd copyfullpath $echo "$f" |wl-copy
+cmd copydir $dirname "$f" |wl-copy
+cmd copyname $basename "$f" |wl-copy
+map yf copyfullpath
+map yp copydir
+map yn copyname
+
+# apack
+map yzz push :pack7z<space>
+cmd pack7z ${{
+    apack "$1.7z" $fs
+  }}
+## rsync
+map ys :lfrsync
+cmd lfrsync ${{
+    cfile="$HOME/.local/share/lf/files"
+    if [[ $(head -n 1 $cfile) = "copy" ]]; then
+      while read -r line ; do
+      rsync --recursive --progress "$line" $(dirname "$f")
+      done < <(tail -n +2 "$sfs")
+      else
+        echo "Use move insted of copy"
+    fi
+  }}
+# quick copy
+map y1 quickCopy "^\!"
+map y2 quickCopy "^\@"
+map y3 quickCopy "^\#"
+map y4 quickCopy "^\$"
+map y5 quickCopy "^\%"
+map y6 quickCopy "^\^"
+map y7 quickCopy "^\&"
+map y8 quickCopy "^\*"
+map y9 quickCopy "^\("
+cmd quickCopy %{{
+    markf=~/.local/share/lf/marks
+    tdir=$(cat $markf |rg -e $1 |choose -f ':' 1)
+    if [[ -z $tdir ]]; then
+      echo "!!No mark for $1"
+      exit
+    fi
+    if [[ ! -d $tdir ]]; then
+      echo "!!mark $1 is not a directory"
+      exit
+    fi
+    cp -r --backup=numbered -t $tdir -- $fx
+    echo "File copied to mark:$1"
+  }}
+
+## Delete
+map DF %(echo "Confirm Delete $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
+map DS :delete
+map R reload
+map <enter> shell
+############ Add 
+map ad push %mkdir<space>
+cmd mkfile $(echo $1>> $2)
+map ae push :mkfile<space>
+map an push $nvim<space>
+map ax $chmod +x "$f"
 cmd slink ${{
     fss=$(cat ~/.local/share/lf/files)
     src=$(echo $fss | choose 1)
@@ -119,28 +261,34 @@ cmd slink ${{
     echo "link created:$tar->$src"
 }}
 map asl :slink
-########### repeat last cmd
+############ z------
+map z2 :set ratios 1:2
+map z3 :set ratios 1:1:2
+map zn
+# repeat last cmd
 map zpp :read; cmd-history-prev; cmd-enter
-########### fzf
-cmd fzf_jump ${{
-    res=$(fish -c "fzf_pcp_normal $f//$1")
-    if [ -n "$res" ]; then
-        if [ -d "$res" ]; then
-            cmd="cd"
-        else
-            cmd="select"
-        fi
-        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-        lf -remote "send $id $cmd \"$res\""
-    fi
+map zC :select-dirs;calcdirsize;unselect
+############ s------
+map ss
+map ss :calcdirsize ; set info size ;set sortby size
+############ g-----
+map glg $lazygit
+map gff push :fzf_jump<space>
+map gL follow_link
+cmd follow_link %{{
+  lf -remote "send ${id} select '$(readlink $f)'"
 }}
-map <c-f> :fzf_jump  -d=3
-map <a-f> :fzf_jump  -H
-###########eza
-cmd on-select &{{
-    lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
-}}
-set cursorpreviewfmt "\033[7;90m"
-cmd reconfig ${{
-    lf -remote "send $id source ~/.config/lf/lfrc"
-  }}
+############ open-----------
+map gb $bash "$f"
+map gov $nvim $fx
+map goV $nvim $dir
+map gop $python "$f"
+map goc $code "$f"
+map goC $code $dir 
+map goa $exiftool "$f"|nvim -RMn 
+########### pager
+map i $bat --paging=always "$f"   
+########### CMDmodes
+cmap <a-l> cmd-word 
+cmap <a-h> cmd-word-back
+cmap <a-w> cmd-delete-unix-word
