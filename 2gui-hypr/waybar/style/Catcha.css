@@ -225,24 +225,24 @@ window#waybar.hidden {
  	border-radius: 1px;
 }
 
-#taskbar button.active {
+#taskbar button {
   color: @lavender;
   /* border: 1px solid @lavender; */
-	background-color: @surface2;
-    padding-left: 4px;
-    padding-right: 4px;
-    /* animation: gradient_f 20s ease-in infinite; */
-    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
+	/* background-color: @surface2; */
+    padding-left: 6px;
+    padding-right: 6px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+#taskbar button.active {
+  /* border: 1px solid @lavender; */
+	background-color: @overlay0;
 }
 
 #taskbar button:hover {
-	color: @lavender;
-  border: 1px solid @mauve;
-	background-color: @surface0;
-    padding-left: 4px;
-    padding-right: 4px;
-    /* animation: gradient_f 20s ease-in infinite; */
-    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
+	/* color: @peach; */
+  /* border: 2px solid @peach; */
+	background-color: @overlay1;
 }
 
 #custom-menu {
