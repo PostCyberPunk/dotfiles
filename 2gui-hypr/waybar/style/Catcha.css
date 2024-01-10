@@ -174,8 +174,8 @@ window#waybar.hidden {
     border-radius: 9px;
     padding-left: 4px;
     padding-right: 4px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: gradient_f 20s ease-in infinite; */
+    /* transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 /* #workspaces button.focused { */
 /*     box-shadow: none; */
@@ -192,10 +192,10 @@ window#waybar.hidden {
 	border-radius: 10px;
 	color: @peach;
 	background-color: @surface2;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
  	padding-left: 4px;
   padding-right: 4px;
+  /* animation: gradient_f 20s ease-in infinite; */
+    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button.empty {
@@ -210,8 +210,8 @@ window#waybar.hidden {
   	border-radius: 10px;
     padding-left: 2px;
     padding-right: 2px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: gradient_f 20s ease-in infinite; */
+    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #workspaces button.special {
@@ -231,8 +231,8 @@ window#waybar.hidden {
 	background-color: @surface2;
     padding-left: 4px;
     padding-right: 4px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: gradient_f 20s ease-in infinite; */
+    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #taskbar button:hover {
@@ -241,8 +241,8 @@ window#waybar.hidden {
 	background-color: @surface0;
     padding-left: 4px;
     padding-right: 4px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+    /* animation: gradient_f 20s ease-in infinite; */
+    /* transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682); */
 }
 
 #custom-menu {
