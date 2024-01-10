@@ -17,19 +17,18 @@
 "margin-right": 8,
 
 "modules-left": [
-	"cpu", 
-	"temperature", 
-	"memory",
-	"disk", 
-	],
+	"custom/updater",
+	//"custom/menu",
+	"wlr/taskbar",
+	"hyprland/window",
+	 ],
   
 "modules-center": [
-	"hyprland/workspaces#4", 
+	"hyprland/workspaces#pacman", 
 	],
 
 "modules-right": [
 	"mpris",
-	"custom/updater",
 	//"keyboard-state",
 	"pulseaudio",
 	//"wireplumber", 
@@ -55,10 +54,11 @@
 //"margin-bottom": 0,
 
 "modules-left": [
-	"custom/menu",
-	"wlr/taskbar",
-	"hyprland/window",
-	 ],
+	"cpu", 
+	"temperature", 
+	"memory",
+	"disk", 
+	],
 
 "modules-center": [
 	"idle_inhibitor", 

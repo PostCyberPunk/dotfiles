@@ -8,7 +8,7 @@ min-height: 0;
 /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
 font-size: 100%;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-padding: 1px;
+/* padding: 1px; */
 }
 
 @import "../waybar/style/catppuccin-themes/mocha.css";
@@ -42,7 +42,7 @@ window#waybar.hidden {
 
 } 
 
-.modules-left, .modules-right {
+.modules-left, .modules-center,.modules-right {
   	/* border: 1px solid @blue; */
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -177,6 +177,16 @@ window#waybar.hidden {
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
+/* #workspaces button.focused { */
+/*     box-shadow: none; */
+/* 	text-shadow: none; */
+/*     padding: 0px; */
+/*     border-radius: 9px; */
+/*     padding-left: 4px; */
+/*     padding-right: 4px; */
+/*     animation: gradient_f 20s ease-in infinite; */
+/*     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682); */
+/* } */
 
 #workspaces button:hover {
 	border-radius: 10px;
@@ -188,7 +198,7 @@ window#waybar.hidden {
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.persistent {
+#workspaces button.empty {
 	color: @surface1;
 	border-radius: 10px;
 }
@@ -196,17 +206,21 @@ window#waybar.hidden {
 #workspaces button.active {
 	color: @mauve;
   background-color: @surface0;
-  border: 1px solid @mauve;
+  /* border: 1px solid @mauve; */
   	border-radius: 10px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 2px;
+    padding-right: 2px;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
+#workspaces button.special {
+	color: @pink;
+	border-radius: 10px;
+}
 #workspaces button.urgent {
 	color: @red;
- 	border-radius: 0px;
+ 	border-radius: 1px;
 }
 
 #taskbar button.active {
