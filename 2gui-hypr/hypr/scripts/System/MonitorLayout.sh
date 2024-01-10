@@ -5,8 +5,9 @@ target_file="$HOME/.config/hypr/configs/Monitors.conf"
 rofi_config="$HOME/.config/rofi/config-long.rasi"
 extens=""
 after_apply() {
+  hyprctl reload
 	# restart_waybar_if_needed
-	notify-send $0
+	notify-send $1
 }
 source ~/.config/hypr/lib/applets/linker.sh
 # config_dir="$HOME/.config/waybar/style"

@@ -59,3 +59,7 @@ toggle_gamemode() {
 	fi
 	hyprctl reload
 }
+restore_gpu(){
+	ln -sf "$HOME/.config/hypr/lib/GPU/1 Default.conf" "$HOME/.config/hypr/configs/GPU.conf"
+	ln -sf "$HOME/.config/hypr/lib/Monitor/1 Default.conf" "$HOME/.config/hypr/configs/Monitors.conf"
+}
