@@ -179,10 +179,10 @@ cmd clip-remove ${{
 ## Cut
 map d
 map dd cut
-map dzs UnzipDir
-cmd UnzipDir !atool -x "fs" -d $(dirname "$f")
-map dzz UnzipHere
-cmd UnzipHere $atool -x "$fs"
+map dzh UnzipHere
+cmd UnzipHere !atool -X "$PWD" "$fs"
+map dzz Unzip
+cmd Unzip !atool -x "$f"
 ## copy
 map y
 map yy copy
@@ -195,6 +195,12 @@ map yf copyfullpath
 map yp copydir
 map yn copyname
 
+# apack
+map yzz push :pack7z<space>
+cmd pack7z ${{
+    apack "$1.7z" $fs
+  }}
+## rsync
 map ys :lfrsync
 cmd lfrsync ${{
     cfile="$HOME/.local/share/lf/files"
