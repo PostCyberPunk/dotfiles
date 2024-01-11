@@ -55,15 +55,9 @@ map PP ${{
     fi
     lf -remote "send $id echo $src."
 }}
-map PC ${{
-    fss=$(cat ~/.local/share/lf/files)
-    operation=$(echo $fss | choose 0)
-    lf -remote "send $id echoerr $operation"
-    
-    # if [ "$operation" != "move" ]; then
-    #     lf -remote "send $id echoerr no files in cut list."
-    #     exit 1
-    # fi
+map PC :pcptest
+cmd pcptest ${{
+echo $fs
   }}
 ###### Locate File
 map f :set findlen 2;find
@@ -216,7 +210,7 @@ cmd lfrsync ${{
 map y1 $cp $fx ~/dotfiles
 
 ## Delete
-map DF %(echo "Confirm Delete $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&echo "yes:$f"||echo Canceled)
+map DF %(echo "Confirm Delete $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
 map DS :delete
 map R reload
 map <enter> shell
@@ -245,7 +239,8 @@ map z2 :set ratios 1:1:2
 # repeat last cmd
 map zpp :read; cmd-history-prev; cmd-enter
 ############ s------
-map sS :calcdirsize ; set info size 
+map ss
+map ss :calcdirsize ; set info size ;set sortby size
 ############ g-----
 map glg $lazygit
 map gff push :fzf_jump<space>
