@@ -196,6 +196,7 @@
     "interval": 60,
     "align": 0,
     "rotate": 0,
+    //"signal":4,
     //"bat": "BAT1",
     //"adapter": "ACAD",
     "full-at": 100,
@@ -367,6 +368,7 @@
     "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
     "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
     "smooth-scrolling-threshold": 1,
+  "signal":4,
 	"player-icons": {
         "chromium": "",
 		"default": "",
@@ -573,11 +575,11 @@
 //   "exec": "~/.config/hypr/scripts/systemupdate.sh",
 "custom/updater": {
     "exec": "checkupdates | wc -l",
-//    "return-type": "json",
     "format": "󰮯 {}",
    "on-click": "checkupdates | wc -l",
     "on-click-right": "kitty",
     "interval": 86400, // once every day
+    "signal":4,
     "tooltip": true,
 },
 "custom/updates":{
@@ -594,6 +596,7 @@
     "format-alt-click": "click",
     "interval": 3600,
     "return-type": "json",
+    "signal":4,
     "exec": "~/.config/hypr/scripts/Weather.sh",
     //"exec": "~/.config/hypr/scripts/Weather.py",
     "exec-if": "ping wttr.in -c1",
