@@ -1,4 +1,96 @@
+gui:
+  nerdFontsVersion: "3"
+  skipRewordInEditorWarning: true
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  log:
+    showGraph: always
+os:
+  open: 'nvim {{filename}}>/dev/null'
+  editPreset: nvim
+disableStartupPopups: false
+notARepository: 'skip'
+promptToReturnFromSubprocess: false
+customCommands:
+  # - key: 'f'
+  #   command: "git difftool -y {{.SelectedLocalCommit.Sha}} -- {{.SelectedCommitFile.Name}}"
+  #   context: 'commitFiles'
+  #   description: 'Compare (difftool) with local copy'
+  - key: '<c-f>'
+    description: 'fetch a remote branch as a new local branch'
+    command: "git fetch {{index .SelectedRemote.Name }} {{index .PromptResponses 0}}:{{index .PromptResponses 1}}"
+    context: 'remotes'
+    prompts:
+      - type: 'input'
+        title: 'Remote Branch Name'
+        initialValue: ''
+      - type: 'input'
+        title: 'New Local Branch Name'
+        initialValue: ''
+    loadingText: 'fetching branch'
+  - key: '<c-e>'
+    description: 'Add empty commit'
+    context: 'commits'
+    command: 'git commit --allow-empty -m "empty commit"'
+    loadingText: 'Committing empty commit...'
+  - key: "<c-v>"
+    context: "global"
+    description: "Create new conventional commit"
+    prompts:
+      - type: "menu"
+        key: "Type"
+        title: "Type of change"
+        options:
+          - name: "feat"
+            description: "A new feature"
+            value: "feat"
+          - name: "fix"
+            description: "A bug fix"
+            value: "fix"
+          - name: "chore"
+            description: "Other changes that don't modify src or test files"
+            value: "chore"
+          - name: "refactor"
+            description: "A code change that neither fixes a bug nor adds a feature"
+            value: "refactor"
+          - name: "style"
+            description: "Changes that do not affect the meaning of the code"
+            value: "style"
+          - name: "ci"
+            description: "Changes to CI configuration files and scripts"
+            value: "ci"
+          - name: "docs"
+            description: "Documentation only changes"
+            value: "docs"
+          - name: "perf"
+            description: "A code change that improves performance"
+            value: "perf"
+          - name: "revert"
+            description: "Reverts a previous commit"
+            value: "revert"
+          - name: "build"
+            description: "Changes that affect the build system or external dependencies"
+            value: "build"
+          - name: "test"
+            description: "Adding missing tests or correcting existing tests"
+            value: "test"
+      - type: "input"
+        title: "Scope - Add '(<scope>)'"
+        key: "Scope"
+        initialValue: ""
+      - type: "input"
+        title: "Breaking change - Add '!'"
+        key: "Breaking"
+        initialValue: ""
+      - type: "input"
+        title: "message"
+        key: "Message"
+        initialValue: ""
+      - type: "confirm"
+        key: "Confirm"
+        title: "Commit"
+        body: "Are you sure you want to commit?"
+    command: "git commit --message '{{.Form.Type}}{{.Form.Scope}}{{.Form.Breaking}}: {{.Form.Message}}'"
+    loadingText: "Creating conventional commit..."
