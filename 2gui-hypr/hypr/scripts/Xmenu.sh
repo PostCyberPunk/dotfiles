@@ -16,7 +16,7 @@ declare -A menu_options=(
 	["nv Neovim"]="fish -c nvim"
 	["bm Bottom"]="fish -c btm"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["wp WallpaperSelect"]="kitty -T FTQCW --class floating bash $RunCMD wallpaper_switcher"
+	["wp WallpaperSelect"]="kitty -T FTQCW --class floatingkitty bash $RunCMD wallpaper_switcher"
 	["wb ToggleWaybar"]="killall -SIGUSR1 waybar"
 	["wbs WaybarStyles"]="$rofiDir/WaybarStyles.sh"
 	["wbl WaybarLayout"]="$rofiDir/WaybarLayout.sh"
@@ -24,13 +24,13 @@ declare -A menu_options=(
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["tr Translation"]="fish -c rofi_trans"
-	["PO Shutdown"]="needConfim "poweroff""
+	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
 	["rfs Refesh All"]="$RunCMD refresh_waybar"
 	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
 	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
-	["cb Clipborad"]="kitty -T \"FTQCW\" --class floating bash $RunCMD clipboard_manager"
+	["cb Clipborad"]="kitty -T \"FTQCW\" --class floatingkitty bash $RunCMD clipboard_manager"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
 	["cph PickColor(RGB)"]="hyprpicker -f hex -a"
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
@@ -58,6 +58,7 @@ confirm_cmd() {
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
+    -kb-accept-entry 'Return,space' \
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?'
