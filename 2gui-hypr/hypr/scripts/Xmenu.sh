@@ -24,7 +24,7 @@ declare -A menu_options=(
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["tr Translation"]="fish -c rofi_trans"
-	["PO Shutdown"]="needConfim "poweroff""
+	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
 	["rfs Refesh All"]="$RunCMD refresh_waybar"
@@ -58,6 +58,7 @@ confirm_cmd() {
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
+    -kb-accept-entry 'Return,space' \
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?'
