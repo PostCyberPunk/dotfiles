@@ -213,7 +213,29 @@ cmd lfrsync ${{
     fi
   }}
 # quick copy
-map y1 $cp $fx ~/dotfiles
+map y1 quickCopy "^\!"
+map y2 quickCopy "^\@"
+map y3 quickCopy "^\#"
+map y4 quickCopy "^\$"
+map y5 quickCopy "^\%"
+map y6 quickCopy "^\^"
+map y7 quickCopy "^\&"
+map y8 quickCopy "^\*"
+map y9 quickCopy "^\("
+cmd quickCopy %{{
+    markf=~/.local/share/lf/marks
+    tdir=$(cat $markf |rg -e $1 |choose -f ':' 1)
+    if [[ -z $tdir ]]; then
+      echo "!!No mark for $1"
+      exit
+    fi
+    if [[ ! -d $tdir ]]; then
+      echo "!!mark $1 is not a directory"
+      exit
+    fi
+    cp -r --backup=numbered -t $tdir -- $fx
+    echo "File copied to mark:$1"
+  }}
 
 ## Delete
 map DF %(echo "Confirm Delete $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&rm -rf "$f"||echo Canceled)
