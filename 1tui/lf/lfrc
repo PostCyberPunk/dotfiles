@@ -7,6 +7,10 @@ set ratios 1:2
 # set sortby time
 set info time
 #
+set cursorpreviewfmt "\033[7;90m"
+cmd reconfig ${{
+    lf -remote "send $id source ~/.config/lf/lfrc"
+  }}
 #######previewer ctpv
 set sixel true
 set previewer ctpv
@@ -41,7 +45,8 @@ cmd on-select &{{
     lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
 }}
 ###########
-map P ${{
+#######this is a test####
+map PP ${{
     src=$(cat ~/.local/share/lf/files)
     src=$(echo $src|choose 1)
     if [[ -z $src ]]; then
@@ -50,9 +55,22 @@ map P ${{
     fi
     lf -remote "send $id echo $src."
 }}
+map PC ${{
+    fss=$(cat ~/.local/share/lf/files)
+    operation=$(echo $fss | choose 0)
+    lf -remote "send $id echoerr $operation"
+    
+    # if [ "$operation" != "move" ]; then
+    #     lf -remote "send $id echoerr no files in cut list."
+    #     exit 1
+    # fi
+  }}
+###### Locate File
 map f :set findlen 2;find
 map F :set findlen 3;find
-#######visual mode######
+#######visual mode Selection######
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
 map v :invert-below
 
 map VV :invert
@@ -87,13 +105,29 @@ cmd select-dirs &{{
     lf -remote "send $id :unselect; toggle $(get_dirs)"
 }}
 
+########### fzf
+cmd fzf_jump ${{
+    res=$(fish -c "fzf_pcp_normal $f//$1")
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-o> :fzf_jump --type=d -H
+map <c-f> :fzf_jump  -d=3
+map <a-f> :fzf_jump  -H
 #### a g y s######
 # basic
 map d
-map dd :cut
+map dd cut
 map DF %(echo "Confirm Delelte $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&echo "yes:$f"||echo Canceled)
 map DS :delete
-map R :reload
+map R reload
 map <enter> shell
 # a------
 map ad push %mkdir<space>
@@ -123,7 +157,7 @@ map goC $code $dir
 map goa $exiftool "$f"|nvim -RMn 
 # copy----------------
 map y
-map yy :copy
+map yy copy
 
 map yf $echo "$f" |wl-copy
 map yp $dirname "$f" |wl-copy
@@ -146,20 +180,6 @@ map y1 $cp $fx ~/dotfiles
 # pager
 map i $bat --paging=always "$f"   
 ############ tips ###########
-############ Dynamically set number of columns
-# map z1 %{{lf -remote "send $id set ratios 1:2"}}
-# map z1 on-redraw
-# cmd on-redraw %{{
-#     lf -remote "send $id set statfmt \"[Buzz]$(eza -ld --color=always "$f")\""
-    # if [ $lf_width -le 80 ]; then
-    #     lf -remote "send $id set ratios 1:2"
-    # elif [ $lf_width -le 160 ]; then
-    #     lf -remote "send $id set ratios 1:2:3"
-    # else
-    #     lf -remote "send $id set ratios 1:2:3:5"
-    # fi
-# }}
-###########
 # y (select for copy) and P to paste soft-link
 # d (select for cut) and P to paste hard-link
 cmd slink ${{
@@ -177,17 +197,6 @@ cmd slink ${{
 map asl :slink
 ########### repeat last cmd
 map zpp :read; cmd-history-prev; cmd-enter
-########### fzf
-cmd fzf_jump ${{
-    res=$(fish -c "fzf_pcp_normal $f//$1")
-    if [ -n "$res" ]; then
-        if [ -d "$res" ]; then
-            cmd="cd"
-        else
-            cmd="select"
-        fi
-        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-        lf -remote "send $id $cmd \"$res\""
 ########### Add To Clipboard
 map da :clip-add move
 map dA :clip-remove move
@@ -216,12 +225,6 @@ cmd clip-add %{{
     lf -remote "send $id unselect"
     lf -remote "send $id sync"
 }}
-map <c-o> :fzf_jump --type=d -H
-map <c-f> :fzf_jump  -d=3
-map <a-f> :fzf_jump  -H
-###########eza
-cmd on-select &{{
-    lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
 cmd clip-remove ${{
     if [[ -z $fs ]]; then 
       lf -remote "send $id echoerr Select some file first"
@@ -244,10 +247,6 @@ cmd clip-remove ${{
     lf -remote "send $id unselect"
     lf -remote "send $id sync"
 }}
-set cursorpreviewfmt "\033[7;90m"
-cmd reconfig ${{
-    lf -remote "send $id source ~/.config/lf/lfrc"
-  }}
 ########### CMDmodes
 cmap <a-l> cmd-word 
 cmap <a-h> cmd-word-back
