@@ -240,10 +240,12 @@ cmd slink ${{
 }}
 map asl :slink
 ############ z------
-map z1 :set ratios 1:2
-map z2 :set ratios 1:1:2
+map z2 :set ratios 1:2
+map z3 :set ratios 1:1:2
+map zn
 # repeat last cmd
 map zpp :read; cmd-history-prev; cmd-enter
+map zC :select-dirs;calcdirsize;unselect
 ############ s------
 map ss
 map ss :calcdirsize ; set info size ;set sortby size
