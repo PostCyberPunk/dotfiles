@@ -109,7 +109,12 @@ window#waybar.hidden {
 #backlight {
   color: @mauve;
 }
-
+#submap{
+  background-color: @blue;
+  /* border:1px solid @blue; */
+  color:@subtext1;
+  border-radius:10px;
+}
 #battery {
   color: @green;
 }
