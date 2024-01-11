@@ -64,6 +64,7 @@
 	"idle_inhibitor", 
 	"clock",
 	"custom/touchpad",
+  "hyprland/submap"
 	], 
 
 "modules-right": [
