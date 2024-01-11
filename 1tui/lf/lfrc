@@ -185,17 +185,24 @@ cmd clip-remove ${{
 ## Cut
 map d
 map dd cut
-# copy
+map dzs UnzipDir
+cmd UnzipDir !atool -x "fs" -d $(dirname "$f")
+map dzz UnzipHere
+cmd UnzipHere $atool -x "$fs"
+## copy
 map y
 map yy copy
 
-map yf $echo "$f" |wl-copy
-map yp $dirname "$f" |wl-copy
-map yn $basename "$f" |wl-copy
-map yz !atool -x
-map yd $atool -x "$fs" 
+### copy name
+cmd copyfullpath $echo "$f" |wl-copy
+cmd copydir $dirname "$f" |wl-copy
+cmd copyname $basename "$f" |wl-copy
+map yf copyfullpath
+map yp copydir
+map yn copyname
+
 map ys :lfrsync
-cmd lfrsync${{
+cmd lfrsync ${{
     cfile="$HOME/.local/share/lf/files"
     if [[ $(head -n 1 $cfile) = "copy" ]]; then
       while read -r line ; do
@@ -219,6 +226,19 @@ cmd mkfile $(echo $1>> $2)
 map ae push :mkfile<space>
 map an push $nvim<space>
 map ax $chmod +x "$f"
+cmd slink ${{
+    fss=$(cat ~/.local/share/lf/files)
+    src=$(echo $fss | choose 1)
+    if [[ -z $src ]]; then
+      lf -remote "send $id echo No file selected"
+      exit 0
+    fi
+    fname=$(basename $src)
+    tar="$PWD/$fname"
+    sudo ln -sf $src $tar
+    echo "link created:$tar->$src"
+}}
+map asl :slink
 ############ z------
 map z1 :set ratios 1:2
 map z2 :set ratios 1:1:2
@@ -243,20 +263,6 @@ map goC $code $dir
 map goa $exiftool "$f"|nvim -RMn 
 ########### pager
 map i $bat --paging=always "$f"   
-############ tips ###########
-cmd slink ${{
-    fss=$(cat ~/.local/share/lf/files)
-    src=$(echo $fss | choose 1)
-    if [[ -z $src ]]; then
-      lf -remote "send $id echo No file selected"
-      exit 0
-    fi
-    fname=$(basename $src)
-    tar="$PWD/$fname"
-    sudo ln -sf $src $tar
-    echo "link created:$tar->$src"
-}}
-map asl :slink
 ########### CMDmodes
 cmap <a-l> cmd-word 
 cmap <a-h> cmd-word-back
