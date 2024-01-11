@@ -32,9 +32,11 @@ _link_wallpaper() {
 	ln -sf "$PWD/$1" "$wallpaper_cache"
 }
 change_wallpaper() {
-  mv -f "$wallpaper_cache" "$wallpaper_cache-bak"
-  _link_wallpaper $1 || mv -f "$wallpaper_cache-bak" "$wallpaper_cache"
-	swww query || swww init && swww img $1 $SWWW_PARAMS
+	if [[ -f $1 ]]; then
+		mv -f "$wallpaper_cache" "$wallpaper_cache-bak"
+		_link_wallpaper $1 || mv -f "$wallpaper_cache-bak" "$wallpaper_cache"
+	fi
+	swww query || swww init && swww img $1 $SWWW_PARAMS 
 }
 
 change_layout() {
