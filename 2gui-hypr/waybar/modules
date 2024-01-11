@@ -477,19 +477,15 @@
       
 "wlr/taskbar": {
     "format": "{icon} {shortname} ",
-    "icon-size": 16,
+    "icon-size": 14,
+    "icon-theme":"Catppuccin-Mocha",
     "all-outputs": false,
-    "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
-"nvim": "neovim",
+"floating": "kitty",
 },
-"rewrite":{
-    "nvim**":"nvim",
-  },
     "ignore-list": [
-          "wofi",
           "rofi",  
                    ]
 },
