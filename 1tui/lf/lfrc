@@ -188,7 +188,33 @@ cmd fzf_jump ${{
         fi
         res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
         lf -remote "send $id $cmd \"$res\""
+########### Add To Clipboard
+map da :clip-add move
+map dA :clip-remove move
+map ya :clip-add copy
+map yA :clip-remove copy
+cmd clip-add %{{
+    if [[ -z $fs ]]; then 
+      lf -remote "send $id echoerr Select some file first"
     fi
+    file=~/.local/share/lf/files
+    fss=$(cat ~/.local/share/lf/files)
+
+    operation=$(echo $fss | choose 0)
+    if [[ $operation != "$1" ]]; then
+      lf -remote "send $id echoerr Wrong mode"
+      exit 1
+    fi
+
+    while read line; do
+      if ! grep -Fxq "$line" $file; then
+        echo "$line" >>$file
+      fi
+    done <<<"$fs"
+
+    lf -remote "send $id echo Added selcted files from clipborad"
+    lf -remote "send $id unselect"
+    lf -remote "send $id sync"
 }}
 map <c-o> :fzf_jump --type=d -H
 map <c-f> :fzf_jump  -d=3
@@ -196,6 +222,27 @@ map <a-f> :fzf_jump  -H
 ###########eza
 cmd on-select &{{
     lf -remote "send $id set statfmt \"[ZAGS]$(eza -ld --color=always "$f")\""
+cmd clip-remove ${{
+    if [[ -z $fs ]]; then 
+      lf -remote "send $id echoerr Select some file first"
+    fi
+    file=~/.local/share/lf/files
+    fss=$(cat $file)
+    operation=$(echo $fss | choose 0)
+    if [ "$operation" != "$1" ]; then
+      lf -remote "send $id echoerr Wrong mode"
+      exit 1
+    fi
+    # Read the file and remove lines that match any line in the string
+    while read line; do
+      if ! grep -Fxq "$line" <<<"$fs"; then
+        echo "$line"
+      fi
+    done <$file >"$file.new"
+    mv -f "$file.new" $file
+    lf -remote "send $id echo Removed selcted files from clipborad"
+    lf -remote "send $id unselect"
+    lf -remote "send $id sync"
 }}
 set cursorpreviewfmt "\033[7;90m"
 cmd reconfig ${{
