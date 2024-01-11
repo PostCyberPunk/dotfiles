@@ -20,7 +20,7 @@ noti_n() {
 	notify-send -e -u low "$1"
 }
 
-refresh_waybar() {
+reload_waybar() {
 	_ps=(waybar rofi)
 	for _prs in "${_ps[@]}"; do
 		if pidof "${_prs}" >/dev/null; then
@@ -33,6 +33,19 @@ refresh_waybar() {
 	if [[ -z $1 ]]; then
 		waybar &
 	fi
+  noti_n "Reload Waybar"
+}
+update_waybar()
+{
+	pkill -RTMIN+4 waybar
+  noti_n "Refresh Waybar"
+}
+reload_hypr(){
+  hyprctl Reload
+}
+reload_all(){
+  reload_hypr
+  reload_waybar
 }
 
 restart_waybar_if_needed() {
@@ -40,7 +53,7 @@ restart_waybar_if_needed() {
 		pkill waybar
 		sleep 0.1 # Delay for Waybar to completely terminate
 	fi
-	refresh_waybar &
+	reload_waybar &
 }
 
 lock_screen() {

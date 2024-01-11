@@ -27,7 +27,7 @@ if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 	swww init || swww query && $swww "$wallpaper" $effect
 
 	# Refreshing waybar, dunst, rofi etc.
-	$RunCMD refresh_waybar>/dev/null 2>&1 &
+	$RunCMD reload_waybar>/dev/null 2>&1 &
 	# initiate GTK dark mode and apply icon and cursor theme
 	gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-mocha-Standard-Mauve-Dark > /dev/null 2>&1 &
 	gsettings set org.gnome.desktop.interface icon-theme Catppuccin-Mocha > /dev/null 2>&1 &
