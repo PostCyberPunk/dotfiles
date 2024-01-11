@@ -28,7 +28,7 @@ function fish_user_key_bindings
         bind -M $mode \e/ 'fish_commandline_prepend "history delete -eC \"";fish_commandline_append "\""'
         # bind -M $mode \e\cq exit
         bind -M $mode \en 'fish_commandline_append "| nvim"'
-        bind -M $mode \co lf .
+        bind -M $mode \co lfcd .
         bind -M $mode \cH backward-kill-word
     end
 end
