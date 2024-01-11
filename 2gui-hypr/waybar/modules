@@ -576,6 +576,7 @@
 //    "return-type": "json",
     "format": "󰮯 {}",
    "on-click": "checkupdates | wc -l",
+    "on-click-right": "kitty",
     "interval": 86400, // once every day
     "tooltip": true,
 },
