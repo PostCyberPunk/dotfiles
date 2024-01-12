@@ -36,7 +36,7 @@ change_wallpaper() {
 		mv -f "$wallpaper_cache" "$wallpaper_cache-bak"
 		_link_wallpaper $1 || mv -f "$wallpaper_cache-bak" "$wallpaper_cache"
 	fi
-	swww query || swww init && swww img $1 $SWWW_PARAMS 
+	swww query || swww init && swww img $1 $SWWW_PARAMS
 }
 
 change_layout() {
@@ -97,4 +97,13 @@ open_term_sp() {
 	if [[ -z $result ]]; then
 		kitty -T "FTQCS$1" --class floatingkitty $2 &
 	fi
+}
+startTodo() {
+	kitty  --class flkt5td quest-tui &
+	kitty  --class flaktmini peaclock &
+	# kitty -T "fltd-Todo" --class flkt5td quest-tui &
+	# kitty -T "fltd-clock" --class flkt2t peaclock &
+}
+startTops() {
+	kitty -T "fltops-btm" --class flkt6tp btm &
 }
