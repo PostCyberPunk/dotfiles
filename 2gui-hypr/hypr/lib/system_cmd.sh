@@ -41,7 +41,8 @@ update_waybar()
   noti_n "Refresh Waybar"
 }
 reload_hypr(){
-  hyprctl Reload
+  hyprctl reload
+  noti_n "Reload Hyprland"
 }
 reload_all(){
   reload_hypr
