@@ -13,40 +13,45 @@ no='No'
 
 # Define menu options as an associative array
 declare -A menu_options=(
-	["nv Neovim"]="fish -c nvim"
-	["bm Bottom"]="fish -c btm"
-	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
+	#fzf
 	["wp WallpaperSwitcher"]="kitty -T \"WallpaperSwitcher\" --class flkt_fzf bash $RunCMD wallpaper_switcher"
+	["cb Clipboard"]="kitty -T \"ClipManager\" --class flkt_fzf bash $RunCMD clipboard_manager"
+	#waybar
 	["wbt ToggleWaybar"]="killall -SIGUSR1 waybar"
 	["wbs WaybarStyles"]="$rofiDir/WaybarStyles.sh"
 	["wbl WaybarLayout"]="$rofiDir/WaybarLayout.sh"
 	["wbr Reload Waybar"]="$RunCMD reload_waybar"
 	["wbu Update Waybar"]="$RunCMD update_waybar"
-  ["hpr Reload hyprland"]="$RunCMD reload_hypr"
-  ["rld Reload All"]="$RunCMD reload_all"
+  #hypr
+	["hpr Reload hyprland"]="$RunCMD reload_hypr"
+	["rld Reload All"]="$RunCMD reload_all"
 	["gm GameMode"]="$RunCMD toggle_gamemode"
+	["bl ChangeBlur"]="$RunCMD toggle_blur"
+	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
+  #rofi
+	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
-	["blur ChangeBlur"]="$RunCMD toggle_blur"
+	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
+	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
+	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
 	["tr Translation"]="fish -c rofi_trans"
+  #System
 	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
-	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
-	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
-	["cb Clipboard"]="kitty -T \"ClipManager\" --class flkt_fzf bash $RunCMD clipboard_manager"
-	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
-	["cph PickColor(hex)"]="hyprpicker -f hex -a"
-	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
-	["mnt MountDisk"]="$rofiSH/rofi-usb-mount.sh"
-	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
+	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
+	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
+  #App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"
 	["vm VitrualBox"]="vboxmanage startvm Larch"
-	["fz FuzzyFind"]="kitty fzf -e"
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
-	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
-	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
+	["lg Lazygit"]="kitty --class flkt2lg lazygit"
+  #Utils
+	["mnt MountDisk"]="$rofiSH/rofi-usb-mount.sh"
+	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
+	["cph PickColor(hex)"]="hyprpicker -f hex -a"
 
 )
 
@@ -61,7 +66,7 @@ confirm_cmd() {
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
-    -kb-accept-entry 'Return,space' \
+		-kb-accept-entry 'Return,space' \
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?'
