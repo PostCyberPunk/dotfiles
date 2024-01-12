@@ -63,3 +63,8 @@ restore_gpu(){
 	ln -sf "$HOME/.config/hypr/lib/GPU/1 Default.conf" "$HOME/.config/hypr/configs/GPU.conf"
 	ln -sf "$HOME/.config/hypr/lib/Monitor/1 Default.conf" "$HOME/.config/hypr/configs/Monitors.conf"
 }
+disable_edp1(){
+  hyprctl keyword monitor eDP-1,preferred,auto,1
+  sleep 1
+  hyprctl keyword monitor eDP-1,disable
+}

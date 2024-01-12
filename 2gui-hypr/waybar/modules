@@ -480,7 +480,7 @@
       
 "wlr/taskbar": {
     "format": "{icon} {shortname} ",
-    "icon-size": 14,
+    "icon-size": 16,
     "icon-theme":"Catppuccin-Mocha",
     "all-outputs": false,
     "on-click": "activate",
@@ -542,12 +542,18 @@
 },
     
 "custom/menu": {
-    "format": "󰣇",
-    //"format": "󰮯",
+    //"format": "󰣇",
+    "format": "󰮯",
     "tooltip": false,
-    "on-click": "pkill rofi || rofi -show drun -modi run,drun,filebrowser",
-    "on-click-middle": "~/.config/hypr/scripts/WallpaperSelect.sh",
-    "on-click-right": "~/.config/hypr/scripts/WaybarLayout.sh",
+    "on-click-right": "kitty",
+},
+"custom/updater": {
+    "exec": "checkupdates | wc -l",
+    "format": "{}",
+    "on-click-right": "kitty",
+    "interval": 86400, // once every day
+    "signal":4,
+    "tooltip": true,
 },
   
 "custom/playerctl": {
@@ -574,22 +580,13 @@
   
 // NOTE:! This is only for Arch and Arch Based Distros  
 //   "exec": "~/.config/hypr/scripts/systemupdate.sh",
-"custom/updater": {
-    "exec": "checkupdates | wc -l",
-    "format": "󰮯 {}",
-   "on-click": "checkupdates | wc -l",
-    "on-click-right": "kitty",
-    "interval": 86400, // once every day
-    "signal":4,
-    "tooltip": true,
-},
-"custom/updates":{
-    "format": " {}",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "[[ $(checkupdates | wc -l) ]]",
-    "interval": 1500000,
-    "on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
-},
+//"custom/updates":{
+//    "format": " {}",
+//    "exec": "checkupdates | wc -l",
+//    "exec-if": "[[ $(checkupdates | wc -l) ]]",
+//    "interval": 1500000,
+//    "on-click": "kitty -T update paru -Syu || yay -Syu && notify-send 'The system has been updated'",
+//},
     
 "custom/weather": {
     "format": "{}",

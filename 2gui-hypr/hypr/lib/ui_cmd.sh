@@ -44,24 +44,30 @@ change_layout() {
 
 	case $LAYOUT in
 	"master")
-		hyprctl keyword general:layout dwindle
-		hyprctl keyword unbind SUPER, D
-		hyprctl keyword unbind SUPER Alt, D
-		hyprctl keyword bind SUPER, D, layoutmsg, togglesplit
-		hyprctl keyword bind SUPER ALT, D, layoutmsg, pseudo
-		noti_n "Dwindle Layout"
+		layout_dwindle
 		;;
 	"dwindle")
-		hyprctl keyword general:layout master
-		hyprctl keyword unbind SUPER, D
-		hyprctl keyword unbind SUPER Alt, D
-		hyprctl keyword bind SUPER, D, layoutmsg, addmaster
-		hyprctl keyword bind SUPER ALT, D, layoutmsg, removemaster
-		noti_n "Master Layout"
+		layout_master
 		;;
 	*) ;;
 
 	esac
+}
+layout_master() {
+	hyprctl --batch "keyword general:layout master;\
+		        keyword unbind SUPER, D;\
+		        keyword unbind SUPER Alt, D;\
+		        keyword bind SUPER, D, layoutmsg, addmaster;\
+		        keyword bind SUPER ALT, D, layoutmsg, removemaster"
+	noti_n "Master Layout"
+}
+layout_dwindle() {
+	hyprctl --batch "keyword general:layout dwindle;\
+		        keyword unbind SUPER, D;\
+		        keyword unbind SUPER Alt, D;\
+		        keyword bind SUPER, D, layoutmsg, togglesplit;\
+		        keyword bind SUPER ALT, D, layoutmsg, pseudo"
+	noti_n "Dwindle Layout"
 }
 
 toggle_term() {
@@ -99,10 +105,11 @@ open_term_sp() {
 	fi
 }
 startTodo() {
-	kitty  --class flkt5td quest-tui &
-	kitty  --class flaktmini peaclock &
-	# kitty -T "fltd-Todo" --class flkt5td quest-tui &
+	kitty --class flktmini1 peaclock &
+	sleep 0.1
+	kitty --class flkt5td quest-tui &
 	# kitty -T "fltd-clock" --class flkt2t peaclock &
+	# kitty -T "fltd-Todo" --class flkt5td quest-tui &
 }
 startTops() {
 	kitty -T "fltops-btm" --class flkt6tp btm &
