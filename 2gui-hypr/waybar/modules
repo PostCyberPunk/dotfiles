@@ -81,18 +81,19 @@
       "6": "",
       "7": "󰊠",
       "8": "",
-      "9": "󱎓",//󱎓󰐂
-      "spo": "",
+      "9": "",// 󱎓 󰐂     󱎓
+      "0spo": "",
       "active": " 󰮯 ",
       "default": "󰊠",
       "persistent":"󰊠",
       "empty": "",
       "Aspb":"󱍢",
       "Aspa":"󰊠",
-      "FTQCT":"󰉁",
+      "fasterm":"",//󰉁
+      "Todo":"󱎓",
+      "Tops":"",// ﴨ
     },
-},
-  
+},    
 "hyprland/workspaces#kanji": {
     "disable-scroll": true,
     "all-outputs": true,
