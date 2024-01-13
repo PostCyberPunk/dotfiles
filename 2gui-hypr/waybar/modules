@@ -480,7 +480,7 @@
       
 "wlr/taskbar": {
     "format": "{icon} {shortname} ",
-    "icon-size": 14,
+    "icon-size": 16,
     "icon-theme":"Catppuccin-Mocha",
     "all-outputs": false,
     "on-click": "activate",
