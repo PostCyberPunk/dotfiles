@@ -286,6 +286,10 @@ map gop $python "$f"
 map goc $code "$f"
 map goC $code $dir 
 map goa $exiftool "$f"|nvim -RMn 
+## disk analayg
+map gdu $gdu .
+map gdt $dust -r .|bat -p --paging=always
+map gdT $dust -r -i .|bat -p --paging=always
 ########### pager
 map i $bat --paging=always "$f"   
 ########### CMDmodes
