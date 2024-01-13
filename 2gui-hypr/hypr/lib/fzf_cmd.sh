@@ -12,8 +12,21 @@ wallpaper_switcher() {
 }
 
 clipboard_manager() {
-	result=$(cliphist list | fzf --reverse -m)
-	echo "$result" | while read -r line; do
-		printf "$line" | cliphist delete
-	done
+  export SHELL=bash
+	result=$(
+		cliphist list | fzf --reverse -m \
+			--prompt="ClipHistory> " \
+			--preview-window="bottom:3:wrap" \
+			--preview='echo {}' \
+			--bind='ctrl-d:execute(echo -n {}|cliphist delete)+reload(cliphist list)' \
+      --bind='enter:execute-silent(echo '{}'|cliphist decode|wl-copy)+abort' \
+      --bind='ctrl-delete:accept'
+	)
+	if [[ $? -eq 0 ]]; then
+		echo "$result" | while read -r line; do
+			printf "$line" | cliphist delete
+		done
+	else
+		exit
+	fi
 }
