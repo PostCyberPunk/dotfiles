@@ -13,6 +13,7 @@ os:
 disableStartupPopups: false
 notARepository: 'skip'
 promptToReturnFromSubprocess: false
+confirmOnQuit: true
 customCommands:
   # - key: 'f'
   #   command: "git difftool -y {{.SelectedLocalCommit.Sha}} -- {{.SelectedCommitFile.Name}}"
