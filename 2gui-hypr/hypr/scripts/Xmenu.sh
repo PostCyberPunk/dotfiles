@@ -41,6 +41,9 @@ declare -A menu_options=(
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
 	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
 	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
+	["cn Close Notifactions"]="swaync-client -C"
+	["DM0"]="$RunCMD disable_edp1"
+	["DM1"]="$RunCMD enable_edp1"
   #App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"

@@ -5,7 +5,7 @@ view digital
 toggle active-bg
 timer 20m:0s
 timer start
-timer-exec ''
+timer-exec 'notify-send  -u critical -t -1 "Time To Rest"'
 date '%a %b %d'
 locale ''
 timezone ''

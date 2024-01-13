@@ -545,6 +545,7 @@
     //"format": "󰣇",
     "format": "󰮯",
     "tooltip": false,
+    "on-click": "swaync-client -t",
     "on-click-right": "kitty",
 },
 "custom/updater": {
