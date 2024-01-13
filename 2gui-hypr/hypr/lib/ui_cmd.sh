@@ -4,12 +4,19 @@ source ~/.config/hypr/lib/system_cmd.sh
 
 toggle_split_ratio() {
 	varname="split_ratio"
+	if [[ -z $1 ]]; then
+		mmax=0.7
+		mmin=0.5
+	else
+		mmax="$1"
+		mmin="$2"
+	fi
 	mstate=$(get_var $varname)
 	if [[ $mstate = "1" ]]; then
-		hyprctl dispatch splitratio exact 0.7
+		hyprctl dispatch splitratio exact $mmax
 		set_var $varname 0
 	else
-		hyprctl dispatch splitratio exact 0.5
+		hyprctl dispatch splitratio exact $mmin
 		set_var $varname 1
 	fi
 }
@@ -68,6 +75,33 @@ layout_dwindle() {
 		        keyword bind SUPER, D, layoutmsg, togglesplit;\
 		        keyword bind SUPER ALT, D, layoutmsg, pseudo"
 	noti_n "Dwindle Layout"
+}
+layout_center_on() {
+	mycmd="$HOME/.config/hypr/scripts/RunCMD.sh"
+	hyprctl --batch "\
+  keyword unbind SUPER,M;\
+  dispatch layoutmsg orientationcenter"
+	hyprctl keyword bind SUPER, M,exec,bash ~/.config/hypr/scripts/RunCMD.sh toggle_split_ratio 0.35 0.5
+	noti_n "Center Master Layout"
+}
+layout_center_off() {
+	mycmd="$HOME/.config/hypr/scripts/RunCMD.sh"
+	hyprctl --batch "\
+  keyword unbind SUPER,M;\
+  dispatch layoutmsg orientationright"
+	hyprctl keyword bind SUPER, M,exec,bash ~/.config/hypr/scripts/RunCMD.sh toggle_split_ratio
+	noti_n "Right Master Layout"
+}
+toggle_layout_center() {
+	varname="is_center"
+	mstate=$(get_var $varname)
+	if [[ $mstate = "1" ]]; then
+		layout_center_off
+		set_var $varname 0
+	else
+		layout_center_on
+		set_var $varname 1
+	fi
 }
 
 toggle_term() {
