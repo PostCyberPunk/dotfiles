@@ -48,6 +48,7 @@ declare -A menu_options=(
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
 	["lg Lazygit"]="kitty --class flkt2lg lazygit"
+  ["p1 center template"]="$RunCMD startCenter"
   #Utils
 	["mnt MountDisk"]="$rofiSH/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"

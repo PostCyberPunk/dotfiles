@@ -77,7 +77,6 @@ layout_dwindle() {
 	noti_n "Dwindle Layout"
 }
 layout_center_on() {
-	mycmd="$HOME/.config/hypr/scripts/RunCMD.sh"
 	hyprctl --batch "\
   keyword unbind SUPER,M;\
   dispatch layoutmsg orientationcenter"
@@ -85,7 +84,6 @@ layout_center_on() {
 	noti_n "Center Master Layout"
 }
 layout_center_off() {
-	mycmd="$HOME/.config/hypr/scripts/RunCMD.sh"
 	hyprctl --batch "\
   keyword unbind SUPER,M;\
   dispatch layoutmsg orientationright"
@@ -147,4 +145,24 @@ startTodo() {
 }
 startTops() {
 	kitty -T "fltops-btm" --class flkt6tp btm &
+}
+startCenter() {
+	layout_center_on
+	set_var 'is_center' 1
+	sleep 0.5
+	kitty -1 fish -c t &
+	sleep 0.1
+	kitty -1 fish -C btm &
+	sleep 0.1
+	kitty -1 fish -C peaclock --config ~/dotfiles/2gui-hypr/peaclock/timereaclock &
+	sleep 0.1
+	kitty -1 fish -C lf &
+	sleep 0.1
+	kitty &
+	sleep 0.3
+	hyprctl --batch "dispatch togglegroup;dispatch resizeactive 0 -90%;dispatch cyclenext"
+	sleep 0.1
+	kitty fish -C n &
+	sleep 0.5
+	hyprctl --batch "dispatch layoutmsg addmaster;dispatch resizeactive 0 -55%"
 }
