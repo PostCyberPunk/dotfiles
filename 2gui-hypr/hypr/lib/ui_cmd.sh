@@ -154,7 +154,7 @@ startCenter() {
 	sleep 0.1
 	kitty -1 fish -C btm &
 	sleep 0.1
-	kitty -1 fish -C peaclock --config ~/dotfiles/2gui-hypr/peaclock/timereaclock &
+	kitty -1 fish -C 'peaclock --config ~/dotfiles/2gui-hypr/peaclock/timer' &
 	sleep 0.1
 	kitty -1 fish -C lf &
 	sleep 0.1
