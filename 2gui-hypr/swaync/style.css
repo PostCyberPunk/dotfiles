@@ -32,7 +32,14 @@
     outline: none;
     margin: 0px;
 }
-
+.notification.critical .summary {
+    font-size:2rem;
+    margin:10px;
+    padding-left:20px;
+}
+.notification.critical {
+    border: 2px solid @red;
+}
 .notification {
 	border-radius: 10px;
 }
@@ -275,10 +282,12 @@
 }
 
 .widget-buttons-grid {
-    font-size: large;
+    font-size: 20px;
 	color: @noti-border-color;
     padding: 2px;
     margin: 5px;
+    padding-left:15px;
+    padding-right:15px;
     border-radius: 10px;
     background: @black-bg-alt;
 }
