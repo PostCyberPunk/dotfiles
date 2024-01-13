@@ -350,4 +350,21 @@ copy_command "wl-copy"                    // wayland
 //
 // styled_underlines false
 simplified_ui true
-theme "catppuccin-mocha" // or latte, frappe and macchiato
+//theme "catppuccin-mocha" // or latte, frappe and macchiato
+themes {
+  mauve {
+   bg "#585b70"
+   fg "#cdd6f4"
+   red "#f38ba8"
+   green "#cba6f7"
+   blue "#89b4fa"
+   yellow "#f9e2af"
+   magenta "#f5c2e7"
+   orange "#fab387"
+   cyan "#89dceb"
+   black "#181825"
+   white "#cdd6f4"
+    }
+}
+//theme "default"
+theme "mauve"
