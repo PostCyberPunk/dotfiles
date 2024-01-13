@@ -1,2 +1,3 @@
 touchpad
 split_ratio
+is_center
