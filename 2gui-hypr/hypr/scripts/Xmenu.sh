@@ -41,6 +41,7 @@ declare -A menu_options=(
 	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
 	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
 	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
+	["cn Close Notifactions"]="swaync-client -C"
   #App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"
