@@ -17,8 +17,8 @@
 "margin-right": 8,
 
 "modules-left": [
+	"custom/menu",
 	"custom/updater",
-	//"custom/menu",
 	"wlr/taskbar",
 	"hyprland/window",
 	 ],
