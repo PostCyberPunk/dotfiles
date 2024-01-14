@@ -2,7 +2,8 @@ on_force_close "quit"
 simplified_ui true
 pane_frames false
 default_mode "locked"
-//default_layout "term"
+//layout_dir "~/.config/zellij/layouts"
+default_layout "void"
 copy_command "wl-copy"                    // wayland
 themes {
   mauve {
