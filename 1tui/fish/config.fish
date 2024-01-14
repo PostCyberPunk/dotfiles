@@ -6,7 +6,7 @@ alias b="bat"
 alias lc="lfcd"
 alias lg="lazygit"
 alias slf="sudo -u $USER lf"
-alias t="zellij"
+alias zj="zellij"
 # keybinds
 function fish_user_key_bindings
     bind \e\cv 'fish_commandline_prepend "proxychains "'
