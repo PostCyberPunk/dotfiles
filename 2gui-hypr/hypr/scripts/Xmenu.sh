@@ -52,6 +52,7 @@ declare -A menu_options=(
 	["sp Spotify"]="spotify"
 	["lg Lazygit"]="kitty --class flkt2lg lazygit"
   ["p1 center template"]="$RunCMD startCenter"
+  ["td todo notes"]="$RunCMD open_notes"
   #Utils
 	["mnt MountDisk"]="$rofiSH/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"

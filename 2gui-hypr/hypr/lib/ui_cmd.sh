@@ -143,6 +143,9 @@ startTodo() {
 	# kitty -T "fltd-clock" --class flkt2t peaclock &
 	# kitty -T "fltd-Todo" --class flkt5td quest-tui &
 }
+open_notes(){
+	kitty -d ~/notes/ -o font_family='CaskaydiaCove Nerd Font Mono' -o font_size=18 nvim  -c 'Neorg index' &
+}
 startTops() {
 	kitty -T "fltops-btm" --class flkt6tp btm &
 }
