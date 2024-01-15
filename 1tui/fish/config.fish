@@ -1,4 +1,5 @@
 ########### alias###########
+alias p="fish --private"
 alias md="mkdir"
 alias l="eza -lA --icons"
 alias n="nvim"
