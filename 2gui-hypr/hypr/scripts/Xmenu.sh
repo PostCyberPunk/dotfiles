@@ -50,7 +50,7 @@ declare -A menu_options=(
 	["vm VitrualBox"]="vboxmanage startvm Larch"
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
-	["lg Lazygit"]="kitty --class flkt2lg lazygit"
+	["lg Lazygit"]="kitty --class flkt3lg lazygit"
   ["p1 center template"]="$RunCMD startCenter"
   ["td todo notes"]="$RunCMD open_notes"
   #Utils
