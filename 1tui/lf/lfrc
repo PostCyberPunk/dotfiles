@@ -242,6 +242,7 @@ map DF %(echo "Confirm Delete $f (y/N)";read -n1 choice&&[ $choice = "y" ]&&rm -
 map DS :delete
 map R reload
 map <enter> shell
+map ` mark-load
 ############ Add 
 map ad push %mkdir<space>
 cmd mkfile $(echo $1>> $2)
