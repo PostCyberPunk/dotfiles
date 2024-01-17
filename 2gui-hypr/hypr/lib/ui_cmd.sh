@@ -169,3 +169,10 @@ startCenter() {
 	sleep 0.5
 	hyprctl --batch "dispatch layoutmsg addmaster;dispatch resizeactive 0 -55%"
 }
+close_special() {
+	local result=$(hyprctl monitors | rg 'special:')
+	if [[ $result != "" ]]; then
+		local __name=$(awk -F'l:' '{print $2}' <<<$result | awk -F')' '{print $1}')
+		hyprctl dispatch togglespecialworkspace "$__name"
+	fi
+}
