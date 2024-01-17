@@ -250,25 +250,42 @@ map ae push :mkfile<space>
 map an push $nvim<space>
 map ax $chmod +x "$f"
 cmd slink ${{
-    fss=$(cat ~/.local/share/lf/files)
-    src=$(echo $fss | choose 1)
-    if [[ -z $src ]]; then
-      lf -remote "send $id echo No file selected"
-      exit 0
+    lfile=~/.local/share/lf/files 
+
+    operation=$(head -n 1 $lfile)
+    if [[ $operation != "copy" ]]; then
+      lf -remote "send $id echoerr use copy mode to link"
+      exit 1
     fi
-    fname=$(basename $src)
-    tar="$PWD/$fname"
-    sudo ln -sf $src $tar
-    echo "link created:$tar->$src"
+
+    while read line; do
+      fname=$(basename $line)
+      tar="$PWD/$fname"
+      sudo ln $1 $line $tar
+      [ $? -eq 0 ]&& echo "$(tput setaf 2)link created:$(tput sgr0)$tar->$line" || echo "$(tput setaf 1)Failed $line$(tput sgr0)"
+    done <<<"$(tail -n +2 $lfile)"
+    lf -remote "send $id !date"
 }}
-map asl :slink
+map asl :slink -s
+map asL :slink -sf
 ############ z------
+map z0 :set preview false; set ratios 1
+map z1 :set ratios 1:1
 map z2 :set ratios 1:2
 map z3 :set ratios 1:1:2
-map zn
+map zn :set relativenumber!
 # repeat last cmd
-map zpp :read; cmd-history-prev; cmd-enter
-map zC :select-dirs;calcdirsize;unselect
+map z.. :read; cmd-history-prev; cmd-enter
+map zc :calcdirsize
+cmd toggle_preview %{{
+  if [ "$lf_preview" = "true" ]; then
+    lf -remote "send $id :set preview false; set ratios 1"
+  else
+    lf -remote "send $id :set preview true; set ratios 1:1"
+    lf -remote "send $id :set preview true; set ratios 1:1"
+  fi
+}}
+map zp toggle_preview
 ############ s------
 map ss
 map ss :calcdirsize ; set info size ;set sortby size
