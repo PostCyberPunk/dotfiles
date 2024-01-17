@@ -1,0 +1,4 @@
+~/.config/waybar/configs/1Lapoch	~/.config/waybar/config
+~/.config/waybar/style/Catcha.css	~/.config/waybar/style.css
+~/.config/hypr/lib/GPU/1Default.conf	~/.config/hypr/configs/GPU.conf
+~/.config/hypr/lib/Monitor/1Default.conf	~/.config/hypr/configs/Monitors.conf

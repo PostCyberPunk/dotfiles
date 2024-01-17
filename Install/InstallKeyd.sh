@@ -5,6 +5,7 @@ git clone https://github.com/rvaiya/keyd ~/Temp/keyd
 cd ~/Temp/keyd
 make && sudo make install
 if [[ $ilap = [Yy] ]]; then
+  # TODO: this path is pretty bad
 	sudo ln -sf ~/dotfiles/keyd/laptop.conf /etc/keyd/laptop.conf
 fi
 sudo ln -sf ~/dotfiles/keyd/redox.conf /etc/keyd/redox.conf
