@@ -1,0 +1,5 @@
+~/.config/hypr/scripts/*.sh
+~/.config/hypr/scripts/System/*.sh
+~/.config/hypr/scripts/Rofi/*.sh
+~/.config/hypr/initial-boot.sh
+~/.config/rofi/scripts/*.sh
