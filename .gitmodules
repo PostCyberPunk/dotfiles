@@ -1,0 +1,3 @@
+[submodule "DoTinker"]
+	path = DoTinker
+	url = https://github.com/PostCyberPunk/DoTinker
