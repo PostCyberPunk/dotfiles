@@ -7,7 +7,7 @@ if [[ -z $uname ]]; then
 	echo "Aborted"
 	exit
 fi
-sudo -u $uname yay -S--noconfirm  --needed fcitx5 fcitx-5qt fcitx5-gtk fcitx5-configtool fcitx5-chinese-addons fcitx5-pinyin-zhwiki
+sudo -u $uname yay -S --noconfirm  --needed fcitx5 fcitx-5qt fcitx5-gtk fcitx5-configtool fcitx5-chinese-addons fcitx5-pinyin-zhwiki
 read -p "Export environment variables?(y/N)" ienv
 if [[ ienv != [yY] ]]; then
 	echo "Exit"
