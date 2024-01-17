@@ -4,30 +4,28 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # Define directories
-config_dir="$HOME/.config/waybar/style"
-waybar_config="$HOME/.config/waybar/style.css"
+config_dir="$HOME/.config/waybar/configs"
+waybar_config="$HOME/.config/waybar/config"
 scripts_dir="$HOME/.config/hypr/scripts"
-rofi_config="$HOME/.config/rofi/config-waybar-style.rasi"
-
+rofi_config="$HOME/.config/rofi/config-long.rasi"
+RunCMD=$HOME/.config/hypr/scripts/RunCMD.sh
 # Function to display menu options
 menu() {
     options=()
     while IFS= read -r file; do
-        if [ -f "$config_dir/$file" ]; then
-            options+=("$(basename "$file" .css)")
-        fi
-    done < <(find "$config_dir" -maxdepth 1 -type f -name '*.css' -exec basename {} \; | sort)
-    
+        options+=("$(basename "$file")")
+    done < <(find "$config_dir" -maxdepth 1 -type f -exec basename {} \; | sort)
+
     printf '%s\n' "${options[@]}"
 }
 
-# Apply selected style
-apply_style() {
-    ln -sf "$config_dir/$1.css" "$waybar_config"
+# Apply selected configuration
+apply_config() {
+    ln -sf "$config_dir/$1" "$waybar_config"
     restart_waybar_if_needed
 }
 
-# Restart Waybar if it's running
+# Restart Waybar
 restart_waybar_if_needed() {
     if pgrep -x "waybar" >/dev/null; then
         pkill waybar
@@ -45,7 +43,14 @@ main() {
         exit 0
     fi
 
-    apply_style "$choice"
+    case $choice in
+        "no panel")
+            pgrep -x "waybar" && pkill waybar || true
+            ;;
+        *)
+            apply_config "$choice"
+            ;;
+    esac
 }
 
 # Kill Rofi if already running before execution

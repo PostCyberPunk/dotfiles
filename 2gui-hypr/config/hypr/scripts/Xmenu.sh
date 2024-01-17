@@ -2,10 +2,9 @@
 
 # Directory for icons
 iDIR="$HOME/.config/swaync/icons"
-rofiSH="$HOME/.config/rofi/scripts"
 RunCMD="$HOME/.config/hypr/scripts/RunCMD.sh"
 scriptsDir="$HOME/.config/hypr/scripts"
-rofiDir="$scriptsDir/Rofi"
+rofiDir="$HOME/.config/rofi/scripts"
 yes='Yes'
 no='No'
 # Note: You can add more options below with the following format:
@@ -32,9 +31,9 @@ declare -A menu_options=(
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
-	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
-	["tr Translation"]="fish -c rofi_trans"
+	["cc Calculator"]="rofi -modi \"calc:$rofiDir/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/config-long.rasi"
+	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/config-long.rasi"
+	["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/config-long.rasi"
   #System
 	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
@@ -54,7 +53,7 @@ declare -A menu_options=(
   ["p1 center template"]="$RunCMD startCenter"
   ["td todo notes"]="$RunCMD open_notes"
   #Utils
-	["mnt MountDisk"]="$rofiSH/rofi-usb-mount.sh"
+	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
 	["cph PickColor(hex)"]="hyprpicker -f hex -a"
 
