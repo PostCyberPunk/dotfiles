@@ -32,9 +32,9 @@ declare -A menu_options=(
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc"
-	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find"
-	["tr Translation"]="fish -c rofi_trans"
+	["cc Calculator"]="rofi -modi \"calc:$rofiSH/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/config-long.rasi"
+	["fd Finder"]="rofi -modi \"find:$rofiSH/finder.sh\" -show find -theme $HOME/.config/rofi/config-long.rasi"
+	["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/config-long.rasi"
   #System
 	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
