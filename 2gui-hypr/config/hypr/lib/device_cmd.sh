@@ -60,8 +60,8 @@ toggle_gamemode() {
 	hyprctl reload
 }
 restore_gpu() {
-	ln -sf "$HOME/.config/hypr/lib/GPU/1 Default.conf" "$HOME/.config/hypr/configs/GPU.conf"
-	ln -sf "$HOME/.config/hypr/lib/Monitor/1 Default.conf" "$HOME/.config/hypr/configs/Monitors.conf"
+	ln -sf "$HOME/.config/hypr/lib/GPU/1Default.conf" "$HOME/.config/hypr/configs/GPU.conf"
+	ln -sf "$HOME/.config/hypr/lib/Monitor/1Default.conf" "$HOME/.config/hypr/configs/Monitors.conf"
 }
 disable_edp1() {
   enable_edp1
