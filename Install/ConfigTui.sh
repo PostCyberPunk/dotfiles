@@ -4,7 +4,7 @@ if [[ "$EUID" = 0 ]]; then
 fi
 read -n1 -p "Install Modern Unix Collection?" munix
 if [[ $munix = [yY] ]]; then
-	yay -S --noconfirm --needed duf dust fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync bat vivid unrar git-delta glmark2|| echo "!!!!!Installation Failed!!!!!"
+	yay -S --noconfirm --needed duf dust fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync bat vivid unrar git-delta glmark2 || echo "!!!!!Installation Failed!!!!!"
 fi
 read -n1 -p "Install LF Preview?" lfcp
 if [[ $lfcp = [yY] ]]; then
