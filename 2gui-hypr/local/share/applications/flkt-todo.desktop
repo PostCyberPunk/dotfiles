@@ -2,9 +2,4 @@
 Version=1.0
 Type=Application
 Name=flkt7td
-GenericName=Terminal emulator
-Comment=Fast, feature-rich, GPU based terminal
-TryExec=kitty
-Exec=kitty
-Icon=meow
-Categories=System;TerminalEmulator;
+Icon=pa-joy
