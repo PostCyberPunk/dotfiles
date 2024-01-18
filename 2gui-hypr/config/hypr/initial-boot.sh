@@ -7,33 +7,25 @@
 
 # Variables
 scriptsDir=$HOME/.config/hypr/scripts
-wallpaper=$HOME/Pictures/wallpapers/Cute-Cat_ja.png
+wallpaper=$HOME/Pictures/wallpapers/0ParchMan.png
 RunCMD=$HOME/.config/hypr/scripts/RunCMD.sh
 
 swww="swww img"
-effect="--transition-bezier .43,1.19,1,.4 --transition-fps 30 --transition-type grow --transition-pos 0.925,0.977 --transition-duration 2"
 
 # Check if a marker file exists.
 if [ ! -f ~/.config/hypr/.initial_startup_done ]; then
 
-	# Initialize pywal
-	# printf " Initializing pywal........\n\n"
-	# wal -i $wallpaper -s -t
-
-	# Initial symlink for Pywal Dark and Light for Rofi Themes
-	# ln -sf "$HOME/.cache/wal/colors-rofi-dark.rasi" "$HOME/.config/rofi/pywal-color/pywal-theme.rasi"
-
-	# Initial scripts to load in order to have a proper wallpaper waybar and pywal themes
-	swww init || swww query && $swww "$wallpaper" $effect
+	swww init || swww query && $swww "$wallpaper"
 
 	# Refreshing waybar, dunst, rofi etc.
-	$RunCMD reload_waybar>/dev/null 2>&1 &
 	# initiate GTK dark mode and apply icon and cursor theme
-	gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-mocha-Standard-Mauve-Dark > /dev/null 2>&1 &
-	gsettings set org.gnome.desktop.interface icon-theme Catppuccin-Mocha > /dev/null 2>&1 &
-	gsettings set org.gnome.desktop.interface cursor-theme Catppuccin-Mocha-Mauve-Cursors > /dev/null 2>&1 &
+	# gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-mocha-Standard-Mauve-Dark > /dev/null 2>&1 &
+	# gsettings set org.gnome.desktop.interface icon-theme Catppuccin-Mocha > /dev/null 2>&1 &
+	# gsettings set org.gnome.desktop.interface cursor-theme Catppuccin-Mocha-Mauve-Cursors > /dev/null 2>&1 &
 	# gsettings set org.gnome.desktop.interface cursor-size 24 > /dev/null 2>&1 &
-
+  nwg-look -x
+  nwg-look -a
+	$RunCMD reload_waybar>/dev/null 2>&1 &
 	# initiate the kb_layout (for some reason) waybar cant launch it
 	"$scriptsDir/System/SwitchKeyboardLayout.sh" >/dev/null 2>&1 &
 

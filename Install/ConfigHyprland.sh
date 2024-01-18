@@ -22,7 +22,7 @@ if [[ $dolinkdry = [yY] ]]; then
 	echo "Test in Dryrun......"
 	$dotinker -nvb 2gui-hypr
 	echo
-	read -n -p "Link your config?:(y/N)" dolink
+	read -p "Link your config?:(y/N)" dolink
 
 	if [[ $dolink = [yY] ]]; then
 		echo
