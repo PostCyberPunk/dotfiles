@@ -2,9 +2,4 @@
 Version=1.0
 Type=Application
 Name=flkt5ft
-GenericName=Terminal emulator
-Comment=Fast, feature-rich, GPU based terminal
-TryExec=kitty
-Exec=kitty
-Icon=bolt-solid
-Categories=System;TerminalEmulator;
+Icon=pa-bolt
