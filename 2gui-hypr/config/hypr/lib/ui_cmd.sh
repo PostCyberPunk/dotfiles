@@ -165,7 +165,7 @@ startCenter() {
 	sleep 0.3
 	hyprctl --batch "dispatch togglegroup;dispatch resizeactive 0 -90%;dispatch cyclenext"
 	sleep 0.1
-	kitty fish -C n &
+	kitty fish -C nvim &
 	sleep 0.5
 	hyprctl --batch "dispatch layoutmsg addmaster;dispatch resizeactive 0 -55%"
 }
