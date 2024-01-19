@@ -34,6 +34,9 @@ fi
 init_config() {
 	link_list "$SCRIPT_DIR/lib/hypr_link.txt"
 	add_x_list "$SCRIPT_DIR/lib/hypr_chmod.txt"
+  nwg-look -x
+  nwg-look -a
+  mkdir -p ~/.cache/pcp_hypr_var
 	echo
 	echo "Hypr now initialized"
 }
@@ -45,3 +48,4 @@ if [[ $inithypr = [yY] ]]; then
 	echo "Initilizing......"
 	init_config
 fi
+echo "copy your wallpaper and setup autoconfig,then you are good to go"
