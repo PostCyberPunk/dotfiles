@@ -18,12 +18,6 @@ function fish_user_key_bindings
         bind -M $mode \cH backward-kill-word
     end
 end
-if status is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR -eq 1 -a -z "$USER_AUTO_LOGIN_DONE"
-        set -U USER_AUTO_LOGIN_DONE 1
-        exec Hyprland
-    end
-end
 
 if status is-interactive
     fish_vi_key_bindings
