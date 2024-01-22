@@ -193,7 +193,7 @@ startGitLogin() {
 		while [[ "$(hyprctl -j activewindow | jq -r -c '.class')" != "firefox" ]]; do
 			sleep 1
 		done
-		local __pid=$(hyprctl -j activewindow | jq -r -c ".pid")
+		local __address=$(hyprctl -j activewindow | jq -r -c ".address")
 		hyprctl --batch "dispatch togglefloating;dispatch resizeactive exact 50% 50%;dispatch centerwindow"
 		sleep 0.1
 		hyprctl dispatch togglespecialworkspace tempgit
@@ -210,8 +210,8 @@ startGitLogin() {
 			exit 1
 		fi
 	done
-	if [[ -z $_pid ]]; then
-		hyprctl dispatch closewindow pid:$__pid
+	if [[ ! -z $__address ]]; then
+		hyprctl dispatch closewindow address:$__address
 	fi
 	update_waybar
 	noti_n "Github Login"
