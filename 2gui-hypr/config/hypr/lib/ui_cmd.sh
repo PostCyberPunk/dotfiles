@@ -36,11 +36,11 @@ toggle_blur() {
 }
 
 enable_opaque() {
-  sleep 0.2
+	sleep 0.2
 	hyprctl setprop address:$(hyprctl -j activewindow | jq -r -c ".address") forceopaque 0 lock
 }
-disable_opaque(){
-  sleep 0.2
+disable_opaque() {
+	sleep 0.2
 	hyprctl setprop address:$(hyprctl -j activewindow | jq -r -c ".address") forceopaque 1 lock
 }
 
@@ -184,4 +184,35 @@ close_special() {
 		local __name=$(awk -F'l:' '{print $2}' <<<$result | awk -F')' '{print $1}')
 		hyprctl dispatch togglespecialworkspace "$__name"
 	fi
+}
+startGitLogin() {
+	if [[ "$(hyprctl -j activewindow | jq -r -c '.class')" != "firefox" ]]; then
+		hyprctl dispatch togglespecialworkspace tempgit
+		firefox &
+		sleep 1
+		while [[ "$(hyprctl -j activewindow | jq -r -c '.class')" != "firefox" ]]; do
+			sleep 1
+		done
+		local __pid=$(hyprctl -j activewindow | jq -r -c ".pid")
+		hyprctl --batch "dispatch togglefloating;dispatch resizeactive exact 50% 50%;dispatch centerwindow"
+		sleep 0.1
+		hyprctl dispatch togglespecialworkspace tempgit
+	fi
+	git-credential-manager github login &
+	sleep 1
+	local _test_count=1
+	while [[ "$(git-credential-manager github list)" = "" ]]; do
+		if [[ $_test_count -le 30 ]]; then
+			sleep 1
+			((_test_count++))
+		else
+			noti_c "Github Login Failed"
+			exit 1
+		fi
+	done
+	if [[ -z $_pid ]]; then
+		hyprctl dispatch closewindow pid:$__pid
+	fi
+	update_waybar
+	noti_n "Github Login"
 }

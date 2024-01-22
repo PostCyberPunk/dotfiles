@@ -52,6 +52,7 @@ declare -A menu_options=(
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
 	["lg Lazygit"]="kitty --class flkt3lg lazygit"
+  ["gL GitLogin"]="$RunCMD startGitLogin"
   ["bp1 center template"]="$RunCMD startCenter"
   ["td todo notes"]="$RunCMD open_notes"
   #Utils
