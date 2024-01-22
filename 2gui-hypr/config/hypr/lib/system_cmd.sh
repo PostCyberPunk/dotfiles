@@ -17,7 +17,7 @@ set_var() {
 }
 
 noti_n() {
-	notify-send -e -u low "$1"
+	notify-send -e -t 1000 -u low "$1"
 }
 
 noti_c() {
