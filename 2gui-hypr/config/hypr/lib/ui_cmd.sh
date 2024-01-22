@@ -150,14 +150,14 @@ startTops() {
 	kitty -T "fltops-btm" --class flkt6tp btm &
 }
 startCenter() {
+	kitty -1 &
+	sleep 0.1
 	layout_center_on
 	set_var 'is_center' 1
-	sleep 0.5
-	kitty -1 &
 	sleep 0.1
 	kitty -1 fish -C btm &
 	sleep 0.1
-	kitty -1 fish -C 'peaclock --config ~/dotfiles/2gui-hypr/peaclock/timer' &
+	kitty -1 fish -C 'peaclock --config ~/.config/peaclock/timer' &
 	sleep 0.1
 	kitty -1 fish -C lf &
 	sleep 0.1
