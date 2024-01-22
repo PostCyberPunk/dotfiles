@@ -20,6 +20,10 @@ noti_n() {
 	notify-send -e -u low "$1"
 }
 
+noti_c() {
+	notify-send -e -u critical "$1"
+}
+
 reload_waybar() {
 	_ps=(waybar rofi)
 	for _prs in "${_ps[@]}"; do

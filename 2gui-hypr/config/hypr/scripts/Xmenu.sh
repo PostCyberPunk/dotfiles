@@ -27,6 +27,8 @@ declare -A menu_options=(
 	["gm GameMode"]="$RunCMD toggle_gamemode"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
+	["wop1 enable_opaque"]="$RunCMD enable_opaque"
+	["wop0 disable_opaque"]="$RunCMD disable_opaque"
   #rofi
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
@@ -50,7 +52,7 @@ declare -A menu_options=(
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["sp Spotify"]="spotify"
 	["lg Lazygit"]="kitty --class flkt3lg lazygit"
-  ["p1 center template"]="$RunCMD startCenter"
+  ["bp1 center template"]="$RunCMD startCenter"
   ["td todo notes"]="$RunCMD open_notes"
   #Utils
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
