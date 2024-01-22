@@ -473,6 +473,13 @@
     "signal": 4,
     "tooltip": true,
   },
+  "custom/gitlogin": {
+    "exec": "[ \"$(git-credential-manager github list)\" = '' ]&&echo '󱘖 '||echo ' '",
+    "format": "{}",
+    "on-click-right": "~/.config/hypr/scripts/RunCMD.sh.sh startGitLogin",
+    "interval": 3600,
+    "signal": 4
+  },
   "custom/playerctl": {
     "format": "<span>{}</span>",
     "return-type": "json",

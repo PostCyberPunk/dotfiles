@@ -58,6 +58,7 @@
 	"temperature", 
 	"memory",
 	"disk", 
+  "custom/gitlogin"
 	],
 
 "modules-center": [
