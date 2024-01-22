@@ -85,6 +85,7 @@ window#waybar.hidden {
 #custom-power,
 #custom-speaker,
 #custom-updater,
+#custom-gitlogin,
 #custom-weather,
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
@@ -149,6 +150,7 @@ window#waybar.hidden {
   color: @sky;
 }
 
+#custom-gitlogin,
 #disk {
   color: @sapphire;
 }
