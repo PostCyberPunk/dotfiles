@@ -25,7 +25,7 @@ declare -A menu_options=(
 	["hpr Reload hyprland"]="$RunCMD reload_hypr"
 	["rld Reload All"]="$RunCMD reload_all"
 	["gm GameMode"]="$RunCMD toggle_gamemode"
-	["bl ChangeBlur"]="$RunCMD toggle_blur"
+	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
   #rofi
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
@@ -37,7 +37,7 @@ declare -A menu_options=(
   #System
 	["QQ Shutdown"]="needConfim "poweroff""
 	["RR Reboot"]="needConfim "reboot""
-	["uw Wlogout"]="$scriptsDir/Wlogout.sh"
+	["wl Wlogout"]="$scriptsDir/System/Wlogout.sh"
 	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
 	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
 	["cn Close Notifactions"]="swaync-client -C"

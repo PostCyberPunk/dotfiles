@@ -1,4 +1,9 @@
 # keybinds
+if status is-login
+    if test -e ~/.config/fish/extra_login.fish
+        source ~/.config/fish/extra_login.fish
+    end
+end
 function fish_user_key_bindings
     bind \e\cv 'fish_commandline_prepend "proxychains "'
     bind \e\[1\;3P 'fish_commandline_append " -h|nvim -RMn"'
@@ -40,19 +45,6 @@ if status is-interactive
     alias slf="sudo -u $USER lf"
     alias zj="zellij"
     ########### Prompt and Plugins ########### 
-    # set pure_enable_single_line_prompt true
-    # set pure_shorten_prompt_current_directory_length 1
-    # set --global tide_prompt_min_cols 300
-    set --global tide_prompt_transient_enabled true
-    # set --global tide_character_vi_icon_default 
-    # set --global tide_character_vi_icon_default 
-    # set --global tide_character_vi_icon_default 
-    # set --global tide_character_vi_icon_default 󰻃
-    # set --global tide_character_vi_icon_default 
-    set --global tide_character_vi_icon_default 
-    # set --global tide_character_vi_icon_default 󰁎
-    # set --global tide_character_icon 
-    set --global tide_character_icon 
     ########### Variables ###########
     set fish_greeting
     ###fish fzf
@@ -64,6 +56,20 @@ if status is-interactive
     ########### Fix ###########
     abbr --add dotdot --regex '^\.\.+$' --function multicd
 end
+########### Prompt and Plugins ########### 
+# set pure_enable_single_line_prompt true
+# set pure_shorten_prompt_current_directory_length 1
+# set --global tide_prompt_min_cols 300
+set --global tide_prompt_transient_enabled true
+# set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 󰻃
+# set --global tide_character_vi_icon_default 
+set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 󰁎
+# set --global tide_character_icon 
+set --global tide_character_icon 
 ############ path ###########
 fish_add_path ~/.spicetify
 fish_add_path ~/.cargo/bin
