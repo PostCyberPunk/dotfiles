@@ -153,7 +153,7 @@ startCenter() {
 	layout_center_on
 	set_var 'is_center' 1
 	sleep 0.5
-	kitty -1 fish -C zellij &
+	kitty -1 &
 	sleep 0.1
 	kitty -1 fish -C btm &
 	sleep 0.1
