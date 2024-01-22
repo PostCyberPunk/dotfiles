@@ -16,6 +16,7 @@ $dotinker -nvb 1tui
 read -p "Link your config fot tui core?:(y/N)" dostow
 if [[ $dostow = [yY] ]]; then
 	$dotinker -vbl 1tui
+  bat cache --build
 fi
 read -p "Configure Tide prompt?" dotide
 if [[ $dotide = [yY] ]]; then

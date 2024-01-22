@@ -1,4 +1,9 @@
 # keybinds
+if status is-login
+    if test -e ~/.config/fish/extra_login.fish
+        source ~/.config/fish/extra_login.fish
+    end
+end
 function fish_user_key_bindings
     bind \e\cv 'fish_commandline_prepend "proxychains "'
     bind \e\[1\;3P 'fish_commandline_append " -h|nvim -RMn"'
