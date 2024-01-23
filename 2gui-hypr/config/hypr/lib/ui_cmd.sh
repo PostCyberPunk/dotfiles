@@ -166,7 +166,7 @@ startCenter() {
 	sleep 0.1
 	kitty -1 fish -C btm &
 	sleep 0.1
-	kitty -1 fish -C 'peaclock --config ~/.config/peaclock/timer' &
+	kitty -1 fish -C "peaclock --config $HOME/.peaclock/timer" &
 	sleep 0.1
 	kitty -1 fish -C lf &
 	sleep 0.1

@@ -20,7 +20,7 @@ margin 0 0
 ratio 2 1
 date-padding 1
 set date off
-set seconds on
+set seconds off
 set hour-24 on
 set auto-size on
 set auto-ratio on
