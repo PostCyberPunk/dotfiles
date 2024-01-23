@@ -19,6 +19,7 @@ bash $dotinker -nvb 1tui
 read -l dostow -P "Link your config for tui core?:(y/N)"
 if not test -z (string match -i $dostow y)
     bash $dotinker -vbl 1tui
+    bat cache --build
 end
 read -l dotide -P "Configure Tide prompt?"
 if not test -z (string match -i $dotide y)
