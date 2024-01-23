@@ -6,7 +6,7 @@ end
 read -n1 -l munix -P "Install Modern Unix Collection?"
 echo
 if not test -z (string match -i $munix y)
-    yay -S --noconfirm --needed duf dust fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync bat vivid atool p7zip unrar git-delta || echo "!!!!!Installation Failed!!!!!"
+    yay -S --noconfirm --needed duf dust gdu fd navi gping procs jq sd the_silver_searcher choose eza tldr rsync bat vivid atool unzip p7zip unrar git-delta || echo "!!!!!Installation Failed!!!!!"
 end
 
 read -l lfcp -n1 -P "Install LF Preview?"
