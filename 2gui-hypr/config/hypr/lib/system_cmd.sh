@@ -32,13 +32,12 @@ _confirm_rofi() {
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-kb-accept-entry 'Return,space' \
 		-dmenu \
-		-p 'Confirmation' \
-		-mesg 'Are you Sure?'
+		-mesg "$1"
 	# -theme ${dir}/${theme}.rasi
 }
 _need_confirm() {
 
-	local _result="$(echo -e "No \nYes" | _confirm_rofi)"
+	local _result="$(echo -e "No \n Yes" | _confirm_rofi "$1")"
 	if [[ "$_result" == "Yes" ]]; then
 		return 0
 	else
@@ -46,12 +45,12 @@ _need_confirm() {
 	fi
 }
 sys_reboot() {
-	if _need_confirm; then
+	if _need_confirm "Reboot system?"; then
 		reboot
 	fi
 }
 sys_poweroff() {
-	if _need_confirm; then
+	if _need_confirm "Shutdown system?"; then
 		poweroff
 	fi
 }
