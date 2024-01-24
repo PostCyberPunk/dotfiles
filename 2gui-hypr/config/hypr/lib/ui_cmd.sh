@@ -159,6 +159,11 @@ startTops() {
 	kitty -T "fltops-btm" --class flkt6tp btm &
 }
 startCenter() {
+	if _need_confirm "Template One?"; then
+		echo yes
+	else
+		exit
+	fi
 	kitty -1 &
 	sleep 0.1
 	layout_center_on
