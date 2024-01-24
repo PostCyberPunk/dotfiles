@@ -290,8 +290,9 @@ cmd toggle_preview %{{
 }}
 map zp toggle_preview
 ############ s------
-map ss
 map ss :calcdirsize ; set info size ;set sortby size
+map st :set sortby time ; set info time ; set reverse true
+map sn :set sortby natural ; set reverse false
 ############ g-----
 map glg $lazygit
 map gff push :fzf_jump<space>
