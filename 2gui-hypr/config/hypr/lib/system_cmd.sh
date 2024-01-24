@@ -69,20 +69,19 @@ reload_waybar() {
 	if [[ -z $1 ]]; then
 		waybar &
 	fi
-  noti_n "Reload Waybar"
+	noti_n "Reload Waybar"
 }
-update_waybar()
-{
+update_waybar() {
 	pkill -RTMIN+4 waybar
-  noti_n "Refresh Waybar"
+	noti_n "Refresh Waybar"
 }
-reload_hypr(){
-  hyprctl reload
-  noti_n "Reload Hyprland"
+reload_hypr() {
+	hyprctl reload
+	noti_n "Reload Hyprland"
 }
-reload_all(){
-  reload_hypr
-  reload_waybar
+reload_all() {
+	reload_hypr
+	reload_waybar
 }
 
 restart_waybar_if_needed() {
