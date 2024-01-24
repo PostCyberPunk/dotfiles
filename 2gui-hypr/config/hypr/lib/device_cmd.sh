@@ -6,12 +6,14 @@ enable_touchpad() {
 	noti_n "Enabling Touchpad"
 	set_var touchpad "0"
 	hyprctl keyword "device:$touchpad_id:enabled" true
+	pkill -RTMIN+3 waybar
 }
 
 disable_touchpad() {
 	noti_n "Disabling Touchpad"
 	set_var touchpad "1"
 	hyprctl keyword "device:$touchpad_id:enabled" false
+	pkill -RTMIN+3 waybar
 }
 
 toggle_touchpad() {
@@ -22,7 +24,19 @@ toggle_touchpad() {
 	else
 		disable_touchpad
 	fi
-	pkill -RTMIN+3 waybar
+}
+
+temp_touchpad() {
+	enable_touchpad
+	# _key_pressed=$(keyd monitor | grep -q "esc down")
+	_key_pressed=$(keyd monitor | grep -q -E '^keyd')
+	disable_touchpad
+	# if [[ $(grep "f1 down" <<<$_key_pressed) = "" ]]; then
+	# 	disable_touchpad
+	# else
+	# 	noti_n "Touchpad keep going"
+	# fi
+	exit
 }
 
 toggle_wifi() {
@@ -64,7 +78,7 @@ restore_gpu() {
 	ln -sf "$HOME/.config/hypr/lib/Monitor/1Default.conf" "$HOME/.config/hypr/configs/Monitors.conf"
 }
 disable_edp1() {
-  enable_edp1
+	enable_edp1
 	sleep 1
 	hyprctl keyword monitor eDP-1,disable
 }
