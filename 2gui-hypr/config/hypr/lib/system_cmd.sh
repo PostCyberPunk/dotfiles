@@ -24,6 +24,38 @@ noti_c() {
 	notify-send -e -u critical "$1"
 }
 
+_confirm_rofi() {
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
+		-theme-str 'listview {columns: 2; lines: 1;}' \
+		-theme-str 'element-text {horizontal-align: 0.5;}' \
+		-theme-str 'textbox {horizontal-align: 0.5;}' \
+		-kb-accept-entry 'Return,space' \
+		-dmenu \
+		-p 'Confirmation' \
+		-mesg 'Are you Sure?'
+	# -theme ${dir}/${theme}.rasi
+}
+_need_confirm() {
+
+	local _result="$(echo -e "No \nYes" | _confirm_rofi)"
+	if [[ "$_result" == "Yes" ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+sys_reboot() {
+	if _need_confirm; then
+		reboot
+	fi
+}
+sys_poweroff() {
+	if _need_confirm; then
+		poweroff
+	fi
+}
+
 reload_waybar() {
 	_ps=(waybar rofi)
 	for _prs in "${_ps[@]}"; do
