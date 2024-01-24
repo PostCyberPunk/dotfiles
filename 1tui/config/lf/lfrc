@@ -279,7 +279,7 @@ map z3 :set ratios 1:1:2
 map zn :set relativenumber!
 # repeat last cmd
 map z.. :read; cmd-history-prev; cmd-enter
-map zc :calcdirsize
+map zc :calcdirsize; set info size:time
 cmd toggle_preview %{{
   if [ "$lf_preview" = "true" ]; then
     lf -remote "send $id :set preview false; set ratios 1"
