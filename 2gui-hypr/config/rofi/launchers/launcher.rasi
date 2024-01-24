@@ -23,7 +23,6 @@ configuration {
 /*****----- Global Properties -----*****/
 
 * {
-    font: "ProFontIIx Nerd Font Mono 10";
     border-colour:               var(selected);
     handle-colour:               var(selected);
     background-colour:           var(background);

@@ -88,7 +88,7 @@ configuration {
 
 	/*---------- Misc setting ----------*/
 	terminal: "rofi-sensible-terminal";
-  font: "ProFontIIx Nerd Font Mono 10";
+  font: "CaskaydiaCove Nerd Font Mono 12";
 	//font: "Mono 12";
 	sort: false;
 	threads: 0;
