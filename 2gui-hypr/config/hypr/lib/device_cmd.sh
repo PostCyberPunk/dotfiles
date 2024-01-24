@@ -29,7 +29,7 @@ toggle_touchpad() {
 temp_touchpad() {
 	enable_touchpad
 	# _key_pressed=$(keyd monitor | grep -q "esc down")
-	_key_pressed=$(keyd monitor | grep -q -E '^keyd')
+	_key_pressed=$(keyd monitor | grep -q -E '^keyd.*down')
 	disable_touchpad
 	# if [[ $(grep "f1 down" <<<$_key_pressed) = "" ]]; then
 	# 	disable_touchpad
