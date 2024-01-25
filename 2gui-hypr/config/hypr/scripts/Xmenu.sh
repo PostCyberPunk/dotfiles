@@ -28,6 +28,7 @@ declare -A menu_options=(
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
 	["wop1 enable_opaque"]="$RunCMD enable_opaque"
 	["wop0 disable_opaque"]="$RunCMD disable_opaque"
+	["ttp ToggleTouchPad"]="$RunCMD toggle_touchpad"
 	#rofi
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
