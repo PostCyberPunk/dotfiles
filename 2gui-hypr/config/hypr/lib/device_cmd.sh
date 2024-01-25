@@ -27,6 +27,9 @@ toggle_touchpad() {
 }
 
 temp_touchpad() {
+	if [[ $(get_var touchpad) = "0" ]]; then
+		exit
+	fi
 	enable_touchpad
 	# _key_pressed=$(keyd monitor | grep -q "esc down")
 	_key_pressed=$(keyd monitor | grep -q -E '^keyd.*down')
