@@ -2,20 +2,26 @@
 source ~/.config/hypr/lib/ref.sh
 source ~/.config/hypr/lib/system_cmd.sh
 
-enable_touchpad() {
-	noti_n "Enabling Touchpad"
+enable_touchpad_s() {
 	set_var touchpad "0"
 	hyprctl keyword "device:$touchpad_id:enabled" true
 	pkill -RTMIN+3 waybar
 }
 
-disable_touchpad() {
-	noti_n "Disabling Touchpad"
+disable_touchpad_s() {
 	set_var touchpad "1"
 	hyprctl keyword "device:$touchpad_id:enabled" false
 	pkill -RTMIN+3 waybar
 }
 
+enable_touchpad() {
+	noti_n "Enabling Touchpad"
+	enable_touchpad_s
+}
+disable_touchpad() {
+	noti_n "Disabling Touchpad"
+	disable_touchpad_s
+}
 toggle_touchpad() {
 	mstate=$(get_var touchpad)
 	echo "$mstate"
@@ -30,11 +36,10 @@ temp_touchpad() {
 	if [[ $(get_var touchpad) = "0" ]]; then
 		exit
 	fi
-	enable_touchpad
+	enable_touchpad_s
 	# _key_pressed=$(keyd monitor | grep -q "esc down")
 	_key_pressed=$(keyd monitor | grep -q -E '^keyd.*down')
-	sleep 0.1
-	disable_touchpad
+	disable_touchpad_s
 	# if [[ $(grep "f1 down" <<<$_key_pressed) = "" ]]; then
 	# 	disable_touchpad
 	# else
