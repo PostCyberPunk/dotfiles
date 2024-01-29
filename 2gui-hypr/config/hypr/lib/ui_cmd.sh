@@ -35,6 +35,17 @@ toggle_blur() {
 	fi
 }
 
+toggle_animation() {
+	STATE=$(hyprctl -j getoption animations:enabled | jq ".int")
+	if [ "${STATE}" = "1" ]; then
+		hyprctl keyword animations:enabled 0
+		noti_n "Disable animation"
+	else
+		hyprctl keyword animations:enabled 1
+		noti_n "Enable animation"
+	fi
+
+}
 enable_opaque() {
 	sleep 0.2
 	hyprctl setprop address:$(hyprctl -j activewindow | jq -r -c ".address") forceopaque 0 lock

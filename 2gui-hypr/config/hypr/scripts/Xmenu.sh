@@ -22,6 +22,7 @@ declare -A menu_options=(
 	["wbu Update Waybar"]="$RunCMD update_waybar"
 	#hypr
 	["hpr Reload hyprland"]="$RunCMD reload_hypr"
+	["hpa Toggle hyprland animation"]="$RunCMD toggle_animation"
 	["rld Reload All"]="$RunCMD reload_all"
 	["gm GameMode"]="$RunCMD toggle_gamemode"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
