@@ -95,3 +95,16 @@ disable_edp1() {
 enable_edp1() {
 	hyprctl keyword monitor eDP-1,preferred,auto,1
 }
+toggle_cooler() {
+	local var_name="cooler"
+	local status=$(get_var "$var_name")
+	if [ "$status" = "1" ]; then
+		sudo isw -b on
+		set_var "$var_name" "0"
+		noti_n "Cooler:on"
+	else
+		sudo isw -b off
+		set_var "$var_name" "1"
+		noti_n "Cooler:off"
+	fi
+}

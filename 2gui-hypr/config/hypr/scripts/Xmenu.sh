@@ -46,6 +46,7 @@ declare -A menu_options=(
 	["cn Close Notifactions"]="swaync-client -C"
 	["DM0"]="$RunCMD disable_edp1"
 	["DM1"]="$RunCMD enable_edp1"
+	["cl toggle fan mode"]="$RunCMD toggle_cooler"
 	#App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"
