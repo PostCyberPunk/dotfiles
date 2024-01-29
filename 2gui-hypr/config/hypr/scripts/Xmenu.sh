@@ -22,6 +22,7 @@ declare -A menu_options=(
 	["wbu Update Waybar"]="$RunCMD update_waybar"
 	#hypr
 	["hpr Reload hyprland"]="$RunCMD reload_hypr"
+	["hpa Toggle hyprland animation"]="$RunCMD toggle_animation"
 	["rld Reload All"]="$RunCMD reload_all"
 	["gm GameMode"]="$RunCMD toggle_gamemode"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
@@ -35,7 +36,10 @@ declare -A menu_options=(
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
 	["cc Calculator"]="rofi -modi \"calc:$rofiDir/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/config-long.rasi"
 	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/config-long.rasi"
-	["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/config-long.rasi"
+	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/config-long.rasi"
+	["trs Translation"]="$RunCMD translate_shell"
+	["trc Translation chinese"]="$RunCMD translate_shell zh:en"
+	["trv Translation voice"]="$RunCMD translate_shell -speak"
 	#System
 	["QQ Shutdown"]="$RunCMD sys_poweroff"
 	["RR Reboot"]="$RunCMD sys_reboot"
@@ -45,6 +49,7 @@ declare -A menu_options=(
 	["cn Close Notifactions"]="swaync-client -C"
 	["DM0"]="$RunCMD disable_edp1"
 	["DM1"]="$RunCMD enable_edp1"
+	["cl toggle fan mode"]="$RunCMD toggle_cooler"
 	#App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"

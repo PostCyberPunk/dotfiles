@@ -30,3 +30,12 @@ clipboard_manager() {
 		exit
 	fi
 }
+
+translate_shell() {
+	local transtext=$(rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 450px;}' \
+		-theme-str 'mainbox {children: [ "inputbar" ];}' -dmenu)
+	if [[ $transtext = "" ]]; then
+		transtext=$(wl-paste)
+	fi
+	kitty --class "flkt5" -o font_size=16 fish -C "trans $1 \"$transtext\"|fzf --ansi --reverse --multi|wl-copy"
+}
