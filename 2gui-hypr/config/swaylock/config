@@ -7,8 +7,9 @@ clock
 #timestr=%I:%M %p
 
 #24 HRS clock format and standard Europe Date Format
-timestr=%H:%M:%S
-datestr=%d %B, %a
+# timestr=󰮯󰊠
+timestr=p103s3t7
+datestr=%H:%M:%S
 
 # Add current display as background
 screenshots
@@ -17,43 +18,57 @@ screenshots
 # image=$HOME/.config/rofi/.current_wallpaper
 
 # Effect for background
-# NOTE: if you choose image as wallpaper, you may want to comment (#) these effects 
-effect-blur=9x5
-# effect-vignette=0.5:0.5
+# NOTE: if you choose image as wallpaper, you may want to comment (#) these effects
+effect-blur=3x10
 # effect-greyscale
-#effect-pixelate=5
+# effect-pixelate=5
+effect-vignette=0.4:0.6
 
-color=1f1d2e80
-font="Fira Code Medium"
+# font=CaskaydiaCoveNerdFont
+# font=JetBrainsMonoNL
+font=ProFontIIx Nerd Font
+# font=Terminus
+# font=HighSpeed
+# font-size= 85
+
 indicator
-indicator-radius=200
-indicator-thickness=20
+indicator-radius=160
+indicator-thickness=3
 
-text-color=e0def4
-text-caps-lock-color=ffffff
-inside-color=000000
-line-color=1f1d2e
-ring-color=191724
+color=1e1e2e
+bs-hl-color=f5e0dc
+caps-lock-bs-hl-color=f5e0dc
+caps-lock-key-hl-color=a6e3a1
+inside-color=1e1e2edd
+inside-clear-color=00000000
+inside-caps-lock-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+key-hl-color=a6e3a1
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=cdd6f4
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-color=b4befe
+ring-clear-color=f5e0dc
+ring-caps-lock-color=fab387
+ring-ver-color=89b4fa
+ring-wrong-color=eba0ac
 separator-color=00000000
-text-ver-color=ffffff
-inside-ver-color=000000
-line-ver-color=0000ff
-ring-ver-color=2777ff
-text-wrong-color=ff0000
-inside-wrong-color=000000
-line-wrong-color=000000
-ring-wrong-color=ff8000
-text-clear-color=000000
-inside-clear-color=ffffff
-line-clear-color=00ff00
-ring-clear-color=0ffff0
-key-hl-color=ff0000
-bs-hl-color=ffffff
+text-color=cdd6f4
+text-clear-color=f5e0dc
+text-caps-lock-color=fab387
+text-ver-color=89b4fa
+text-wrong-color=eba0ac
 
-grace=1
-grace-no-mouse
-grace-no-touch
-fade-in=0.2
+# grace=1
+# grace-no-mouse
+# grace-no-touch
+fade-in=1
 ignore-empty-password
 
 
