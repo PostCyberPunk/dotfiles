@@ -43,7 +43,7 @@ declare -A menu_options=(
 	#System
 	["QQ Shutdown"]="$RunCMD sys_poweroff"
 	["RR Reboot"]="$RunCMD sys_reboot"
-	["wl Wlogout"]="$scriptsDir/System/Wlogout.sh"
+	["SS Wlogout"]="$scriptsDir/System/Wlogout.sh"
 	["ml MonitorLayout"]="$scriptsDir/System/MonitorLayout.sh"
 	["gpu GPU Switcher"]="$scriptsDir/System/GPU.sh"
 	["cn Close Notifactions"]="swaync-client -C"
