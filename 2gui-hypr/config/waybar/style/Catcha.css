@@ -32,7 +32,7 @@ window#waybar.hidden {
 
 /* This section can be use if you want to separate waybar modules */
 .modules-left, .modules-center, .modules-right {
-	background: @theme_base_color; 
+	background: @theme_base_color;
  	border: 0.5px solid @overlay0;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -40,7 +40,7 @@ window#waybar.hidden {
 	padding-left: 4px;
 	border-radius: 10px;
 
-} 
+}
 
 .modules-left, .modules-center,.modules-right {
   	/* border: 1px solid @blue; */
@@ -48,7 +48,7 @@ window#waybar.hidden {
 	padding-bottom: 2px;
 	padding-right: 4px;
 	padding-left: 4px;
-} 
+}
 
 #backlight,
 #backlight-slider,
@@ -90,7 +90,7 @@ window#waybar.hidden {
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default, 
+#custom-weather.default,
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
@@ -113,7 +113,7 @@ window#waybar.hidden {
 #submap{
   background-color: @blue;
   /* border:1px solid @blue; */
-  color:@subtext1;
+  color:@crust;
   border-radius:10px;
 }
 #battery {
