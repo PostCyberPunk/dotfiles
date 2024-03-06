@@ -81,3 +81,16 @@ linker_fzf() {
 		notify-send "Link create failed"
 	fi
 }
+
+gpu_switcher() {
+	linker_fzf $gpu_src_dir $gpu_target_file
+	notify-send "GPU Switched"
+	hyprctl dispatch forcerendererreload
+	hyprctl reload
+}
+
+monitor_switcher() {
+	linker_fzf $monitor_src_dir $monitor_target_file
+	notify-send "Monitor layout Switched"
+	hyprctl reload
+}

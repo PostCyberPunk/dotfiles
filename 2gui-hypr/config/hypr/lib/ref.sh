@@ -6,6 +6,11 @@ touchpad_id="cust0001:00-06cb:cdad-touchpad"
 wallpaper_dir=$HOME/Pictures/wallpapers
 wallpaper_cache=$HOME/.config/rofi/.current_wallpaper
 
+gpu_src_dir="$HOME/.config/hypr/lib/GPU"
+gpu_target_file="$HOME/.config/hypr/configs/GPU.conf"
+monitor_src_dir="$HOME/.config/hypr/lib/Monitor"
+monitor_target_file="$HOME/.config/hypr/configs/Monitors.conf"
+
 SWWW_FPS=60
 SWWW_TYPE="simple"
 SWWW_DURATION=0.5
