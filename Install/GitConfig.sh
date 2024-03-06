@@ -12,6 +12,7 @@ if [[ $use_preset = [Yy] ]]; then
 	fi
 	git config --global init.defaultBranch main
 	git config --global pull.rebase true
+	git config --global core.editor "nvim"
 fi
 
 if [[ choice -eq 2 ]]; then
