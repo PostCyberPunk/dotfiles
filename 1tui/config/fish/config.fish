@@ -22,6 +22,11 @@ function fish_user_key_bindings
         bind -M $mode \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
         bind -M $mode \cH backward-kill-word
     end
+
+    # navi
+    bind -M insert \eg _navi_smart_replace
+    bind -M insert \cg _my_navi
+    # bind -M issert \cg 'navi;'
 end
 
 if status is-interactive
