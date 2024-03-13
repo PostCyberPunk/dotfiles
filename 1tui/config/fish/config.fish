@@ -44,7 +44,7 @@ if status is-interactive
     alias lg="lazygit"
     alias slf="sudo -u $USER lf"
     alias zj="zellij"
-    ########### Prompt and Plugins ########### 
+    ########### Prompt and Plugins ###########
     ########### Variables ###########
     set fish_greeting
     ###fish fzf
@@ -56,7 +56,7 @@ if status is-interactive
     ########### Fix ###########
     abbr --add dotdot --regex '^\.\.+$' --function multicd
 end
-########### Prompt and Plugins ########### 
+########### Prompt and Plugins ###########
 # set pure_enable_single_line_prompt true
 # set pure_shorten_prompt_current_directory_length 1
 # set --global tide_prompt_min_cols 300
