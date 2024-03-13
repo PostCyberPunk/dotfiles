@@ -308,6 +308,8 @@ map gop $python "$f"
 map goc $code "$f"
 map goC $code $dir
 map goa $exiftool "$f"|nvim -RMn
+# sudo
+map gosv $sudo -E nvim $fx
 ## disk analayg
 map gdu $gdu .
 map gdt $dust -r .|bat -p --paging=always
