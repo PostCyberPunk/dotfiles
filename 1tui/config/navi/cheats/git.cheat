@@ -1,0 +1,10 @@
+% git, code
+
+# gcc
+git clone <repo>
+
+# gc1
+git clone --depth 1 <repo>
+
+# clone branch repo depth gcb1
+git clone --depth 1 --b <branch> <repo>

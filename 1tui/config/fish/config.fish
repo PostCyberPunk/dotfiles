@@ -22,6 +22,11 @@ function fish_user_key_bindings
         bind -M $mode \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
         bind -M $mode \cH backward-kill-word
     end
+
+    # navi
+    bind -M insert \eg _navi_smart_replace
+    bind -M insert \cg _my_navi
+    # bind -M issert \cg 'navi;'
 end
 
 if status is-interactive
@@ -44,7 +49,7 @@ if status is-interactive
     alias lg="lazygit"
     alias slf="sudo -u $USER lf"
     alias zj="zellij"
-    ########### Prompt and Plugins ########### 
+    ########### Prompt and Plugins ###########
     ########### Variables ###########
     set fish_greeting
     ###fish fzf
@@ -56,7 +61,7 @@ if status is-interactive
     ########### Fix ###########
     abbr --add dotdot --regex '^\.\.+$' --function multicd
 end
-########### Prompt and Plugins ########### 
+########### Prompt and Plugins ###########
 # set pure_enable_single_line_prompt true
 # set pure_shorten_prompt_current_directory_length 1
 # set --global tide_prompt_min_cols 300

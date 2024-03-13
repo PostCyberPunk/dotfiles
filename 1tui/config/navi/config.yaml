@@ -1,0 +1,4 @@
+finder:
+  command: fzf # equivalent to the --finder option
+  overrides: --height 50% --reverse --tac # equivalent to the --fzf-overrides option
+  # overrides_var: --tac # equivalent to the --fzf-overrides-var option
