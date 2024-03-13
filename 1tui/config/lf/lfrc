@@ -132,7 +132,7 @@ map dA :clip-remove move
 map ya :clip-add copy
 map yA :clip-remove copy
 cmd clip-add %{{
-    if [[ -z $fs ]]; then 
+    if [[ -z $fs ]]; then
       lf -remote "send $id echoerr Select some file first"
     fi
     file=~/.local/share/lf/files
@@ -155,7 +155,7 @@ cmd clip-add %{{
     lf -remote "send $id sync"
 }}
 cmd clip-remove ${{
-    if [[ -z $fs ]]; then 
+    if [[ -z $fs ]]; then
       lf -remote "send $id echoerr Select some file first"
     fi
     file=~/.local/share/lf/files
@@ -210,7 +210,7 @@ cmd lfrsync !{{
     if [[ $operation = "copy" ]]; then
       tail -n +2 "$file" | while read -r line ; do
       rsync --recursive --progress "$line" $PWD
-      done 
+      done
       else
         echo "Use move insted of copy"
     fi
@@ -246,14 +246,14 @@ map DS :delete
 map R reload
 map <enter> shell
 map ` mark-load
-############ Add 
+############ Add
 map ad push %mkdir<space>
 cmd mkfile $(echo $1>> $2)
 map ae push :mkfile<space>
 map an push $nvim<space>
 map ax $chmod +x "$f"
 cmd slink ${{
-    lfile=~/.local/share/lf/files 
+    lfile=~/.local/share/lf/files
 
     operation=$(head -n 1 $lfile)
     if [[ $operation != "copy" ]]; then
@@ -306,15 +306,15 @@ map gov $nvim $fx
 map goV $nvim $dir
 map gop $python "$f"
 map goc $code "$f"
-map goC $code $dir 
-map goa $exiftool "$f"|nvim -RMn 
+map goC $code $dir
+map goa $exiftool "$f"|nvim -RMn
 ## disk analayg
 map gdu $gdu .
 map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
 ########### pager
-map i $bat --paging=always "$f"   
+map i $bat --paging=always "$f"
 ########### CMDmodes
-cmap <a-l> cmd-word 
+cmap <a-l> cmd-word
 cmap <a-h> cmd-word-back
 cmap <a-w> cmd-delete-unix-word
