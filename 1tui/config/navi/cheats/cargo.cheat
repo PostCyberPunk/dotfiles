@@ -1,0 +1,26 @@
+% cargo
+
+
+# cargo bin run release bevy linking ,crrlb
+cargo run --release --features bevy/dynamic_linking --bin <bin>
+# cargo run release bevy linking ,crrl
+cargo run --release --features bevy/dynamic_linking
+# cargo run example, crrel
+cargo run --release --features bevy/dynamic_linking --example <example>
+
+# cargo bin run release,crrb
+cargo run --release --bin <bin>
+# cargo run release bevy linking ,crl
+cargo run --features bevy/dynamic_linking
+# cargo run example, crel
+cargo run --features bevy/dynamic_linking --example <example>
+
+# cargo run example, crre
+cargo run --release --example <example>
+
+# cargo run release, crr
+cargo run --release
+# cargo bin run release,crb
+cargo run --bin <bin>
+# cargo run example, cre
+cargo run --example
