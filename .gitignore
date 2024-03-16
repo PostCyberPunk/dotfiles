@@ -15,3 +15,4 @@
 [Bb]ackup
 1tui/config/fish/extra_login.fish
 2gui-hypr/config/fcitx5/conf/cached_layouts
+1tui/config/fish/fishd.tmp.*
