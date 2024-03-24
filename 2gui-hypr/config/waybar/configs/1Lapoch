@@ -1,7 +1,3 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-
-// ### DUAL TOP and BOTTOM ### //
-
 [{
 "include": "~/.config/waybar/modules",
 "layer": "top",
@@ -22,18 +18,18 @@
 	"wlr/taskbar",
 	"hyprland/window",
 	 ],
-  
+
 "modules-center": [
-	"hyprland/workspaces#pacman", 
+	"hyprland/workspaces#pacman",
 	],
 
 "modules-right": [
 	"mpris",
 	//"keyboard-state",
 	"pulseaudio",
-	//"wireplumber", 
-	"pulseaudio#microphone",	  
-	"battery", 
+	//"wireplumber",
+	"pulseaudio#microphone",
+	"battery",
 	"tray",
 	],
 
@@ -54,28 +50,28 @@
 //"margin-bottom": 0,
 
 "modules-left": [
-	"cpu", 
-	"temperature", 
+	"cpu",
+	"temperature",
 	"memory",
-	"disk", 
+	"disk",
   "custom/gitlogin"
 	],
 
 "modules-center": [
-	"idle_inhibitor", 
+	"idle_inhibitor",
 	"clock",
 	"custom/touchpad",
   "hyprland/submap"
-	], 
+	],
 
 "modules-right": [
 	"network#speed",
-	"custom/weather",	  
+	"custom/weather",
 	"backlight",
 	//"bluetooth",
 	//"network",
 	//"custom/cycle_wall",
-	"custom/lock", 
+	"custom/lock",
 	"custom/power",
 	],
 
