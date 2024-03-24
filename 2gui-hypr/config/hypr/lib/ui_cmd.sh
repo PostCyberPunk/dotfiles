@@ -63,7 +63,7 @@ change_wallpaper() {
 		mv -f "$wallpaper_cache" "$wallpaper_cache-bak"
 		_link_wallpaper $1 || mv -f "$wallpaper_cache-bak" "$wallpaper_cache"
 	fi
-	swww query || swww init && swww img $1 $SWWW_PARAMS
+	swww query || swww-daemon && swww img $1 $SWWW_PARAMS
 }
 
 change_layout() {

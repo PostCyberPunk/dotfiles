@@ -4,13 +4,15 @@ source ~/.config/hypr/lib/system_cmd.sh
 
 enable_touchpad_s() {
 	set_var touchpad "0"
-	hyprctl keyword "device:$touchpad_id:enabled" true
+	# hyprctl keyword "device:$touchpad_id:enabled" true
+	hyprctl -r keyword '$touchpad_enabled' true
 	pkill -RTMIN+3 waybar
 }
 
 disable_touchpad_s() {
 	set_var touchpad "1"
-	hyprctl keyword "device:$touchpad_id:enabled" false
+	# hyprctl keyword "device:$touchpad_id:enabled" false
+	hyprctl -r keyword '$touchpad_enabled' false
 	pkill -RTMIN+3 waybar
 }
 
@@ -60,8 +62,8 @@ toggle_wifi() {
 }
 
 toggle_gamemode() {
-	HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
-	if [ "$HYPRGAMEMODE" = 1 ]; then
+	HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+	if [ "$HYPRGAMEMODE" = "1" ]; then
 		hyprctl --batch "\
         keyword animations:enabled 0;\
         keyword decoration:drop_shadow 0;\
@@ -70,15 +72,18 @@ toggle_gamemode() {
         keyword general:gaps_out 0;\
         keyword general:border_size 1;\
         keyword decoration:rounding 0"
-		# swww kill
+		# keyword decoration:active_opacity 1;\
+		# keyword decoration:inactive_opacity 1;\
+		swww kill
 		noti_n "gamemode enabled. All animations off"
 		exit
 	else
-		swww init && swww img "$HOME/.config/rofi/.current_wallpaper"
 		sleep 0.5
 		reload_waybar
 		reload_hypr
 		noti_n "gamemode disabled. All animations normal"
+		swww-daemon &
+		swww img "$HOME/.config/rofi/.current_wallpaper"
 		exit
 	fi
 	hyprctl reload
