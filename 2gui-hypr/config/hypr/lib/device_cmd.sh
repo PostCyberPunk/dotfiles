@@ -62,8 +62,8 @@ toggle_wifi() {
 }
 
 toggle_gamemode() {
-	HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
-	if [ "$HYPRGAMEMODE" = 1 ]; then
+	HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+	if [ "$HYPRGAMEMODE" = "1" ]; then
 		hyprctl --batch "\
         keyword animations:enabled 0;\
         keyword decoration:drop_shadow 0;\
@@ -72,15 +72,18 @@ toggle_gamemode() {
         keyword general:gaps_out 0;\
         keyword general:border_size 1;\
         keyword decoration:rounding 0"
-		# swww kill
+		# keyword decoration:active_opacity 1;\
+		# keyword decoration:inactive_opacity 1;\
+		swww kill
 		noti_n "gamemode enabled. All animations off"
 		exit
 	else
-		# swww img "$HOME/.config/rofi/.current_wallpaper"
 		sleep 0.5
 		reload_waybar
 		reload_hypr
 		noti_n "gamemode disabled. All animations normal"
+		swww-daemon &
+		swww img "$HOME/.config/rofi/.current_wallpaper"
 		exit
 	fi
 	hyprctl reload
