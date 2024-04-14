@@ -4,15 +4,13 @@ source ~/.config/hypr/lib/system_cmd.sh
 
 enable_touchpad_s() {
 	set_var touchpad "0"
-	# hyprctl keyword "device:$touchpad_id:enabled" true
-	hyprctl -r keyword '$touchpad_enabled' true
+	hyprctl keyword "device[$touchpad_id]:enabled" 1
 	pkill -RTMIN+3 waybar
 }
 
 disable_touchpad_s() {
 	set_var touchpad "1"
-	# hyprctl keyword "device:$touchpad_id:enabled" false
-	hyprctl -r keyword '$touchpad_enabled' false
+	hyprctl keyword "device[$touchpad_id]:enabled" 0
 	pkill -RTMIN+3 waybar
 }
 
@@ -78,6 +76,7 @@ toggle_gamemode() {
 		noti_n "gamemode enabled. All animations off"
 		exit
 	else
+		swww init && swww img "$HOME/.config/rofi/.current_wallpaper"
 		sleep 0.5
 		reload_waybar
 		reload_hypr
