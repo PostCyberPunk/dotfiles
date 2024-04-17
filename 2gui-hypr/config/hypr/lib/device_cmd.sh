@@ -4,15 +4,13 @@ source ~/.config/hypr/lib/system_cmd.sh
 
 enable_touchpad_s() {
 	set_var touchpad "0"
-	# hyprctl keyword "device:$touchpad_id:enabled" true
-	hyprctl -r keyword '$touchpad_enabled' true
+	hyprctl keyword "device:$touchpad_id:enabled" true
 	pkill -RTMIN+3 waybar
 }
 
 disable_touchpad_s() {
 	set_var touchpad "1"
-	# hyprctl keyword "device:$touchpad_id:enabled" false
-	hyprctl -r keyword '$touchpad_enabled' false
+	hyprctl keyword "device:$touchpad_id:enabled" false
 	pkill -RTMIN+3 waybar
 }
 
