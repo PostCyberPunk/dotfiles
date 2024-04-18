@@ -134,11 +134,10 @@ _wayvnc() {
 	fi
 }
 start_vr() {
+	hyprctl dispatch workspace 2
 	hyprctl output create headless
 	hyprctl keyword monitor eDP-1,disable
-	wayvnc -g &
-	# adb reverse tcp:5900 tcp:5900
-	# _wayvnc
+	_wayvnc
 	# _adb
 }
 boot_vr() {
