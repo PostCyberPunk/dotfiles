@@ -60,6 +60,9 @@ declare -A menu_options=(
 	["gL GitLogin"]="$RunCMD startGitLogin"
 	["bp1 center template"]="$RunCMD startCenter"
 	["td todo notes"]="$RunCMD open_notes"
+	["vr0 disable vrboot"]="$RunCMD vrboot 0"
+	["vr1 enable vrboot"]="$RunCMD vrboot 1"
+	["vnc wayvnc"]="$RunCMD _wayvnc"
 	#Utils
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
