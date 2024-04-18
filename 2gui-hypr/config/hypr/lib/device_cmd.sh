@@ -112,3 +112,34 @@ toggle_cooler() {
 		noti_n "Cooler:off"
 	fi
 }
+vrboot() {
+	# [ -f $vrboot_file ] && noti_n "1" || noti_n "0"
+	if [[ "$1" = "1" ]]; then
+		[ -f $vrboot_file] || echo "1" >$vrboot_file
+		noti_n "VRBoot enabled"
+	else
+		[ -f $vrboot_file ] && rm -f $vrboot_file
+		noti_n "VRBoot disabled"
+	fi
+}
+_adb() {
+	adb reverse tcp:5900 tcp:5900
+}
+_wayvnc() {
+	pkill wayvnc
+	if [[ $1 == "1" ]]; then
+		wayvnc $lan_ip_add &
+	else
+		wayvnc &
+	fi
+}
+start_vr() {
+	hyprctl dispatch workspace 2
+	hyprctl output create headless
+	hyprctl keyword monitor eDP-1,disable
+	_wayvnc
+	# _adb
+}
+boot_vr() {
+	[ -f ~/.cache/vrboot ] && start_vr
+}

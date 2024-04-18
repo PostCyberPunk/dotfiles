@@ -10,6 +10,8 @@ gpu_src_dir="$HOME/.config/hypr/lib/GPU"
 gpu_target_file="$HOME/.config/hypr/configs/GPU.conf"
 monitor_src_dir="$HOME/.config/hypr/lib/Monitor"
 monitor_target_file="$HOME/.config/hypr/configs/Monitors.conf"
+lan_ip_add=$(ip addr show | grep inet | awk '{ print $2 }' | grep '192.168' | cut -d/ -f1 | head -n 1)
+vrboot_file=~/.cache/vrboot
 
 SWWW_FPS=60
 SWWW_TYPE="simple"
