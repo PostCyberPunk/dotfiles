@@ -63,6 +63,8 @@ declare -A menu_options=(
 	["vr0 disable vrboot"]="$RunCMD vrboot 0"
 	["vr1 enable vrboot"]="$RunCMD vrboot 1"
 	["vnc wayvnc"]="$RunCMD _wayvnc"
+	["vncl wayvnc"]="$RunCMD _wayvnc 1"
+	["adb forward"]="$RunCMD _adb"
 	#Utils
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
