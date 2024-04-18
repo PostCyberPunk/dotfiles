@@ -141,3 +141,6 @@ start_vr() {
 	# _wayvnc
 	# _adb
 }
+boot_vr() {
+	[ -f ~/.cache/vrboot ] && start_vr
+}
