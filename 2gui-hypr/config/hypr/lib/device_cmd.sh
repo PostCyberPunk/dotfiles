@@ -112,3 +112,12 @@ toggle_cooler() {
 		noti_n "Cooler:off"
 	fi
 }
+_wayvnc() {
+	wayvnc $lan_ip_add &
+}
+start_vr() {
+	hyprctl output create headless
+	hyprctl keyword monitor eDP-1,disable
+	sleep 1
+	_wayvnc
+}
