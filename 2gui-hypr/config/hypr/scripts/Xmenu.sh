@@ -60,6 +60,7 @@ declare -A menu_options=(
 	["gL GitLogin"]="$RunCMD startGitLogin"
 	["bp1 center template"]="$RunCMD startCenter"
 	["td todo notes"]="$RunCMD open_notes"
+	#VR
 	["vr0 disable vrboot"]="$RunCMD vrboot 0"
 	["vr1 enable vrboot"]="$RunCMD vrboot 1"
 	["vncs wayvnc start"]="$RunCMD _wayvnc"
@@ -67,11 +68,12 @@ declare -A menu_options=(
 	["vncd wayvnc quit"]="pkill wayvnc"
 	["vncm wayvnc switch-output"]="wayvncctl output-cycle"
 	["adb forward"]="$RunCMD _adb"
+	["vrpo vr enable proximity sensor"]="adb shell am broadcast -a com.oculus.vrpowermanager.automation_disable"
+	["vrpf vr disable proximity sensor"]="adb shell am broadcast -a com.oculus.vrpowermanager.prox_close"
 	#Utils
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
 	["cph PickColor(hex)"]="hyprpicker -f hex -a"
-
 )
 
 # Main function
