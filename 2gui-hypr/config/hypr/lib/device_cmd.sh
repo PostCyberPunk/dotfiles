@@ -128,9 +128,9 @@ _adb() {
 _wayvnc() {
 	pkill wayvnc
 	if [[ $1 == "1" ]]; then
-		wayvnc $lan_ip_add &
+		wayvnc $lan_ip_add -f 60 &
 	else
-		wayvnc &
+		wayvnc -f 60 &
 	fi
 }
 start_vr() {
