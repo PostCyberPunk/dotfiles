@@ -64,11 +64,12 @@ declare -A menu_options=(
 	#VR
 	["vr0 disable vrboot"]="$RunCMD vrboot 0"
 	["vr1 enable vrboot"]="$RunCMD vrboot 1"
-	["vncs wayvnc start"]="$RunCMD _wayvnc"
-	["vncl wayvnc local"]="$RunCMD _wayvnc 1"
+	["vncg wayvnc start"]="$RunCMD cmd_wayvnc"
+	["vncl wayvnc local"]="$RunCMD cmd_wayvnc 1"
+	["vnco wayvnc other output"]="$RunCMD vnc_add_output"
 	["vncd wayvnc quit"]="pkill wayvnc"
 	["vncm wayvnc switch-output"]="wayvncctl output-cycle"
-	["adb forward"]="$RunCMD _adb"
+	["adb forward"]="$RunCMD cmd_adb"
 	["vrpo vr enable proximity sensor"]="adb shell am broadcast -a com.oculus.vrpowermanager.automation_disable"
 	["vrpf vr disable proximity sensor"]="adb shell am broadcast -a com.oculus.vrpowermanager.prox_close"
 	#Utils
