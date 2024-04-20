@@ -55,6 +55,7 @@ declare -A menu_options=(
 	["vb VitrualBox"]="virtualbox"
 	["vm VitrualBox"]="vboxmanage startvm Larch"
 	["v2 v2raya"]="firefox http://localhost:2017/"
+	["cls clash"]="clash-verge"
 	["sp Spotify"]="spotify"
 	["lg Lazygit"]="kitty --class flkt3lg lazygit"
 	["gL GitLogin"]="$RunCMD startGitLogin"
