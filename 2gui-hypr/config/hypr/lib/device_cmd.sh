@@ -128,6 +128,7 @@ _adb() {
 _wayvnc() {
 	pkill wayvnc
 	if [[ $1 == "1" ]]; then
+		get_lan_ip
 		wayvnc $lan_ip_add -f 60 &
 	else
 		wayvnc -f 60 &
