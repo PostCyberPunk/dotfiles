@@ -122,10 +122,10 @@ vrboot() {
 		noti_n "VRBoot disabled"
 	fi
 }
-_adb() {
+cmd_adb() {
 	adb reverse tcp:5900 tcp:5900
 }
-_wayvnc() {
+cmd_wayvnc() {
 	pkill wayvnc
 	if [[ $1 == "1" ]]; then
 		get_lan_ip
@@ -138,8 +138,8 @@ start_vr() {
 	hyprctl dispatch workspace 2
 	hyprctl output create headless
 	hyprctl keyword monitor eDP-1,disable
-	_wayvnc
-	# _adb
+	cmd_wayvnc
+	cmd_adb
 }
 boot_vr() {
 	[ -f ~/.cache/vrboot ] && start_vr
