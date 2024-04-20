@@ -66,6 +66,7 @@ declare -A menu_options=(
 	["vr1 enable vrboot"]="$RunCMD vrboot 1"
 	["vncg wayvnc start"]="$RunCMD cmd_wayvnc"
 	["vncl wayvnc local"]="$RunCMD cmd_wayvnc 1"
+	["vnco wayvnc other output"]="$RunCMD vnc_add_output"
 	["vncd wayvnc quit"]="pkill wayvnc"
 	["vncm wayvnc switch-output"]="wayvncctl output-cycle"
 	["adb forward"]="$RunCMD cmd_adb"

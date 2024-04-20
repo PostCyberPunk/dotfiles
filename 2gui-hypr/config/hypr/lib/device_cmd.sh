@@ -134,6 +134,12 @@ cmd_wayvnc() {
 		wayvnc -f 60 &
 	fi
 }
+vnc_add_output() {
+	hyprctl output create headless
+	sleep 1
+	wayvnc 127.0.0.1 5902 -f 60 -S /tmp/wvnc2 &
+	adb reverse tcp:5902 tcp:5902
+}
 start_vr() {
 	hyprctl dispatch workspace 2
 	hyprctl output create headless
