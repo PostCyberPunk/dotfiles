@@ -146,6 +146,9 @@ start_vr() {
 	hyprctl keyword monitor eDP-1,disable
 	cmd_wayvnc
 	cmd_adb
+	swww kill
+	sleep 1
+	swww-daemon &
 }
 boot_vr() {
 	[ -f ~/.cache/vrboot ] && start_vr
