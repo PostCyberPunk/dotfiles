@@ -65,6 +65,11 @@ change_wallpaper() {
 	fi
 	swww query || swww-daemon && swww img $1 $SWWW_PARAMS
 }
+reboot_swww() {
+	swww kill
+	sleep 1
+	swww-daemon &
+}
 
 change_layout() {
 	LAYOUT=$(hyprctl -j getoption general:layout | jq '.str' | sed 's/"//g')
