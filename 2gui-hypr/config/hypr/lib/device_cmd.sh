@@ -76,12 +76,12 @@ toggle_gamemode() {
 		noti_n "gamemode enabled. All animations off"
 		exit
 	else
-		swww init && swww img "$HOME/.config/rofi/.current_wallpaper"
 		sleep 0.5
 		reload_waybar
 		reload_hypr
 		noti_n "gamemode disabled. All animations normal"
 		swww-daemon &
+		sleep 2
 		swww img "$HOME/.config/rofi/.current_wallpaper"
 		exit
 	fi
