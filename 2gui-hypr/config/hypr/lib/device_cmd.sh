@@ -141,9 +141,8 @@ vnc_add_output() {
 	adb reverse tcp:5902 tcp:5902
 }
 start_vr() {
-	hyprctl dispatch workspace 2
-	hyprctl output create headless
-	hyprctl keyword monitor eDP-1,disable
+	# hyprctl dispatch workspace 2
+	# hyprctl output create headless
 	cmd_wayvnc
 	cmd_adb
 	swww kill
