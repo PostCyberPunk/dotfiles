@@ -115,7 +115,7 @@ toggle_cooler() {
 vrboot() {
 	# [ -f $vrboot_file ] && noti_n "1" || noti_n "0"
 	if [[ "$1" = "1" ]]; then
-		[ -f $vrboot_file] || echo "1" >$vrboot_file
+		[ -f $vrboot_file ] || echo "1" >$vrboot_file
 		noti_n "VRBoot enabled"
 	else
 		[ -f $vrboot_file ] && rm -f $vrboot_file
