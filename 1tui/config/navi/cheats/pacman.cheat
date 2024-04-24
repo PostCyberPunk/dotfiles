@@ -1,0 +1,11 @@
+% pacman, system
+
+
+# update system packeges pmu
+sudo pacman -Syu
+
+#  query pacman database pmq
+pacman -Q | rg <package>
+
+# update AUR packages yyu
+yay -Syu -devel

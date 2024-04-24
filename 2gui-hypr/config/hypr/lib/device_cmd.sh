@@ -115,7 +115,7 @@ toggle_cooler() {
 vrboot() {
 	# [ -f $vrboot_file ] && noti_n "1" || noti_n "0"
 	if [[ "$1" = "1" ]]; then
-		[ -f $vrboot_file] || echo "1" >$vrboot_file
+		[ -f $vrboot_file ] || echo "1" >$vrboot_file
 		noti_n "VRBoot enabled"
 	else
 		[ -f $vrboot_file ] && rm -f $vrboot_file
@@ -141,14 +141,11 @@ vnc_add_output() {
 	adb reverse tcp:5902 tcp:5902
 }
 start_vr() {
-	hyprctl dispatch workspace 2
-	hyprctl output create headless
-	hyprctl keyword monitor eDP-1,disable
+	# hyprctl dispatch workspace 2
+	# hyprctl output create headless
 	cmd_wayvnc
 	cmd_adb
-	swww kill
-	sleep 1
-	swww-daemon &
+	sunshine &
 }
 boot_vr() {
 	[ -f ~/.cache/vrboot ] && start_vr
