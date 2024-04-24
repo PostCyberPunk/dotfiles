@@ -145,9 +145,7 @@ start_vr() {
 	# hyprctl output create headless
 	cmd_wayvnc
 	cmd_adb
-	swww kill
-	sleep 1
-	swww-daemon &
+	sunshine &
 }
 boot_vr() {
 	[ -f ~/.cache/vrboot ] && start_vr
