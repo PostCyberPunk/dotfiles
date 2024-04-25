@@ -2,9 +2,11 @@
 source ~/.config/hypr/lib/ref.sh
 
 get_active_workspace() {
-	return $(hyprctl -j clients | jq -c '.id')
+	hyprctl monitors -j | jq -r -c '.[]|.activeWorkspace|.name'
 }
-
+get_special_workspace() {
+	hyprctl monitors -j | jq -r -c '.[]|.specialWorkspace|.name'
+}
 hl_notify() {
 	hyprctl notify -1 1000 "rgb(ff1ea3)" "$1"
 }
