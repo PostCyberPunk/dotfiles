@@ -245,3 +245,9 @@ drop_special() {
 		hyprctl dispatch movetoworkspacesilent special:$1
 	fi
 }
+grab_special() {
+	hyprctl dispatch togglespecialworkspace $1
+	sleep 0.2
+	easyfocus-hyprland
+	hyprctl dispatch movetoworkspace $(get_active_workspace)
+}
