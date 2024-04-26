@@ -237,3 +237,17 @@ startGitLogin() {
 	update_waybar
 	noti_n "Github Login"
 }
+drop_special() {
+	local spw=$(get_special_workspace)
+	if [[ $spw != "" ]]; then
+		hyprctl dispatch movetoworkspace $(get_active_workspace)
+	else
+		hyprctl dispatch movetoworkspacesilent special:$1
+	fi
+}
+grab_special() {
+	hyprctl dispatch togglespecialworkspace $1
+	sleep 0.2
+	easyfocus-hyprland
+	hyprctl dispatch movetoworkspace $(get_active_workspace)
+}
