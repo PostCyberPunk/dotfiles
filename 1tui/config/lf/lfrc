@@ -316,6 +316,8 @@ map gosv $sudo -E nvim $fx
 map gdu $gdu .
 map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
+map gek $krita "$f"
+map gt thunar .
 ########### pager
 map i $bat --paging=always "$f"
 ########### CMDmodes
