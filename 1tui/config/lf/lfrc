@@ -318,7 +318,29 @@ map gdu $gdu .
 map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
 map gek $krita "$f"
-map gt thunar .
+map gT thunar .
+map gti ${{
+	# prev_dir=$PWD
+	# git_root=$(git rev-parse --show-toplevel)
+	# cd $git_root
+	#
+	# mflile=$(realpath --relative-base=. $f)
+	# git update-index --skip-worktree "$mflile"
+	# cd $PWD
+	mflile=$(basename $f)
+	git update-index --skip-worktree "$mflile"
+}}
+map gtI ${{
+	prev_dir=$PWD
+	git_root=$(git rev-parse --show-toplevel)
+	cd $git_root
+
+	mfile=$(git ls-files -v . | grep ^S | fzf | awk '{print $2}')
+	git update-index --no-skip-worktree $mfile
+
+	cd $PWD
+}}
+map gi
 ########### pager
 map i $bat --paging=always "$f"
 ########### CMDmodes
