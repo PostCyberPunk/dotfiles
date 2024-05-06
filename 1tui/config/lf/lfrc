@@ -128,6 +128,7 @@ map <c-o> :fzf_jump '--type=d -H'
 map <c-f> :fzf_jump -d=3
 map <a-f> :fzf_jump -H
 ############ Copy paste ############
+map p :paste;clear;
 map yx :swapmode
 map dx :swapmode
 cmd swapmode ${{
