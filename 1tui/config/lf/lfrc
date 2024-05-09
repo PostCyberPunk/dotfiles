@@ -26,6 +26,7 @@ set cleaner ctpvclear
     # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
     printf "\033]0; LF $PWD\007" > /dev/tty
 
+    zoxide add "$PWD"
     # display git repository status in your prompt
     source /usr/share/git/completion/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=auto
@@ -305,6 +306,10 @@ cmd toggle_preview %{{
 map zp toggle_preview
 map zy $bat -p --paging=always "$HOME/.local/share/lf/files"
 map zh :set hidden!;top
+map zz ${{
+	result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
 ############ s------
 map ss :calcdirsize ; set info size ;set sortby size
 map st :set sortby time ; set info time ; set reverse true
