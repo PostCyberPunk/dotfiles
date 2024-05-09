@@ -19,6 +19,35 @@ customCommands:
   #   command: "git difftool -y {{.SelectedLocalCommit.Sha}} -- {{.SelectedCommitFile.Name}}"
   #   context: 'commitFiles'
   #   description: 'Compare (difftool) with local copy'
+  - key: '<c-o>'
+    description: 'Open LF'
+    command: "lf"
+    context: 'status'
+    subprocess: true
+  - key: '<c-o>'
+    description: 'Show file in LF'
+    command: "lf {{ .SelectedFile.GetPath | quote }}"
+    context: 'files'
+    subprocess: true
+  - key: 'I'
+    description: 'un-skip-worktree'
+    context: 'status'
+    subprocess: true
+    command: "git ls-files -v . | grep ^S | fzf | awk '{print $2}'|xargs git update-index --no-skip-worktree"
+  - key: 'I'
+    description: 'skip-worktree'
+    context: 'files'
+    subprocess: true
+    command: "{{ .Form.Type }}"
+    prompts:
+      - type: "menu"
+        key: "Type"
+        title: "skip-worktree"
+        options:
+          - name: "skip current file"
+            value: "git update-index --skip-worktree {{ .SelectedFile.GetPath }}"
+          - name: "un-skip files"
+            value: "git ls-files -v . | grep ^S | fzf | awk '{print $2}'|xargs git update-index --no-skip-worktree"
   - key: '<c-f>'
     description: 'fetch a remote branch as a new local branch'
     command: "git fetch {{index .SelectedRemote.Name }} {{index .PromptResponses 0}}:{{index .PromptResponses 1}}"
@@ -36,6 +65,11 @@ customCommands:
     context: 'commits'
     command: 'git commit --allow-empty -m "empty commit"'
     loadingText: 'Committing empty commit...'
+  - key: 'f'
+    command: "git difftool -y {{.SelectedLocalCommit.Sha}} -- {{.SelectedCommitFile.Name}}"
+    context: 'commitFiles'
+    description: 'Compare (difftool) with local copy'
+    subprocess: true
   - key: "<c-v>"
     context: "global"
     description: "Create new conventional commit"
