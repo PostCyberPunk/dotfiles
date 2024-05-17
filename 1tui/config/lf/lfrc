@@ -19,11 +19,25 @@ set cleaner ctpvclear
 &ctpvquit $id
 # EventCMD-----------
 ############# Print PWD on Tittle
+
  cmd on-cd &{{
     # '&' commands run silently in background (which is what we want here),
     # but are not connected to stdout.
     # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
     printf "\033]0; LF $PWD\007" > /dev/tty
+
+    zoxide add "$PWD"
+    # display git repository status in your prompt
+    source /usr/share/git/completion/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=auto
+    GIT_PS1_SHOWSTASHSTATE=auto
+    GIT_PS1_SHOWUNTRACKEDFILES=auto
+    GIT_PS1_SHOWUPSTREAM=auto
+    GIT_PS1_COMPRESSSPARSESTATE=auto
+    git=$(__git_ps1 "  %s ") || true
+    fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+    lf -remote "send $id set promptfmt \"$fmt\""
+
 }}
 
 # also run at startup
@@ -100,8 +114,8 @@ cmd select-dirs &{{
 }}
 #### fzf
 cmd fzf_jump ${{
-    res=$(fish -c "fzf_pcp_normal $f//$1")
-    if [ -n "$res" ]; then
+    res=$(fish -c "fzf_pcp_normal $1")
+    if [[ -n "$res" ]]; then
         if [ -d "$res" ]; then
             cmd="cd"
         else
@@ -111,10 +125,11 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-o> :fzf_jump --type=d -H
-map <c-f> :fzf_jump  -d=3
-map <a-f> :fzf_jump  -H
+map <c-o> :fzf_jump '--type=d -H'
+map <c-f> :fzf_jump -d=3
+map <a-f> :fzf_jump -H
 ############ Copy paste ############
+map p :paste;clear;
 map yx :swapmode
 map dx :swapmode
 cmd swapmode ${{
@@ -290,6 +305,11 @@ cmd toggle_preview %{{
 }}
 map zp toggle_preview
 map zy $bat -p --paging=always "$HOME/.local/share/lf/files"
+map zh :set hidden!;top
+map zz ${{
+	result="$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
+	lf -remote "send $id cd \"$result\""
+}}
 ############ s------
 map ss :calcdirsize ; set info size ;set sortby size
 map st :set sortby time ; set info time ; set reverse true
@@ -316,6 +336,30 @@ map gosv $sudo -E nvim $fx
 map gdu $gdu .
 map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
+map gek $krita "$f"
+map gT thunar .
+map gti ${{
+	# prev_dir=$PWD
+	# git_root=$(git rev-parse --show-toplevel)
+	# cd $git_root
+	#
+	# mflile=$(realpath --relative-base=. $f)
+	# git update-index --skip-worktree "$mflile"
+	# cd $PWD
+	mflile=$(basename $f)
+	git update-index --skip-worktree "$mflile"
+}}
+map gtI ${{
+	prev_dir=$PWD
+	git_root=$(git rev-parse --show-toplevel)
+	cd $git_root
+
+	mfile=$(git ls-files -v . | grep ^S | fzf | awk '{print $2}')
+	git update-index --no-skip-worktree $mfile
+
+	cd $PWD
+}}
+map gi
 ########### pager
 map i $bat --paging=always "$f"
 ########### CMDmodes

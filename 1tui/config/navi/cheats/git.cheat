@@ -8,3 +8,12 @@ git clone --depth 1 <repo>
 
 # clone branch repo depth gcb1
 git clone --depth 1 --b <branch> <repo>
+
+# git skip wroktree
+git --update-index --skip-worktree <file>
+
+# git unskip wroktree
+git --update-index --no-skip-worktree <file>
+
+# git unskip wroktree
+git ls-files -v . | grep ^S | fzf | awk '{print $2}' | xargs git update-index --no-skip-worktree
