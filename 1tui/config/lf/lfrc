@@ -213,7 +213,12 @@ map yn copyname
 # apack
 map yzz push :pack7z<space>
 cmd pack7z ${{
-    apack "$1.7z" $fs
+		if [[ -z $1 ]]; then
+			_mname=$(basename "$fs")
+			apack "$_mname.7z" "$fs"
+		else
+			apack "$1.7z" "$fs"
+		fi
   }}
 ## rsync
 map ys :lfrsync
