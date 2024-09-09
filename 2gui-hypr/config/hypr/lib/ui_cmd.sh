@@ -161,12 +161,7 @@ open_term_sp() {
 		kitty -T "FTQCS$1" --class floatingkitty $2 &
 	fi
 }
-_flkt_dum() {
-	kitty --class flktdum fish -c "sleep 0.1&&echo todo" &
-}
 startTodo() {
-	_flkt_dum
-	# sleep 0.1
 	kitty --class flktmini1 peaclock &
 	sleep 0.1
 	kitty --class flkt7td -d ~/notes/ -o font_family='CaskaydiaCove Nerd Font Mono' -o font_size=18 nvim -n ~/notes/index.norg -c 'NeoTodo' &
@@ -177,13 +172,7 @@ open_notes() {
 	kitty -d ~/notes/ -o font_family='CaskaydiaCove Nerd Font Mono' -o font_size=18 nvim -c 'Neorg index' &
 }
 startTops() {
-	_flkt_dum
 	kitty -T "fltops-btm" --class flkt6tp btm &
-	# kitty btm &
-}
-startFLKT() {
-	_flkt_dum
-	kitty --class $1 $2 &
 }
 startCenter() {
 	if _need_confirm "Template One?"; then
