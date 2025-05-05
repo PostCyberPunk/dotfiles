@@ -3,7 +3,7 @@ if [[ "$EUID" = 0 ]]; then
 	exit 1
 fi
 yay -S --noconfirm --needed neovim gcc fzf fd ripgrep lazygit sudo nerd-fonts-profont luarocks || echo "!!!!!Installation Failed!!!!!"
-git clone https://github.com/postcypunk/Lazyvim ~/.config/nvim
+git clone https://github.com/postcyberpunk/nvim ~/.config/nvim
 
 # install
 
