@@ -77,6 +77,7 @@ declare -A menu_options=(
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
 	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
 	["cph PickColor(hex)"]="hyprpicker -f hex -a"
+	["ss serach with web"]="$rofiDir/web-search.sh"
 )
 
 # Main function

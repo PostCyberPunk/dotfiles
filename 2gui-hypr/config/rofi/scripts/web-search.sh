@@ -1,72 +1,49 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# -----------------------------------------------------------------------------
-# Info:
-#   author:    Miroslav Vidovic
-#   file:      web-search.sh
-#   created:   24.02.2017.-08:59:54
-#   revision:  ---
-#   version:   1.0
-# -----------------------------------------------------------------------------
-# Requirements:
-#   rofi
-# Description:
-#   Use rofi to search the web.
-# Usage:
-#   web-search.sh
-# -----------------------------------------------------------------------------
-# Script:
-
-declare -A URLS
-
-URLS=(
-  ["google"]="https://www.google.com/search?q="
-  ["bing"]="https://www.bing.com/search?q="
-  ["yahoo"]="https://search.yahoo.com/search?p="
-  ["duckduckgo"]="https://www.duckduckgo.com/?q="
-  ["yandex"]="https://yandex.ru/yandsearch?text="
-  ["github"]="https://github.com/search?q="
-  ["goodreads"]="https://www.goodreads.com/search?q="
-  ["stackoverflow"]="http://stackoverflow.com/search?q="
-  ["symbolhound"]="http://symbolhound.com/?q="
-  ["searchcode"]="https://searchcode.com/?q="
-  ["openhub"]="https://www.openhub.net/p?ref=homepage&query="
-  ["superuser"]="http://superuser.com/search?q="
-  ["askubuntu"]="http://askubuntu.com/search?q="
-  ["imdb"]="http://www.imdb.com/find?ref_=nv_sr_fn&q="
-  ["rottentomatoes"]="https://www.rottentomatoes.com/search/?search="
-  ["piratebay"]="https://thepiratebay.org/search/"
-  ["youtube"]="https://www.youtube.com/results?search_query="
-  ["vimawesome"]="http://vimawesome.com/?q="
+declare -A menu_options=(
+	["ba baidu"]="https://www.baidu.com/s?&wd="
+	["gg google"]="https://www.google.com/search?q="
+	["nxp nix pkgs"]="https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query="
+	["nxo nix options"]="https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=options&query="
+	["nog nixsearch"]="https://noogle.dev/q?term="
+	["ghh github"]="https://github.com/search?q="
+	["dg duckduckgo"]="https://duckduckgo.com/?t=h_&q="
+	["wk wikipedia"]="https://en.wikipedia.org/w/index.php?search="
+	["bi bing "]="https://www.bing.com/search?q="
+	["sof stackoverflow"]="http://stackoverflow.com/search?q="
+	["sc searchcode"]="https://searchcode.com/?q="
+	["ytb youtube"]="https://www.youtube.com/results?search_query="
+	["bl bilibili"]="https://search.bilibili.com/all?keyword="
+	["dbm"]="https://search.douban.com/movie/subject_search?search_text="
+	["dbb"]="https://search.douban.com/book/subject_search?search_text="
+	["aps"]="https://archlinux.org/packages/?sort=&q="
+	["aps"]="https://archlinux.org/packages/?sort=&q="
+	["aur"]="https://aur.archlinux.org/packages?O=0&K="
+	["awk"]="https://wiki.archlinux.org/index.php?search="
+	["qrf"]="https://www.google.com.hk/search?q=site%3Aquickref.me+"
+	["ghc"]="https://github.com/copilot/"
+	["ghs"]="https://github.com/PostCyberPunk?tab=stars&q="
+	["ghr"]="https://github.com/PostCyberPunk?tab=repositories&q="
 )
 
-# List for rofi
-gen_list() {
-    for i in "${!URLS[@]}"
-    do
-      echo "$i"
-    done
-}
-
 main() {
-  # Pass the list to rofi
-  platform=$( (gen_list) | rofi -dmenu -matching fuzzy -no-custom -location 0 -p "Search > " )
+	choice=$(
+		printf "%s\n" "${!menu_options[@]}" |
+			rofi -dmenu -config ~/.config/rofi/config-long.rasi \
+				-p "Rofi" \
+				-mesg "Hello" \
+				-max-history-size 0 \
+				-auto-select
+	)
 
-  if [[ -n "$platform" ]]; then
-    query=$( (echo ) | rofi  -dmenu -matching fuzzy -location 0 -p "Query > " )
+	if [ -z "$choice" ]; then
+		exit 1
+	fi
 
-    if [[ -n "$query" ]]; then
-      url=${URLS[$platform]}$query
-      xdg-open "$url"
-    else
-      exit
-    fi
-
-  else
-    exit
-  fi
+	engine="${menu_options[$choice]}"
+	ctx=$(echo "$choice" | rofi -dmenu -config ~/.config/rofi/tools/cmd.rasi)
+	[ "$ctx" = "$choice" ] && ctx=""
+	xdg-open "$engine""$ctx"
 }
 
 main
-
-exit 0
