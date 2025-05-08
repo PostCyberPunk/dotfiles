@@ -70,6 +70,10 @@ customCommands:
     context: 'commitFiles'
     description: 'Compare (difftool) with local copy'
     subprocess: true
+  - key: 'U'
+    command: "git submodule update --init --recursive"
+    context: "submodules"
+    description: "Init&Update all submodules"
   - key: "<c-v>"
     context: "global"
     description: "Create new conventional commit"
