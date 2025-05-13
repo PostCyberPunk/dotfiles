@@ -366,7 +366,15 @@ map gtI ${{
 }}
 map gi
 ########### pager
-map i $bat --paging=always "$f"
+
+map i ${{
+	# if is markdown file use glow else use bat
+  if [[ $f == *.md ]]; then
+    glow "$f" -p
+  else
+    bat -p --paging=always "$f"
+  fi
+}}
 ########### CMDmodes
 cmap <a-l> cmd-word
 cmap <a-h> cmd-word-back
