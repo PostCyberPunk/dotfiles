@@ -35,9 +35,9 @@ declare -A menu_options=(
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["cc Calculator"]="rofi -modi \"calc:$rofiDir/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/config-long.rasi"
-	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/config-long.rasi"
-	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/config-long.rasi"
+	["cc Calculator"]="rofi -modi \"calc:$rofiDir/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/cmd.rasi"
+	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/cmd.rasi"
+	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"
 	["trc Translation chinese"]="$RunCMD translate_shell zh:en"
 	["trv Translation voice"]="$RunCMD translate_shell -speak"
@@ -84,10 +84,11 @@ declare -A menu_options=(
 main() {
 	choice=$(
 		printf "%s\n" "${!menu_options[@]}" |
-			rofi -dmenu -config ~/.config/rofi/config-long.rasi \
+			rofi -dmenu -config ~/.config/rofi/cmd.rasi \
 				-p "Rofi" \
 				-mesg "Hello" \
 				-max-history-size 0 \
+				-matching normal \
 				-auto-select
 	)
 

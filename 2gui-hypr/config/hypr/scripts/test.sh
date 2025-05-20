@@ -2,7 +2,7 @@
 source ~/.config/hypr/lib/funcs.sh
 config_dir="$HOME/.config/waybar/configs"
 target_file="$HOME/.config/waybar/config"
-rofi_config="$HOME/.config/rofi/config-long.rasi"
+rofi_config="$HOME/.config/rofi/cmd.rasi"
 extens=""
 after_apply() {
 	# echo "done"
