@@ -2,13 +2,13 @@
 /* Catppuccin Mocha */
 
 * {
-/* font-family: "JetBrainsMono Nerd Font"; */
-font-weight: bold;
-min-height: 0;
-/* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-font-size: 100%;
-font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-/* padding: 1px; */
+  /* font-family: "JetBrainsMono Nerd Font"; */
+  font-weight: bold;
+  min-height: 0;
+  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+  font-size: 100%;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  /* padding: 1px; */
 }
 
 @import "./style/catppuccin-themes/mocha.css";
@@ -31,23 +31,26 @@ window#waybar.hidden {
 }
 
 /* This section can be use if you want to separate waybar modules */
-.modules-left, .modules-center, .modules-right {
-	background: @theme_base_color;
- 	border: 0.5px solid @overlay0;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
-	border-radius: 10px;
-
+.modules-left,
+.modules-center,
+.modules-right {
+  background-color: @surface0;
+  border: 0px solid @overlay0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+  padding-left: 4px;
+  border-radius: 6px;
 }
 
-.modules-left, .modules-center,.modules-right {
-  	/* border: 1px solid @blue; */
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+.modules-left,
+.modules-center,
+.modules-right {
+  /* border: 1px solid @blue; */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 4px;
+  padding-left: 4px;
 }
 
 #backlight,
@@ -97,10 +100,10 @@ window#waybar.hidden {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-right: 6px;
-	padding-left: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 6px;
+  padding-left: 6px;
 }
 
 #idle_inhibitor {
@@ -110,11 +113,11 @@ window#waybar.hidden {
 #backlight {
   color: @mauve;
 }
-#submap{
+#submap {
   background-color: @blue;
   /* border:1px solid @blue; */
-  color:@crust;
-  border-radius:10px;
+  color: @crust;
+  border-radius: 10px;
 }
 #battery {
   color: @green;
@@ -175,65 +178,64 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-  font-size:18;
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    padding-left: 4px;
-    padding-right: 4px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
+  font-size: 18;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
-
 
 #workspaces button.empty {
-	color: @surface2;
+  color: @surface2;
 }
 #workspaces button.special {
-	color: @pink;
+  color: @pink;
 }
 #workspaces button.urgent {
-  background-color : @red;
+  background-color: @red;
 }
-#workspaces button.visible{
-  background-color : @surface1;
+#workspaces button.visible {
+  background-color: @surface1;
 }
 
 #workspaces button.active {
-	color: @mauve;
+  color: @mauve;
   background-color: @surface2;
   /* border: 1px solid @mauve; */
   border-radius: 8px;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #workspaces button:hover {
-	border-radius: 10px;
-	color: @peach;
-	background-color: @surface2;
+  border-radius: 10px;
+  color: @peach;
+  background-color: @surface2;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #taskbar button {
   color: @lavender;
   /* border: 1px solid @lavender; */
-	/* background-color: @surface2; */
-    padding-left: 6px;
-    padding-right: 6px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+  /* background-color: @surface2; */
+  padding-left: 6px;
+  padding-right: 6px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 #taskbar button.active {
   /* border: 1px solid @lavender; */
-	background-color: @overlay0;
+  background-color: @overlay0;
 }
 
 #taskbar button:hover {
-	/* color: @peach; */
+  /* color: @peach; */
   /* border: 2px solid @peach; */
-	background-color: @overlay1;
+  background-color: @overlay1;
 }
 
 #custom-menu {
@@ -275,17 +277,15 @@ window#waybar.hidden {
   color: @red;
 }
 
-#custom-cycle_wall
-{
+#custom-cycle_wall {
   color: @mauve;
 }
-#window
-{
+#window {
   color: @mauve;
 }
 
 #custom-waybar-mpris {
-  color:@lavender;
+  color: @lavender;
 }
 
 #network {
@@ -298,41 +298,41 @@ window#waybar.hidden {
   color: @text;
 }
 #pulseaudio-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+  min-width: 0px;
+  min-height: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
 }
 
 #pulseaudio-slider trough {
-	min-width: 80px;
-	min-height: 5px;
-	border-radius: 5px;
+  min-width: 80px;
+  min-height: 5px;
+  border-radius: 5px;
 }
 
 #pulseaudio-slider highlight {
-	min-height: 10px;
-	border-radius: 5px;
+  min-height: 10px;
+  border-radius: 5px;
 }
 
 #backlight-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+  min-width: 0px;
+  min-height: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
 }
 
 #backlight-slider trough {
-	min-width: 80px;
-	min-height: 10px;
-	border-radius: 5px;
+  min-width: 80px;
+  min-height: 10px;
+  border-radius: 5px;
 }
 
 #backlight-slider highlight {
-	min-width: 10px;
-	border-radius: 5px;
+  min-width: 10px;
+  border-radius: 5px;
 }
