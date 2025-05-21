@@ -2,15 +2,9 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Configuration For Rofi Version: 1.7.3
  **/
-
-
-//@import "~/.config/rofi/colors/catppuccin.rasi"
-//@import "~/.config/rofi/launchers/type-1/style-7.rasi"
-@import "global.rasi"
-
 configuration {
 	/*---------- General setting ----------*/
 	modi: "drun,run,filebrowser,window";
@@ -20,13 +14,13 @@ configuration {
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-//	icon-theme: "Papirus";
+	icon-theme: "Catppuccin-Mocha";
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/
 
 	/*---------- Matching setting ----------*/
-	matching: "normal";
+	matching: "fuzzy";
 	tokenize: true;
 
 	/*---------- SSH settings ----------*/
@@ -87,8 +81,8 @@ configuration {
 	display-filebrowser: "Files";
 
 	/*---------- Misc setting ----------*/
-	terminal: "rofi-sensible-terminal";
-  font: "CaskaydiaCove Nerd Font Mono 12";
+	// terminal: "rofi-sensible-terminal";
+	//  font: "CaskaydiaCove Nerd Font Mono 12";
 	//font: "Mono 12";
 	sort: false;
 	threads: 0;

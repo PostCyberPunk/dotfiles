@@ -1,4 +1,4 @@
-@import "./theme.rasi"
+@import "../theme.rasi"
 window {
     width:40%;
     height:39%;

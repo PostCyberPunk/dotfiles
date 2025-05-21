@@ -26,7 +26,7 @@ notification() {
 
 # Main function
 main() {
-	choice=$(printf "%s\n" "${!menu_options[@]}" | rofi -dmenu -config ~/.config/rofi/cmd.rasi -i -p "")
+	choice=$(printf "%s\n" "${!menu_options[@]}" | rofi -dmenu -config ~/.config/rofi/tools/cmd.rasi -i -p "")
 
 	if [ -z "$choice" ]; then
 		exit 1

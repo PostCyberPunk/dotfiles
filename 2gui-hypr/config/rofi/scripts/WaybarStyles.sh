@@ -7,7 +7,7 @@ IFS=$'\n\t'
 config_dir="$HOME/.config/waybar/style"
 waybar_config="$HOME/.config/waybar/style.css"
 scripts_dir="$HOME/.config/hypr/scripts"
-rofi_config="$HOME/.config/rofi/cmd.rasi"
+rofi_config="$HOME/.config/rofi/tools/cmd.rasi"
 
 # Function to display menu options
 menu() {

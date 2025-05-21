@@ -29,7 +29,7 @@ declare -A menu_options=(
 main() {
 	choice=$(
 		printf "%s\n" "${!menu_options[@]}" |
-			rofi -dmenu -config ~/.config/rofi/cmd.rasi \
+			rofi -dmenu -config ~/.config/rofi/tools/cmd.rasi \
 				-p "Rofi" \
 				-mesg "Hello" \
 				-max-history-size 0 \

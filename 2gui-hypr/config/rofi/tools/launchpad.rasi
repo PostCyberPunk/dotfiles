@@ -1,18 +1,12 @@
 /* MACOS LAUNCHPAD LIKE THEME FOR ROFI */
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
-@import "~/.config/rofi/colors/catppuccin.rasi"
+@import "~/.config/rofi/theme.rasi"
 * {
-    font: "ProFont IIx Nerd Font Mono 12";
 
-    bg0:  #24242480;
-    bg1:  #363636;
     bg2:  #f5f5f520;
     bg3:  #f5f5f540;
     bg4:  #CBA6F7DF;
-
-    fg0:  #CDD6F4DF;
-    fg1:  #f5f5f580;
 
     background-color: transparent;
     text-color:       @fg0;
@@ -28,13 +22,16 @@ window {
 }
 
 mainbox {
+	margin:2%;
   padding:  8px;
+  background-color: @bg1;
+	border-radius:20px;
 }
 
 inputbar {
   background-color: @bg2;
 
-  margin:   10px calc( 30% - 120px );
+  margin:   10px calc( 40% - 120px );
   padding:  12px 4px;
   spacing:  4px;
 
@@ -43,6 +40,7 @@ inputbar {
   border-color:   @bg3;
 
   children: [icon-search,entry];
+  children: [entry];
 }
 
 prompt {
@@ -50,37 +48,44 @@ prompt {
 }
 
 icon-search {
-  expand:   true;
+  expand:   false;
+  padding:  0px 16px;
   filename: "search";
   vertical-align: 0.5;
 }
 
 entry {
-  placeholder:        "hello";
-  placeholder-color:  @bg2;
+  placeholder:        "";
+  placeholder-color:  @bg0;
+  horizontal-align: 0.5;
+	font:"ProFontIIx Nerd Font Mono 14";
 }
 
 listview {
   margin:   48px calc( 30% - 560px );
   spacing:  48px;
-  columns:  7;
+  columns:  8;
   fixed-columns: true;
+}
+
+element {
+  padding:      1em;
+  spacing:      1em;
+
+  orientation:    vertical;
+  border-radius:  16px;
 }
 
 element, element-text, element-icon {
   cursor: pointer;
 }
 
-element {
-  padding:      8px;
-  spacing:      4px;
-
-  orientation:    vertical;
-  border-radius:  16px;
-}
 
 element selected {
-  background-color: @bg4;
+  background-color: @bg2;
+}
+element-text selected.normal {
+		text-color:@fg1;
 }
 
 element-icon {
@@ -90,4 +95,6 @@ element-icon {
 
 element-text {
   horizontal-align: 0.5;
+	font:"20";
+	text-color:@text;
 }

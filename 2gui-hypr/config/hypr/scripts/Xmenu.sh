@@ -32,12 +32,12 @@ declare -A menu_options=(
 	["ttp ToggleTouchPad"]="$RunCMD toggle_touchpad"
 	["sww reboot"]="$RunCMD reboot_swww"
 	#rofi
-	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
+	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launchpad.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $HOME/.config/rofi/calc.rasi"
-	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/cmd.rasi"
-	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/cmd.rasi"
+	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $HOME/.config/rofi/tools/calc.rasi"
+	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/tools/cmd.rasi"
+	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/tools/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"
 	["trc Translation chinese"]="$RunCMD translate_shell zh:en"
 	["trv Translation voice"]="$RunCMD translate_shell -speak"
@@ -84,7 +84,7 @@ declare -A menu_options=(
 main() {
 	choice=$(
 		printf "%s\n" "${!menu_options[@]}" |
-			rofi -dmenu -config ~/.config/rofi/cmd.rasi \
+			rofi -dmenu -config ~/.config/rofi/tools/cmd.rasi \
 				-p "Rofi" \
 				-mesg "Hello" \
 				-max-history-size 0 \
