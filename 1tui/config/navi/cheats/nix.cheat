@@ -1,0 +1,24 @@
+% nix,nixos
+
+# nrb
+nh os switch ~/Snowfiled/ -H $hostname
+
+# ndrb
+nh os switch -n ~/Snowfiled/ -H $hostname
+
+# nuv update_pcp_nvimk
+nix flake update --flake ~/Snowfiled/  pcp-nvim
+
+# nus update_secrets
+nix flake update --flake ~/Snowfiled/  mySecrets
+
+# nHH history of current systme
+nix profile diff-closures --profile /nix/var/nix/profiles/system
+
+# nvd compare 2 version
+nvd diff /run/current-system /nix/var/nix/profiles/
+
+$input: nh search <SearchNixpkgs> | fzf --ansi | awk '{print $1}'
+
+# nsp
+nix-shell -p <input>

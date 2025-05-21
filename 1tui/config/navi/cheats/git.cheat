@@ -1,7 +1,10 @@
 % git, code
-
+$clip: cliphist list | head -1 | awk '{print $2}'|tv
 # gcc
 git clone <repo>
+
+# gccy
+git clone <clip>
 
 # gc1
 git clone --depth 1 <repo>
