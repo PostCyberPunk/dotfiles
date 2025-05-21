@@ -35,7 +35,7 @@ declare -A menu_options=(
 	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launcher.rasi"
 	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
 	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["cc Calculator"]="rofi -modi \"calc:$rofiDir/rofi-calc.sh\" -show calc -theme $HOME/.config/rofi/cmd.rasi"
+	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $HOME/.config/rofi/calc.rasi"
 	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/cmd.rasi"
 	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"

@@ -1,0 +1,23 @@
+@import "./cmd.rasi"
+
+message {
+    enabled:true;
+    text-color:red;
+		location:center;
+}
+imagebox {
+    children:[ "inputbar", "message", "listbox" ];
+}
+element-text selected.normal {
+		text-color:@fg1;
+}
+
+textbox {
+    padding:16px;
+    vertical-align:0.5;
+    horizontal-align:0.5;
+		text-color:@fg2;
+    blink:true;
+    markup:true;
+		location:center;
+}
