@@ -35,8 +35,7 @@ clipboard_manager() {
 }
 
 translate_shell() {
-	local transtext=$(rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 450px;}' \
-		-theme-str 'mainbox {children: [ "inputbar" ];}' -dmenu)
+	local transtext=$(rofi -theme ~/.config/rofi/tools/inputs.rasi -dmenu)
 	if [[ $transtext = "" ]]; then
 		transtext=$(wl-paste)
 	fi

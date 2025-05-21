@@ -25,18 +25,15 @@ noti_c() {
 }
 
 _confirm_rofi() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
-		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
-		-theme-str 'listview {columns: 2; lines: 1;}' \
-		-theme-str 'element-text {horizontal-align: 0.5;}' \
-		-theme-str 'textbox {horizontal-align: 0.5;}' \
+	rofi -theme $HOME/.config/rofi/tools/confirm.rasi \
 		-kb-accept-entry 'Return,space' \
+		-selected-row 1 -no-show-match -no-sort \
 		-dmenu \
 		-mesg "$1"
 	# -theme ${dir}/${theme}.rasi
 }
 _need_confirm() {
-	local _result="$(echo -e "No\nYes" | _confirm_rofi "$1")"
+	local _result="$(echo -e "Yes\nNo" | _confirm_rofi "$1")"
 	if [[ "$_result" == "Yes" ]]; then
 		return 0
 	else

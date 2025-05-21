@@ -1,0 +1,54 @@
+@import "./cmd.rasi"
+window {
+		width:16em;
+		height:8em;
+		location:center;
+		// height: 6em;
+		background-color:transparent;
+}
+mainbox {
+    children:[ "message","listview"];
+		background-color:transparent;
+		spacing:0.5em;
+}
+message {
+		margin:0px 0px 0px 0px;
+		// padding:48px;
+    enabled:true;
+		location:center;
+}
+listview {
+		flow:Horizontal;
+		columns: 2;
+		spacing:1em;
+}
+element  {
+    padding:10px;
+		background-color:transparent;
+    cursor:pointer;
+}
+element-text {
+		anchor:center;
+		horizontal-align: 0.5;
+    vertical-align:0.5;
+}
+element-text selected.normal {
+		anchor:center;
+		text-color:@fg1;
+    vertical-align:0.5;
+    horizontal-align:0.5;
+}
+element selected.normal {
+		background-color:@bg1;
+}
+
+textbox {
+    padding:16px;
+		anchor:center;
+    vertical-align:0.5;
+    horizontal-align:0.5;
+		text-color:@fg2;
+    blink:true;
+    markup:true;
+		location:center;
+}

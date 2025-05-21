@@ -1,0 +1,11 @@
+@import "./cmd.rasi"
+window {
+		width: 42em;
+		height:4em;
+}
+mainbox {
+    children:[ "inputbar"];
+}
+inputbar{
+	padding:10px;
+}

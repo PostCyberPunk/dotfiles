@@ -2,7 +2,10 @@
 * {
 	font:"ProFontIIx Nerd Font Mono 12";
 	background-color:transparent;
-	border:0px solid;
+	border:0px;
   border-color:transparent;
+	margin:0em;
+  padding:0em;
+  spacing:0em;
 	text-color:@fg0;
 }

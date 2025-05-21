@@ -4,7 +4,7 @@
 iDIR="$HOME/.config/swaync/icons"
 RunCMD="$HOME/.config/hypr/scripts/RunCMD.sh"
 scriptsDir="$HOME/.config/hypr/scripts"
-rofiDir="$HOME/.config/rofi/scripts"
+rofiDir="$HOME/.config/rofi"
 
 # Note: You can add more options below with the following format:
 # ["TITLE"]="link"
@@ -12,32 +12,30 @@ rofiDir="$HOME/.config/rofi/scripts"
 # Define menu options as an associative array
 declare -A menu_options=(
 	#fzf
-	["wp WallpaperSwitcher"]="kitty -T \"WallpaperSwitcher\" --class flkt_fzf bash $RunCMD wallpaper_switcher"
-	["cb Clipboard"]="kitty -T \"ClipManager\" --class flkt_fzf bash $RunCMD clipboard_manager"
+	["wp WallpaperSwitcher"]="kitty -o background_opacity=0.5 -T \"WallpaperSwitcher\" --class flkt_fzf bash $RunCMD wallpaper_switcher"
+	["cb Clipboard"]="kitty -o background_opacity=0.5 -T \"ClipManager\" --class flkt_fzf bash $RunCMD clipboard_manager"
 	#waybar
 	["wbt ToggleWaybar"]="killall -SIGUSR1 waybar"
-	["wbs WaybarStyles"]="$rofiDir/WaybarStyles.sh"
-	["wbl WaybarLayout"]="$rofiDir/WaybarLayout.sh"
-	["wbr Reload Waybar"]="$RunCMD reload_waybar"
+	["wbs WaybarStyles"]="$rofiDir/scripts/WaybarStyles.sh"
+	["wbl WaybarLayout"]="$rofiDir/scripts/WaybarLayout.sh"
+	["wbr reload Waybar"]="$RunCMD reload_waybar"
 	["wbu Update Waybar"]="$RunCMD update_waybar"
 	#hypr
-	["hpr Reload hyprland"]="$RunCMD reload_hypr"
+	["hpr reload hyprland"]="$RunCMD reload_hypr"
 	["hpa Toggle hyprland animation"]="$RunCMD toggle_animation"
-	["rld Reload All"]="$RunCMD reload_all"
+	["rld reload All"]="$RunCMD reload_all"
 	["gm GameMode"]="$RunCMD toggle_gamemode"
 	["blur ChangeBlur"]="$RunCMD toggle_blur"
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
 	["wop1 enable_opaque"]="$RunCMD enable_opaque"
 	["wop0 disable_opaque"]="$RunCMD disable_opaque"
 	["ttp ToggleTouchPad"]="$RunCMD toggle_touchpad"
-	["sww reboot"]="$RunCMD reboot_swww"
+	["sw reloadWallpapaer"]="$RunCMD reboot_swww"
 	#rofi
-	["; Launcher"]="rofi -show drun -theme $HOME/.config/rofi/launchers/launchpad.rasi"
-	["rd RofiBeats"]="$rofiDir/RofiBeats.sh"
-	["emj RofiEmoji"]="$rofiDir/RofiEmoji.sh"
-	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $HOME/.config/rofi/tools/calc.rasi"
-	["fd Finder"]="rofi -modi \"find:$rofiDir/finder.sh\" -show find -theme $HOME/.config/rofi/tools/cmd.rasi"
-	# ["tr Translation"]="fish -c rofi_trans -theme $HOME/.config/rofi/tools/cmd.rasi"
+	["; Launcher"]="rofi -show drun -theme $rofiDir/tools/launchpad.rasi"
+	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $rofiDir/tools/calc.rasi"
+	["ww WindowSwitcher"]="rofi -show window -modi window calc -theme $rofiDir/tools/long.rasi"
+	# ["tr Translation"]="fish -c rofi_trans -theme $rofiDir/tools/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"
 	["trc Translation chinese"]="$RunCMD translate_shell zh:en"
 	["trv Translation voice"]="$RunCMD translate_shell -speak"
@@ -75,9 +73,9 @@ declare -A menu_options=(
 	["vrpf vr disable proximity sensor"]="adb shell am broadcast -a com.oculus.vrpowermanager.prox_close"
 	#Utils
 	["mnt MountDisk"]="$rofiDir/rofi-usb-mount.sh"
-	["cp PickColor(RGB)"]="hyprpicker -f rgb -a"
+	["cp PickColor(rgb)"]="hyprpicker -f rgb -a"
 	["cph PickColor(hex)"]="hyprpicker -f hex -a"
-	["ss serach with web"]="$rofiDir/web-search.sh"
+	["ss serach with web"]="$rofiDir/scripts/web-search.sh"
 )
 
 # Main function

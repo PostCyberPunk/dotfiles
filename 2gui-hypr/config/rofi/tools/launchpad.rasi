@@ -1,6 +1,9 @@
 /* MACOS LAUNCHPAD LIKE THEME FOR ROFI */
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
+configuration {
+
+}
 @import "~/.config/rofi/theme.rasi"
 * {
 
@@ -64,7 +67,7 @@ entry {
 listview {
   margin:   48px calc( 30% - 560px );
   spacing:  48px;
-  columns:  8;
+  columns:  9;
   fixed-columns: true;
 }
 
@@ -89,12 +92,12 @@ element-text selected.normal {
 }
 
 element-icon {
-  size: 4em;
+  size: 2.2em;
   horizontal-align: 0.5;
 }
 
 element-text {
   horizontal-align: 0.5;
-	font:"20";
+	// font:"30";
 	text-color:@text;
 }
