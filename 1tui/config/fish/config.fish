@@ -4,6 +4,7 @@ if status is-login
         source ~/.config/fish/extra_login.fish
     end
 end
+# \e=alt \c=ctrl
 function fish_user_key_bindings
     bind \e\cv 'fish_commandline_prepend "proxychains "'
     bind \e\[1\;3P 'fish_commandline_append " -h|nvim -RMn"'
@@ -20,6 +21,7 @@ function fish_user_key_bindings
         bind -M $mode \e/ 'fish_commandline_prepend "history delete -eC \"";fish_commandline_append "\""'
         bind -M $mode \en 'fish_commandline_append "| nvim"'
         bind -M $mode \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
+        bind -M $mode \eo 'set old_tty (stty -g); stty sane; sudo -E lf; stty $old_tty; commandline -f repaint'
         bind -M $mode \cH backward-kill-word
     end
 
@@ -79,8 +81,8 @@ set --global tide_character_icon 
 fish_add_path ~/.spicetify
 fish_add_path ~/.cargo/bin
 ########### Variables ###########
-set -gx EDITOR /usr/bin/nvim
-set -gx VISUAL /usr/bin/nvim
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 ########### Enviromental ###########
 set -gx LS_COLORS "$(vivid generate catppuccin-mocha)"
