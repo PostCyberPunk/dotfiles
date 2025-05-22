@@ -251,3 +251,7 @@ grab_special() {
 	easyfocus-hyprland
 	hyprctl dispatch movetoworkspace $(get_active_workspace)
 }
+start_fum() {
+	_state=$(pkill fum || kitty -o "background_opacity=0" --class fum -e fum)
+	$_state
+}
