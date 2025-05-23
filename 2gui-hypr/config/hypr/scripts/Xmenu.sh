@@ -35,6 +35,7 @@ declare -A menu_options=(
 	["; Launcher"]="rofi -show drun -theme $rofiDir/tools/launchpad.rasi"
 	["= Calculator"]="rofi -show calc -modi calc -no-show-match -no-sort -theme $rofiDir/tools/calc.rasi"
 	["ww WindowSwitcher"]="rofi -show window -modi window calc -theme $rofiDir/tools/long.rasi"
+	["rbw bitwarden"]="rofi-rbw"
 	["nmc networkmanager"]="$rofiDir/scripts/networkmanager.sh"
 	# ["tr Translation"]="fish -c rofi_trans -theme $rofiDir/tools/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"
