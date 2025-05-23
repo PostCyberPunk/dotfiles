@@ -125,9 +125,21 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-o> :fzf_jump '--type=d -H'
-map <c-f> :fzf_jump -d=3
-map <a-f> :fzf_jump -H
+cmd tv_jump ${{
+    res=$(fd $1 .| tv -p ":files:" )
+    if [[ -n "$res" ]]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-o> :tv_jump -Htd
+map <c-f> :tv_jump -d=3
+map <a-f> :tv_jump -H
 ############ Copy paste ############
 map p :paste;clear;
 map yx :swapmode
