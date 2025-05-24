@@ -49,6 +49,7 @@ declare -A menu_options=(
 	["ml MonitorLayout"]="kitty -T \"MonitorLayout\" --class flkt_fzf bash $RunCMD monitor_switcher"
 	["gpu GPU Switcher"]="kitty -T \"GPU_Switcher\" --class flkt_fzf bash $RunCMD gpu_switcher"
 	["cn Close Notifactions"]="swaync-client -C"
+	["nc  notifactioncenter"]="swaync-client -t -sw"
 	["DM0"]="$RunCMD disable_edp1"
 	["DM1"]="$RunCMD enable_edp1"
 	["cl toggle fan mode"]="$RunCMD toggle_cooler"
