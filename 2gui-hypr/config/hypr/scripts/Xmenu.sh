@@ -37,6 +37,7 @@ declare -A menu_options=(
 	["ww WindowSwitcher"]="rofi -show window -modi window calc -theme $rofiDir/tools/long.rasi"
 	["rbw bitwarden"]="rofi-rbw"
 	["nmc networkmanager"]="$rofiDir/scripts/networkmanager.sh"
+	["blt bluetoothctl"]="rofi-bluetooth false -theme ~/.config/rofi/tools/cmd.rasi"
 	# ["tr Translation"]="fish -c rofi_trans -theme $rofiDir/tools/cmd.rasi"
 	["trs Translation"]="$RunCMD translate_shell"
 	["trc Translation chinese"]="$RunCMD translate_shell zh:en"
