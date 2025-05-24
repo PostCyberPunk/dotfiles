@@ -255,3 +255,7 @@ start_fum() {
 	_state=$(pkill fum || kitty -o "background_opacity=0" --class fum -e fum)
 	$_state
 }
+start_kew() {
+	_state=$(pkill kew || kitty -o "background_opacity=0" --class flkt7kew -e kew)
+	$_state
+}

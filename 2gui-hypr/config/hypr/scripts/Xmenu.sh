@@ -64,6 +64,7 @@ declare -A menu_options=(
 	["bp1 center template"]="$RunCMD startCenter"
 	["td todo notes"]="$RunCMD open_notes"
 	["fum"]="$RunCMD start_fum"
+	["kew"]="$RunCMD start_kew"
 	#VR
 	["vr0 disable vrboot"]="$RunCMD vrboot 0"
 	["vr1 enable vrboot"]="$RunCMD vrboot 1"
