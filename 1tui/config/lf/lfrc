@@ -341,6 +341,7 @@ cmd follow_link %{{
 ############ open-----------
 map gwp $bash ~/.config/hypr/scripts/RunCMD.sh change_wallpaper "$f"
 map gb $bash "$f"
+map goi $vimiv $f --command 'enter thumbnail'
 map gov $nvim $fx
 map goV $nvim $dir
 map gop $python "$f"
