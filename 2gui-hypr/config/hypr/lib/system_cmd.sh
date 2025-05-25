@@ -93,3 +93,15 @@ lock_screen() {
 	swaylock --config ${LOCKCONFIG} &
 	disown
 }
+get_su() {
+	kitty -o background_opacity=0.8 --class flkt5 -e sudo -v
+	sudo -nv
+	if sudo -nv; then
+		noti_n "Superuser Auth Succeed"
+	else
+		noti_c "Superuser Auth Failed"
+	fi
+}
+reset_su() {
+	sudo -k && noti_n "Superuser Privilege Reset"
+}

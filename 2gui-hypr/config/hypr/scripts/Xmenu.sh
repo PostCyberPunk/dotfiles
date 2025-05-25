@@ -53,6 +53,8 @@ declare -A menu_options=(
 	["DM0"]="$RunCMD disable_edp1"
 	["DM1"]="$RunCMD enable_edp1"
 	["cl toggle fan mode"]="$RunCMD toggle_cooler"
+	["sdv validate superuser credential"]="$RunCMD get_su"
+	["sdk reset superuser privilege"]="$RunCMD reset_su"
 	#App
 	["ff firefox"]="firefox"
 	["vb VitrualBox"]="virtualbox"
