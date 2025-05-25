@@ -1,5 +1,8 @@
 % git, code
 $clip: cliphist list | head -1 | awk '{print $2}'|tv
+$short-hash: tv git-log | cut -d ' ' -f 1
+$source: lf --print-selection
+$target: lf --print-selection
 # gcc
 git clone <repo>
 
@@ -20,3 +23,9 @@ git --update-index --no-skip-worktree <file>
 
 # git unskip wroktree
 git ls-files -v . | grep ^S | fzf | awk '{print $2}' | xargs git update-index --no-skip-worktree
+
+# gco git checkout
+git checkout <short-hash>
+
+# nvim diff two file
+nvim -d <source> <target>

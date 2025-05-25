@@ -1,6 +1,6 @@
 % misc random software
 
-$files5: fd -d5 -td .|tv -p "eza -lA --icons {0}"
+$files5: fd -d5 -td .|tv -p "eza -lA --color=always --icons=always {0}"
 
 # rclone tera mount
 rclone mount tera: <files5> --config=./.config/rclone/rclone.conf --allow-non-empty --vfs-cache-mode full --vfs-cache-max-age 48h --vfs-cache-max-size 5G --cache-dir /tmp/cache --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --buffer-size 128M --umask 000 &
@@ -15,3 +15,6 @@ sudo mount /dev/<disks> <mountp> && cd <mountp>
 sudo umount <mounted>
 # unmount all
 lsblk -ln -o PATH,SIZE,MOUNTPOINT | awk '$3 != "/" && $3 != "/boot" && $3 != "/nix/store/" && $3 != "" {print $1}' | xargs -r sudo umount
+
+# decode 64 urlencoded
+cliphist list | head -1 | base64 -d | python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.stdin.read()))" | tv

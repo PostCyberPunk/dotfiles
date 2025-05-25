@@ -1,5 +1,8 @@
 % nix,nixos
 
+$old_system: sudo fd -tl . --full-path /nix/var/nix/profiles/ | sort --reverse | tv -p "eza -lA --icons always --color always"
+$pkg: nh search <SearchNixpkgs> | fzf --ansi | awk '{print $1}'
+$profile : nix profile list | tv |  awk '{print $2}'
 # nrb
 nh os switch ~/Snowfiled/ -H $hostname
 
@@ -12,13 +15,29 @@ nix flake update --flake ~/Snowfiled/  pcp-nvim
 # nus update_secrets
 nix flake update --flake ~/Snowfiled/  mySecrets
 
+# nun udpate_nixpkgs
+nix flake update --flake ~/Snowfiled/  nixpkgs
+
+# nuu udpate_nixpkgs
+nix flake update --flake ~/Snowfiled/  nixpkgs-unstable
+
 # nHH history of current systme
 nix profile diff-closures --profile /nix/var/nix/profiles/system
 
 # nvd compare 2 version
-nvd diff /run/current-system /nix/var/nix/profiles/
-
-$input: nh search <SearchNixpkgs> | fzf --ansi | awk '{print $1}'
+nvd diff <old_system> /run/current-system
 
 # nsp
-nix-shell -p <input>
+nix-shell -p <pkg>
+
+# flake fowllow system
+nix flake lock --override-input nixpkgs github:NixOS/nixpkgs/$(jq .nodes.nixpkgs.locked.rev ~/Snowfiled/flake.lock)
+
+# npr profile remove
+nix profile remove <profile>
+
+# npl profile list
+nix profile list
+
+# clean profile
+nh clean profile -k <GenerationToKeep> /nix/var/nix/profiles/system/

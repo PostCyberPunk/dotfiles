@@ -1,0 +1,15 @@
+% system
+
+$proc: procs --color always | fzf --ansi | awk '{print $1}'
+# kill
+kill <proc>
+
+$secret-name:rbw list | tv
+$secret-item:rbw get "<secret-name>"
+$ssh-private: echo -e "$(rbw get $(rbw list | tv ))" > id_ed25519 ; echo $? ; chmod 600 ./id_ed25519
+# get secret from rbw
+<secret-item>
+# get ssh private key from rbw
+<ssh-private>
+# get disk uuid
+lsblk -lf -o PATH,TYPE,UUID,MOUNTPOINT|tv|awk '{print $3}'|wl-copy
