@@ -15,6 +15,7 @@ function fish_user_key_bindings
     bind -M insert \cn down-or-search
     bind -M insert \ef forward-word
     bind -M insert \cf forward-char
+    bind y,y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
     for mode in default insert command
         bind -M $mode \ce 'fish_commandline_prepend "sudo -E nvim"'
         bind -M $mode \c_ accept-autosuggestion execute
