@@ -73,11 +73,17 @@ set --global tide_prompt_transient_enabled true
 # set --global tide_character_vi_icon_default 
 # set --global tide_character_vi_icon_default 󰻃
 # set --global tide_character_vi_icon_default 
-set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 󰘧
 # set --global tide_character_vi_icon_default 󰁎
-# set --global tide_character_icon 
-set --global tide_character_icon 
+set --global tide_character_vi_icon_default ?
+# set --global tide_character_vi_icon_default 
+########
+# set --global tide_character_icon 
+# set --global tide_character_icon 
+set --global tide_character_icon 
 ############ path ###########
+fish_add_path ~/.local/bin
 fish_add_path ~/.spicetify
 fish_add_path ~/.cargo/bin
 ########### Variables ###########
