@@ -106,4 +106,5 @@ set -gx FZF_DEFAULT_OPTS "\
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
 ###### init #########
-zoxide init fish | source
+zoxide init fish | head -n-3 | source
+tv init fish | source

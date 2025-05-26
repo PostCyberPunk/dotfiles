@@ -130,7 +130,7 @@ fallback_channel = "files"
 # "files" = ["cat", "cp"]
 # ```
 "alias" = ["alias", "unalias"]
-"env" = ["export", "unset"]
+"env" = ["export", "unset", "env", "set"]
 "dirs" = ["cd", "eza", "rmdir"]
 "files" = [
 	"cat",
@@ -163,6 +163,7 @@ fallback_channel = "files"
 	"git pull",
 	"git push",
 ]
+"git-log" = ["git diff"]
 "docker-images" = ["docker run"]
 "git-repos" = ["nvim", "code", "hx", "git clone"]
 "env-var" = ["env", "set"]
