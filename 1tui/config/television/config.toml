@@ -165,12 +165,13 @@ fallback_channel = "files"
 ]
 "docker-images" = ["docker run"]
 "git-repos" = ["nvim", "code", "hx", "git clone"]
+"env-var" = ["env", "set"]
 
 
 [shell_integration.keybindings]
 # controls which key binding should trigger tv
 # for shell autocomplete
-"smart_autocomplete" = "ctrl-m"
+"smart_autocomplete" = "ctrl-t"
 # controls which keybinding should trigger tv
 # for command history
-"command_history" = "ctrl-n"
+"command_history" = "ctrl-r"

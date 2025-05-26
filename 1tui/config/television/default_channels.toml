@@ -25,6 +25,12 @@ name = "docker-images"
 source_command = "docker image list --format \"{{.ID}}\""
 preview_command = "docker image inspect {0} | jq -C"
 
+# system env-var
+[[cable_channel]]
+name = "env-var"
+source_command = "printenv | cut -d '=' -f1"
+preview_command = "printenv {0}"
+
 # S3
 [[cable_channel]]
 name = "s3-buckets"

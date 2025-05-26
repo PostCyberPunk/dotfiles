@@ -24,11 +24,13 @@ function fish_user_key_bindings
         bind -M $mode \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
         bind -M $mode \eo 'set old_tty (stty -g); stty sane; sudo -E lf; stty $old_tty; commandline -f repaint'
         bind -M $mode \cH backward-kill-word
+        bind -M $mode \cT tv_smart_autocomplete
+        bind -M $mode \cR tv_shell_history
+        bind -M $mode \eg _navi_smart_replace
+        bind -M $mode \cg _my_navi
     end
 
     # navi
-    bind -M insert \eg _navi_smart_replace
-    bind -M insert \cg _my_navi
     # bind -M issert \cg 'navi;'
 end
 
@@ -58,9 +60,9 @@ if status is-interactive
     ###fish fzf
     set fzf_preview_file_cmd fzf_pcp_previewer
     set fish_fzf_default_opts --cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"
-    for temp_mode in fzf_directory_opts fzf_git_log_opts fzf_git_status_opts fzf_history_opts fzf_processes_opts fzf_variables_opts
-        set $temp_mode $fish_fzf_default_opts
-    end
+    # for temp_mode in fzf_directory_opts fzf_git_log_opts fzf_git_status_opts fzf_history_opts fzf_processes_opts fzf_variables_opts
+    #     set $temp_mode $fish_fzf_default_opts
+    # end
     ########### Fix ###########
     abbr --add dotdot --regex '^\.\.+$' --function multicd
 end
