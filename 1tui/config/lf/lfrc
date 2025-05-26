@@ -126,7 +126,7 @@ cmd fzf_jump ${{
     fi
 }}
 cmd tv_jump ${{
-    res=$(fd $1 .| tv -p ":files:" )
+    res=$(fd $1 .| tv --custom-header "FILES" -p "$2" )
     if [[ -n "$res" ]]; then
         if [ -d "$res" ]; then
             cmd="cd"
@@ -137,9 +137,9 @@ cmd tv_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-o> :tv_jump -Htd
-map <c-f> :tv_jump -d=3
-map <a-f> :tv_jump -H
+map <c-o> :tv_jump -Htd 'eza -lA --icons always --color=always {}'
+map <c-f> :tv_jump -d=3 ":files:"
+map <a-f> :tv_jump -H ":files:"
 ############ Copy paste ############
 map p :paste;clear;
 map yx :swapmode
