@@ -54,6 +54,9 @@ if status is-interactive
     alias lg="lazygit"
     alias slf="sudo -u $USER lf"
     alias zj="zellij"
+    #######
+    alias z="zoxide"
+    alias cd="z"
     ########### Prompt and Plugins ###########
     ########### Variables ###########
     set fish_greeting
@@ -102,3 +105,5 @@ set -gx FZF_DEFAULT_OPTS "\
 --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
+###### init #########
+zoxide init fish | source
