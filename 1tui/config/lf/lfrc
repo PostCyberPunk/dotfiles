@@ -392,3 +392,8 @@ map i ${{
 cmap <a-l> cmd-word
 cmap <a-h> cmd-word-back
 cmap <a-w> cmd-delete-unix-word
+############# print-selection
+map Q :{{
+    $echo "$fs" > "/proc/$id/fd/1"
+    quit
+}}
