@@ -17,3 +17,5 @@
 2gui-hypr/config/fcitx5/conf/cached_layouts
 1tui/config/fish/fishd.tmp.*
 1tui/config/kew/kewlibrary
+2gui-hypr/config/kitty/kitty.conf.bak
+2gui-hypr/config/kitty/current-theme.conf
