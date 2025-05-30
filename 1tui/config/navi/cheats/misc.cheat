@@ -18,3 +18,7 @@ lsblk -ln -o PATH,SIZE,MOUNTPOINT | awk '$3 != "/" && $3 != "/boot" && $3 != "/n
 
 # decode 64 urlencoded
 cliphist list | head -1 | base64 -d | python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.stdin.read()))" | tv
+
+$font: fc-list : family | uniq | grep -v , | tv
+# find font
+echo "<font>" | wl-copy -n
