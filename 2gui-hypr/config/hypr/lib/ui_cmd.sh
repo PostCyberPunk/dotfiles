@@ -126,6 +126,15 @@ toggle_layout_center() {
 		set_var $varname 1
 	fi
 }
+toggle_shader() {
+	_target="$XDG_CONFIG_HOME/hypr/configs/Shader.conf"
+	if [[ $(readlink "$_target") == "/dev/null" ]]; then
+		ln -sf "$XDG_CONFIG_HOME/hypr/lib/shader/$1.conf" "$_target"
+	else
+		ln -sf "/dev/null" "$_target"
+	fi
+	reload_hypr
+}
 
 toggle_term() {
 	tname="FTQCT$1"

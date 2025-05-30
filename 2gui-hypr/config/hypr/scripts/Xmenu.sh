@@ -29,6 +29,8 @@ declare -A menu_options=(
 	["flt Float all window"]="hyprctl dispatch workspaceopt allfloat"
 	["wop1 enable_opaque"]="$RunCMD enable_opaque"
 	["wop0 disable_opaque"]="$RunCMD disable_opaque"
+	["crt toggle_crt_shader"]="$RunCMD toggle_shader crt"
+	["nbl toggle_noblue_shader"]="$RunCMD toggle_shader noblue"
 	["ttp ToggleTouchPad"]="$RunCMD toggle_touchpad"
 	["sw reloadWallpapaer"]="$RunCMD reboot_swww"
 	#rofi
