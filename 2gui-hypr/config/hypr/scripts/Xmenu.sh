@@ -15,7 +15,7 @@ declare -A menu_options=(
 	["wp WallpaperSwitcher"]="kitty -o background_opacity=0.5 -T \"WallpaperSwitcher\" --class flkt_fzf bash $RunCMD wallpaper_switcher"
 	["cb Clipboard"]="kitty -o background_opacity=0.5 -T \"ClipManager\" --class flkt_fzf bash $RunCMD clipboard_manager"
 	#waybar
-	["wbt ToggleWaybar"]="killall -SIGUSR1 waybar"
+	["wbo ToggleWaybar"]="pkill -SIGUSR1 waybar"
 	["wbs WaybarStyles"]="$rofiDir/scripts/WaybarStyles.sh"
 	["wbl WaybarLayout"]="$rofiDir/scripts/WaybarLayout.sh"
 	["wbr reload Waybar"]="$RunCMD reload_waybar"
