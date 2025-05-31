@@ -1,0 +1,22 @@
+chars: 'fjghdkslaemuvitywoqpcbnxz'
+
+window_background_color: '1d1f21'
+window_background_opacity: 0.5
+
+label_background_color: '313244'
+label_background_opacity: 0.5
+label_text_color: 'f38ba8'
+# label_text_color: 'b4befe'
+
+focused_background_color: '313244'
+focused_background_opacity: 0.9
+focused_text_color: 'a6e3a1'
+
+font_family: monospace
+font_weight: bold
+font_size: "24"
+
+label_padding_x: 12
+label_padding_y: 4
+label_margin_x: 4
+label_margin_y: 2
