@@ -1,6 +1,5 @@
 #!/bin/bash
 var_dir=~/.cache/pcp_hypr_var
-scripts_dir="$HOME/.config/hypr/scripts"
 rofi_dir=$HOME/.config/rofi
 
 touchpad_id="cust0001:00-06cb:cdad-touchpad"
@@ -17,3 +16,10 @@ SWWW_FPS=60
 SWWW_TYPE="simple"
 SWWW_DURATION=0.5
 SWWW_PARAMS="--transition-fps $SWWW_FPS --transition-type $SWWW_TYPE --transition-duration $SWWW_DURATION --transition-step 12"
+
+backlight_step="10%"
+kbd_backlight_step="25%"
+
+icon_dir="$HOME/.config/swaync/icons"
+icon_yes=" "
+icon_no=" "

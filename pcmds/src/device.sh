@@ -1,6 +1,4 @@
 #!/bin/bash
-source ~/.config/hypr/lib/ref.sh
-source ~/.config/hypr/lib/system_cmd.sh
 
 enable_touchpad_s() {
 	set_var touchpad "0"
@@ -15,11 +13,11 @@ disable_touchpad_s() {
 }
 
 enable_touchpad() {
-	noti_n "Enabling Touchpad"
+	_noti_n "󰍽 Enabling Touchpad"
 	enable_touchpad_s
 }
 disable_touchpad() {
-	noti_n "Disabling Touchpad"
+	_noti_n "󰎀 Disabling Touchpad"
 	disable_touchpad_s
 }
 toggle_touchpad() {
@@ -43,7 +41,7 @@ temp_touchpad() {
 	# if [[ $(grep "f1 down" <<<$_key_pressed) = "" ]]; then
 	# 	disable_touchpad
 	# else
-	# 	noti_n "Touchpad keep going"
+	# 	_noti_n "Touchpad keep going"
 	# fi
 	exit
 }
@@ -52,10 +50,10 @@ toggle_wifi() {
 	wifi="$(nmcli r wifi | awk 'FNR = 2 {print $1}')"
 	if [ "$wifi" == "enabled" ]; then
 		rfkill block all &
-		noti_n 'airplane mode: active'
+		_noti_n '󰀝 airplane mode: active'
 	else
 		rfkill unblock all &
-		noti_n 'airplane mode: inactive'
+		_noti_n '󰀞 airplane mode: inactive'
 	fi
 }
 
@@ -73,19 +71,17 @@ toggle_gamemode() {
 		# keyword decoration:active_opacity 1;\
 		# keyword decoration:inactive_opacity 1;\
 		swww kill
-		noti_n "gamemode enabled. All animations off"
+		_noti_n " gamemode enabled. All animations off"
 		exit
 	else
 		sleep 0.5
-		reload_waybar
-		reload_hypr
-		noti_n "gamemode disabled. All animations normal"
+		pcmds system reload
+		_noti_n " gamemode disabled. All animations normal"
 		swww-daemon &
 		sleep 2
 		swww img "$HOME/.config/rofi/.current_wallpaper"
 		exit
 	fi
-	hyprctl reload
 }
 restore_gpu() {
 	ln -sf "$HOME/.config/hypr/lib/GPU/1Default.conf" "$HOME/.config/hypr/configs/GPU.conf"
@@ -105,21 +101,21 @@ toggle_cooler() {
 	if [ "$status" = "1" ]; then
 		sudo isw -b on
 		set_var "$var_name" "0"
-		noti_n "Cooler:on"
+		_noti_n " ooler:on"
 	else
 		sudo isw -b off
 		set_var "$var_name" "1"
-		noti_n "Cooler:off"
+		_noti_n "󰠝 Cooler:off"
 	fi
 }
 vrboot() {
-	# [ -f $vrboot_file ] && noti_n "1" || noti_n "0"
+	# [ -f $vrboot_file ] && _noti_n "1" || _noti_n "0"
 	if [[ "$1" = "1" ]]; then
 		[ -f $vrboot_file ] || echo "1" >$vrboot_file
-		noti_n "VRBoot enabled"
+		_noti_n " VRBoot enabled"
 	else
 		[ -f $vrboot_file ] && rm -f $vrboot_file
-		noti_n "VRBoot disabled"
+		_noti_n "󱗧 VRBoot disabled"
 	fi
 }
 cmd_adb() {
@@ -128,8 +124,7 @@ cmd_adb() {
 cmd_wayvnc() {
 	pkill wayvnc
 	if [[ $1 == "1" ]]; then
-		get_lan_ip
-		wayvnc $lan_ip_add -f 60 &
+		wayvnc $(get_lan_ip) -f 60 &
 	else
 		wayvnc -f 60 &
 	fi

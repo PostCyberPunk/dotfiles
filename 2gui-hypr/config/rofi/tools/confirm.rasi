@@ -1,15 +1,17 @@
 @import "./cmd.rasi"
 window {
 		width:16em;
-		height:8em;
+		height:10em;
 		location:center;
+		fullscreen:true;
 		// height: 6em;
-		background-color:transparent;
+		background-color:@dim1;
 }
 mainbox {
+		margin:40% 40%;
     children:[ "message","listview"];
 		background-color:transparent;
-		spacing:0.5em;
+		spacing:1.5em;
 }
 message {
 		margin:0px 0px 0px 0px;
@@ -20,14 +22,17 @@ message {
 listview {
 		flow:Horizontal;
 		columns: 2;
-		spacing:1em;
+		spacing:2em;
+    // padding:0em 1em;
 }
 element  {
-    padding:10px;
+    padding:0.6em 0em;
+		margin:0em 0em;
 		background-color:transparent;
     cursor:pointer;
 }
 element-text {
+    font: "JetBrains Mono Nerd Font 32";
 		anchor:center;
 		horizontal-align: 0.5;
     vertical-align:0.5;

@@ -1,18 +1,4 @@
 #!/bin/bash
-source ~/.config/hypr/lib/ref.sh
-source ~/.config/hypr/lib/system_cmd.sh
-source ~/.config/hypr/lib/ui_cmd.sh
-
-wallpaper_switcher() {
-	cd $wallpaper_dir
-	result=$(find . -type f | fzf \
-		--reverse --header="WallPaperSwitcher" --preview-window=44% \
-		--preview='kitten icat --clear --transfer-mode=memory --place="$FZF_PREVIEW_COLUMNS"x"$FZF_PREVIEW_LINES"@$(math $COLUMNS+5)x1 --align center --stdin=no -z -1 {}')
-	if [ -z "$result" ]; then
-		exit 1
-	fi
-	change_wallpaper $result
-}
 
 clipboard_manager() {
 	export SHELL=bash
@@ -32,14 +18,6 @@ clipboard_manager() {
 	else
 		exit
 	fi
-}
-
-translate_shell() {
-	local transtext=$(rofi -theme ~/.config/rofi/tools/inputs.rasi -dmenu)
-	if [[ $transtext = "" ]]; then
-		transtext=$(wl-paste)
-	fi
-	kitty --class "flkt5" -o font_size=16 fish -C "trans $1 \"$transtext\"|fzf --ansi --reverse --multi|wl-copy"
 }
 
 linker_fzf() {

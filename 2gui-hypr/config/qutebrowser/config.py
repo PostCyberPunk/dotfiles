@@ -62,10 +62,10 @@ config.set('colors.webpage.darkmode.enabled', True)
 config.set('colors.webpage.preferred_color_scheme', 'dark')
 
 # Editor command
-config.set('editor.command', ['kitty', 'nvim', '-f', '{file}', '-c', 'normal {line}G{column0}l'])
+config.set('editor.command', ['pcmds','start' ,'editor_mini', '-f', '{file}', '-c', 'normal {line}G{column0}l'])
 
 # File select command
-config.set('fileselect.folder.command', ['kitty', 'lf', '-selection-path={}'])
+# config.set('fileselect.folder.command', ['kitty', 'lf', '-selection-path={}'])
 
 # Fonts
 config.set('fonts.default_family', 'ProFont IIx Nerd Font Mono')

@@ -25,9 +25,7 @@
 
 "modules-right": [
 	"mpris",
-	//"keyboard-state",
 	"pulseaudio",
-	//"wireplumber",
 	"pulseaudio#microphone",
 	"battery",
 	"tray",
@@ -47,7 +45,7 @@
 "ipc": true,
 "margin-left": 8,
 "margin-right": 8,
-//"margin-bottom": 0,
+"margin-bottom": 1,
 
 "modules-left": [
 	"cpu",
@@ -68,9 +66,6 @@
 	"network#speed",
 	"custom/weather",
 	"backlight",
-	//"bluetooth",
-	//"network",
-	//"custom/cycle_wall",
 	"custom/lock",
 	"custom/power",
 	],

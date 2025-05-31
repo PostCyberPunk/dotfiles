@@ -8,16 +8,15 @@ configuration {
 window {
     location:center;
     anchor:center;
-    width:40em;
-    height:15em;
     x-offset:0px;
-    fullscreen:false;
+    fullscreen:true;
     margin:0px;
     padding:0px;
     transparency:"real";
-		background-color:transparent;
+		background-color:@dim1;
 }
 mainbox {
+		margin:21em 33em;
     children:["listview"];
 		background-color:transparent;
 }
@@ -38,22 +37,17 @@ listview {
     padding:0px;
     border:0px solid;
     border-radius:0px;
-    border-color:@selected;
     background-color:transparent;
-    text-color:@foreground;
     cursor:"default";
 }
 element  {
-    enabled:                     true;
-    spacing:                     0px;
-    margin:                      0px;
-    padding:                     1em 0.1em 1em 0.0em;
-    border:                      0px;
-    border-radius:               1em;
-    border-color:                @selected;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      pointer;
+    enabled:true;
+    spacing:0px;
+    margin:0px;
+    padding:1em 0.1em 1em 0.0em;
+    border:0px;
+    border-radius:1em;
+    cursor:pointer;
 }
 element-text {
     font: "JetBrains Mono Nerd Font 66";

@@ -113,8 +113,8 @@
     "on-click-middle": "",
     "on-click-right": "",
     "on-update": "",
-    "on-scroll-up": "~/.config/hypr/scripts/Brightness.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Brightness.sh --dec",
+    "on-scroll-up": "pcmds backlight inc_backlight",
+    "on-scroll-down": "pcmds backlight dec_backlight",
     "smooth-scrolling-threshold": 1,
   },
   "battery": {
@@ -146,8 +146,6 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w",
-    "on-click-middle": "~/.config/hypr/scripts/ChangeBlur.sh",
-    "on-click-right": "~/.config/hypr/scripts/RofiPower.sh",
   },
   "bluetooth": {
     "format": "",
@@ -260,7 +258,7 @@
     "format-alt-click": "click",
     "tooltip": true,
     "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
-    "on-click-right": "kitty --title btop sh -c 'btop'"
+    "on-click-right": "pcmds start term -title btop sh -c 'btop'"
   },
   "mpris": {
     "format": "{player_icon} <i>{dynamic}</i>",
@@ -269,15 +267,15 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "scroll-step": 5.0,
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "pcmds audio inc_volume",
+    "on-scroll-down": "pcmds audio dec_volume",
     "smooth-scrolling-threshold": 1,
     "signal": 4,
     "player-icons": {
       "chromium": "",
       "default": "",
       "firefox": "",
-      "kdeconnect": "",
+      "kdeconnect": "󰄜",
       "mopidy": "",
       "mpv": "󰐹",
       "spotify": "",
@@ -352,20 +350,20 @@
       ],
     },
     "scroll-step": 5.0,
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "pcmds audio toggle_mute",
     "on-click-right": "pavucontrol -t 3",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "pcmds audio inc_volume",
+    "on-scroll-down": "pcmds audio dec_volume",
     "smooth-scrolling-threshold": 1,
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle-mic",
+    "on-click": "pcmds audio toggle_mic",
     "on-click-right": "pavucontrol -t 4",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --mic-inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --mic-dec",
+    "on-scroll-up": "pcmds audio inc_mic",
+    "on-scroll-down": "pcmds audio dec_mic",
     "scroll-step": 5,
   },
   "temperature": {
@@ -382,7 +380,7 @@
     "format-icons": [
       "󰈸"
     ],
-    "on-click-right": "kitty --title nvtop sh -c 'nvtop'"
+    "on-click-right": "pcmds start term -t nvtop sh -c 'nvtop'"
   },
   "tray": {
     "icon-size": 14,
@@ -391,10 +389,10 @@
   "wireplumber": {
     "format": "{icon} {volume} %",
     "format-muted": " Mute",
-    "on-click": "~/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "pcmds audio toggle_mute",
     "on-click-right": "pavucontrol -t 3",
-    "on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+    "on-scroll-up": "pcmds audio inc_volume",
+    "on-scroll-down": "pcmds audio dec_volume",
     "format-icons": [
       "",
       "",
@@ -417,14 +415,6 @@
       "rofi",
     ]
   },
-  "custom/cycle_wall": {
-    "format": " ",
-    "on-click": "~/.config/hypr/scripts/WallpaperSelect.sh",
-    "on-click-right": "~/.config/hypr/scripts/Wallpaper.sh",
-    "on-click-middle": "~/.config/hypr/scripts/WaybarStyles.sh",
-    "tooltip": true,
-    "tooltip-format": "Change wallpaper or style"
-  },
   "custom/touchpad": {
     "exec": "[ $(cat ~/.cache/pcp_hypr_var/touchpad) = '0' ]&&echo ''||echo ''",
     "interval": "once",
@@ -435,28 +425,9 @@
       "on": ""
     }
   },
-  "custom/keybinds": {
-    "format": "󰺁 HINT!",
-    "tooltip": false,
-    "on-click": "~/.config/hypr/scripts/KeyHints.sh",
-  },
-  "custom/keyboard": {
-    "exec": "cat ~/.cache/kb_layout",
-    "interval": 1,
-    "format": " {}",
-    "on-click": "~/.config/hypr/scripts/SwitchKeyboardLayout.sh",
-    "tooltip": false,
-  },
-  "custom/light_dark": {
-    "format": "",
-    "on-click": "~/.config/hypr/scripts/DarkLight.sh",
-    "on-click-right": "~/.config/hypr/scripts/WaybarStyles.sh",
-    "on-click-middle": "~/.config/hypr/scripts/Wallpaper.sh",
-    "tooltip": false,
-  },
   "custom/lock": {
     "format": "",
-    "on-click": "~/.config/hypr/scripts/RunCMD.sh.sh lock_screen",
+    "on-click": "pcmds system lock",
     "tooltip": false,
   },
   "custom/menu": {
@@ -464,12 +435,12 @@
     "format": "󰮯",
     "tooltip": false,
     "on-click": "swaync-client -t",
-    "on-click-right": "kitty",
+    "on-click-right": "pcmds start term",
   },
   "custom/updater": {
     "exec": "checkupdates | wc -l",
     "format": "{}",
-    "on-click-right": "kitty",
+    "on-click-right": "pcmds start term",
     "interval": 86400, // once every day
     "signal": 4,
     "tooltip": true,
@@ -477,7 +448,7 @@
   "custom/gitlogin": {
     "exec": "[ \"$(git-credential-manager github list)\" = '' ]&&echo '󱘖 '||echo ' '",
     "format": "{}",
-    "on-click-right": "~/.config/hypr/scripts/RunCMD.sh.sh startGitLogin",
+    "on-click-right": "pcmds start GitLogin",
     "interval": 3600,
     "signal": 4
   },
@@ -490,16 +461,15 @@
     "on-click": "playerctl previous",
     "on-click-right": "playerctl next",
     "scroll-step": 5.0,
-    "on-scroll-up": "~/.config/hypr/scripts/System/Volume.sh --inc",
-    "on-scroll-down": "~/.config/hypr/scripts/System/Volume.sh --dec",
+    "on-scroll-up": "pcmds audio inc_volume",
+    "on-scroll-down": "pcmds audio dec_volume",
     "smooth-scrolling-threshold": 1,
     "tooltip": true
   },
   "custom/power": {
     "format": "⏻ ",
     "tooltip": false,
-    "on-click": "~/.config/rofi/scripts/logout.sh",
-    "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh",
+    "on-click": "pcmds system powermenu",
   },
   "custom/weather": {
     "format": "{}",
@@ -508,8 +478,7 @@
     "interval": 3600,
     "return-type": "json",
     "signal": 4,
-    "exec": "~/.config/hypr/scripts/Weather.sh",
-    //"exec": "~/.config/hypr/scripts/Weather.py",
+    "exec": "~/.config/waybar/Weather.sh",
     "exec-if": "ping wttr.in -c1",
     "tooltip": true,
   },

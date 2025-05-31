@@ -64,19 +64,19 @@
       "actions": [
         {
           "label": "󰐥",
-          "command": "systemctl poweroff"
+          "command": "pcmds system poweroff"
         },
         {
           "label": "󰜉",
-          "command": "systemctl reboot"
+          "command": "pcmds system reboot"
         },
         {
           "label": "󰌾",
-          "command": "~/.config/hypr/scripts/RunCMD.sh lock_screen"
+          "command": "pcmds system lock"
         },
         {
           "label": "󰍃",
-          "command": "hyprctl dispatch exit"
+          "command": "pcmds system logout"
         },
         {
           "label": "󰀝",

@@ -18,16 +18,16 @@ configuration {
 }
 
 window {
-	background-image:url("~/.config/rofi/.current_wallpaper", height);
+	// background-image:url("~/.config/rofi/.current_wallpaper", height);
   fullscreen: true;
   padding: 1em;
-  background-color: @bg0;
+  background-color: @dim0;
 }
 
 mainbox {
 	margin:2%;
   padding:  8px;
-  background-color: @bg1;
+  background-color: @bg1t;
 	border-radius:20px;
 }
 

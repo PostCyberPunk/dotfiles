@@ -26,3 +26,4 @@
 2gui-hypr/config/qutebrowser/qsettings
 2gui-hypr/config/qutebrowser/quickmarks
 2gui-hypr/config/qutebrowser/autoconfig.yml
+pcmds/lib/term.sh

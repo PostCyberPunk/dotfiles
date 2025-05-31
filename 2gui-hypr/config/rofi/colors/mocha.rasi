@@ -2,6 +2,7 @@
 * {
     bg0:     #1E1E2EDF;
     bg1:     #313244DF;
+    bg1t:     #313244AF;
     bg3:     #313244AF;
     text:    #CDD6F4DF;
     fg0:     #CBA6F7DF;

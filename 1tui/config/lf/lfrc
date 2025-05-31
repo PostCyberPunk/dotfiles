@@ -339,7 +339,7 @@ cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
 ############ open-----------
-map gwp $bash ~/.config/hypr/scripts/RunCMD.sh change_wallpaper "$f"
+map gwp $bash pcmds wall change "$f"
 map gb $bash "$f"
 map goi $vimiv $f --command 'enter thumbnail'
 map gov $nvim $fx

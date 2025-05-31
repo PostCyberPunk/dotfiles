@@ -8,4 +8,6 @@
   padding:0em;
   spacing:0em;
 	text-color:@fg0;
+	dim1:#000000AF;
+	dim0:#0000005F;
 }
