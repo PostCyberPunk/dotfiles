@@ -21,3 +21,8 @@
 2gui-hypr/config/kitty/kitty.conf.bak
 2gui-hypr/config/kitty/current-theme.conf
 2gui-hypr/config/hypr/configs/Shader.conf
+2gui-hypr/config/qutebrowser/__pycache__
+2gui-hypr/config/qutebrowser/bookmarks
+2gui-hypr/config/qutebrowser/qsettings
+2gui-hypr/config/qutebrowser/quickmarks
+2gui-hypr/config/qutebrowser/autoconfig.yml

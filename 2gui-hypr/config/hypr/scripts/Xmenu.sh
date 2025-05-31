@@ -58,6 +58,7 @@ declare -A menu_options=(
 	["sdk reset superuser privilege"]="$RunCMD reset_su"
 	#App
 	["ff firefox"]="firefox"
+	["uu tebrowser"]="qutebrowser"
 	["vb VitrualBox"]="virtualbox"
 	["vm VitrualBox"]="vboxmanage startvm Larch"
 	["v2 v2raya"]="firefox http://localhost:2017/"
