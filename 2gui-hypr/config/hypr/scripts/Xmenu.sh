@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Directory for icons
-iDIR="$HOME/.config/swaync/icons"
 RunCMD="$HOME/.config/hypr/scripts/RunCMD.sh"
 scriptsDir="$HOME/.config/hypr/scripts"
 rofiDir="$HOME/.config/rofi"
