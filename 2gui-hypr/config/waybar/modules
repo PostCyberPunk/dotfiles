@@ -498,7 +498,7 @@
   "custom/power": {
     "format": "⏻ ",
     "tooltip": false,
-    "on-click": "~/.config/hypr/scripts/System/Wlogout.sh",
+    "on-click": "~/.config/rofi/scripts/logout.sh",
     "on-click-right": "~/.config/hypr/scripts/ChangeBlur.sh",
   },
   "custom/weather": {

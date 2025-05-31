@@ -50,6 +50,9 @@ sys_poweroff() {
 		poweroff
 	fi
 }
+power_menu() {
+	"$rofi_dir/scripts/logout.sh"
+}
 
 reload_waybar() {
 	_ps=(waybar rofi)

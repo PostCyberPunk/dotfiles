@@ -46,7 +46,7 @@ declare -A menu_options=(
 	#System
 	["QQ Shutdown"]="$RunCMD sys_poweroff"
 	["RR Reboot"]="$RunCMD sys_reboot"
-	["SS Wlogout"]="$scriptsDir/System/Wlogout.sh"
+	["PP powermenu"]="$rofiDir/scripts/logout.sh"
 	["ml MonitorLayout"]="kitty -T \"MonitorLayout\" --class flkt_fzf bash $RunCMD monitor_switcher"
 	["gpu GPU Switcher"]="kitty -T \"GPU_Switcher\" --class flkt_fzf bash $RunCMD gpu_switcher"
 	["cn Close Notifactions"]="swaync-client -C"
