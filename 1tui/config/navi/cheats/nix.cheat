@@ -9,7 +9,7 @@ nh os switch ~/Snowfiled/ -H $hostname
 # ndrb
 nh os switch -n ~/Snowfiled/ -H $hostname
 
-# nuv update_pcp_nvimk
+# nuv update_pcp_nvim
 nix flake update --flake ~/Snowfiled/  pcp-nvim
 
 # nus update_secrets
