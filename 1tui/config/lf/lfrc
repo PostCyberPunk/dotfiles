@@ -356,6 +356,7 @@ map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
 map gek $krita "$f"
 map gT thunar .
+map grn $vidir .
 map gti ${{
 	# prev_dir=$PWD
 	# git_root=$(git rev-parse --show-toplevel)
