@@ -11,5 +11,15 @@ $ssh-private: echo -e "$(rbw get $(rbw list | tv ))" > id_ed25519 ; echo $? ; ch
 <secret-item>
 # get ssh private key from rbw
 <ssh-private>
+
+$disks: lsblk -ln -o NAME,SIZE,MOUNTPOINTS,TYPE | grep part | tv -p "duf"| awk '{ print $1 }'
+$mountp: echo -e "~/temp/mnt/\n~/temp/mnt2" | tv
+$mounted: lsblk -ln -o PATH,SIZE,MOUNTPOINT | awk '$3 != "/" && $3 != "/boot" && $3 != "/nix/store/" && $3 != "" {print $1}'
+# mnt mount to
+sudo mount /dev/<disks> <mountp> && cd <mountp>
+# unmount umt
+sudo umount <mounted>
+# unmount all
+lsblk -ln -o PATH,SIZE,MOUNTPOINT | awk '$3 != "/" && $3 != "/boot" && $3 != "/nix/store/" && $3 != "" {print $1}' | xargs -r sudo umount
 # get disk uuid
 lsblk -lf -o PATH,TYPE,UUID,MOUNTPOINT|tv|awk '{print $3}'|wl-copy

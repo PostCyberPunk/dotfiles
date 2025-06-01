@@ -1,6 +1,6 @@
 % git, code
 $clip: cliphist list | head -1 | awk '{print $2}'|tv
-$short-hash: tv git-log | cut -d ' ' -f 1
+$commit-hash: tv git-log | cut -d ' ' -f 1
 $source: lf --print-selection
 $target: lf --print-selection
 # gcc
@@ -25,7 +25,10 @@ git --update-index --no-skip-worktree <file>
 git ls-files -v . | grep ^S | fzf | awk '{print $2}' | xargs git update-index --no-skip-worktree
 
 # gco git checkout
-git checkout <short-hash>
+git checkout <commit-hash>
 
 # nvim diff two file
 nvim -d <source> <target>
+
+# find commit hash
+<commit-hash>
