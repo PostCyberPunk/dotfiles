@@ -14,7 +14,7 @@
 
 "modules-left": [
 	"custom/menu",
-	"custom/updater",
+//	"custom/updater",
 	"wlr/taskbar",
 	"hyprland/window",
 	 ],
@@ -42,7 +42,7 @@
 "position": "bottom",
 "spacing": 5,
 "fixed-center": true,
-"ipc": true,
+"ipc": false,
 "margin-left": 8,
 "margin-right": 8,
 "margin-bottom": 1,
@@ -52,7 +52,6 @@
 	"temperature",
 	"memory",
 	"disk",
-  "custom/gitlogin"
 	],
 
 "modules-center": [
