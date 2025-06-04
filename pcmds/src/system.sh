@@ -71,6 +71,9 @@ reload() {
 }
 
 startup() {
+	_startup >"$XDG_CACHE_HOME/p_boot.txt" 2>"$XDG_CACHE_HOME/p_boot_err.txt"
+}
+_startup() {
 	echo 0
 	systemctl --user start hyprpolkitagent
 	echo 1
@@ -78,7 +81,7 @@ startup() {
 	echo 2
 	wl-paste --type image --watch cliphist store &
 	echo 3
-	fcitx5 -d
+	fcitx5 -dr
 	echo 4
 	swww-daemon &
 	echo 5

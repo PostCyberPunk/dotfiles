@@ -27,3 +27,5 @@
 2gui-hypr/config/qutebrowser/quickmarks
 2gui-hypr/config/qutebrowser/autoconfig.yml
 pcmds/lib/term.sh
+pcmds/lib/current_theme.sh
+2gui-hypr/config/Kvantum/kvantum.kvconfig

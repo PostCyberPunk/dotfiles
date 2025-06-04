@@ -1,0 +1,5 @@
+color_scheme="prefer-dark"
+gtk_theme="Tokyonight-Teal-Dark-Moon"
+icon_theme="Tokyonight-Moon"
+cursor_theme="catppuccin-mocha-sky-cursors"
+kvan_theme="Tokyonight-Teal-Dark-Moon"

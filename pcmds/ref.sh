@@ -23,3 +23,4 @@ kbd_backlight_step="25%"
 icon_dir="$HOME/.config/swaync/icons"
 icon_yes=" "
 icon_no=" "
+cursor_size=24
