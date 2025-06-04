@@ -69,3 +69,21 @@ reload() {
 		pcmds rofi close
 	fi
 }
+
+startup() {
+	echo 0
+	systemctl --user start hyprpolkitagent
+	echo 1
+	wl-paste --type text --watch cliphist store &
+	echo 2
+	wl-paste --type image --watch cliphist store &
+	echo 3
+	fcitx5 -d
+	echo 4
+	swww-daemon &
+	echo 5
+	nm-applet --indicator &
+	echo 6
+	waybar &
+	exit
+}
