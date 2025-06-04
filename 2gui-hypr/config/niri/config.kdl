@@ -16,7 +16,7 @@ input {
         numlock
     }
     touchpad {
-        off
+off
         tap
         dwt
         // dwtp
@@ -29,7 +29,7 @@ input {
         // disabled-on-external-mouse
     }
     mouse {
-        // off
+        off
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
@@ -63,14 +63,14 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "never"
+center-focused-column "always"
     empty-workspace-above-first
     always-center-single-column
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
-        proportion 0.66667
+        proportion 0.75
     }
 
     // preset-window-heights { }
@@ -142,7 +142,11 @@ layout {
     }
 }
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+environment{
+	DISPLAY ":0"
+}
+spawn-at-startup "xwayland-satellite"
+// spawn-at-startup "waybar" "-c" "$XDG_CONFIG_HOME/waybar/configs/1Lapoch-niri.jsonc"
 spawn-at-startup "pcmds" "system" "startup"
 
 prefer-no-csd
@@ -204,8 +208,8 @@ window-rule{
         // draw-behind-window true
         // Softness controls the shadow blur radius.
         softness 10
-        spread 3
-        offset x=5 y=5
+        spread 5
+        offset x=3 y=3
         color "#000a"
     }
 }
@@ -214,7 +218,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "pcmds" "start" "term"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+T hotkey-overlay-title="Thunar" { spawn "Thunar"; }
+    Mod+O hotkey-overlay-title="file" { spawn "pcmds" "start" "fm"; }
     Mod+Alt+N hotkey-overlay-title="Neovim" { spawn "pcmds" "start" "editor"; }
     Alt+Space hotkey-overlay-title="Xemnu" { spawn "Xmenu"; }
 
@@ -347,6 +352,7 @@ binds {
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
+    Mod+Alt+C { spawn "pcmds" "wm" "toggle_center_always"; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
@@ -375,28 +381,19 @@ binds {
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
 
-    // Actions to switch layouts.
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
-
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-
-    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Ctrl+Alt+Delete { quit; }
 		Mod+Delete {spawn "pcmds" "system" "power_menu";}
 
     Mod+Shift+P { power-off-monitors; }
+		Mod+Z {spawn "pcmds" "device" "temp_touchpad";}
 }
 overview {
-    zoom 0.25
-    backdrop-color "#777777"
+    zoom 0.4
+    // backdrop-color "#777777"
 	// workspace-shadow {
 	// 	off
 	// }
@@ -404,4 +401,8 @@ overview {
 layer-rule {
     match namespace="^swww"
     place-within-backdrop true
+}
+layer-rule {
+    match namespace="^waybar"
+    place-within-backdrop false
 }

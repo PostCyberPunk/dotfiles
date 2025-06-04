@@ -15,7 +15,11 @@ lock() {
 	_noti_n "󱙜 Lock not implemented"
 }
 logout() {
-	hyprctl dispatch exit 0
+	if [[ "$XDG_SESSION_DESKTOP" == "Hyprland" ]]; then
+		hyprctl dispatch exit 0
+	else
+		niri msg action quit -s
+	fi
 }
 
 ask_reboot() {
@@ -74,6 +78,7 @@ startup() {
 	_startup >"$XDG_CACHE_HOME/p_boot.txt" 2>"$XDG_CACHE_HOME/p_boot_err.txt"
 }
 _startup() {
+	pcmds bar start
 	echo 0
 	systemctl --user start hyprpolkitagent
 	echo 1
@@ -87,6 +92,5 @@ _startup() {
 	echo 5
 	nm-applet --indicator &
 	echo 6
-	waybar &
 	exit
 }

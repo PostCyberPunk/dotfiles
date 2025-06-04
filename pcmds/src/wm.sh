@@ -140,3 +140,27 @@ grab_special() {
 	easyfocus-hyprland
 	hyprctl dispatch movetoworkspace $(get_active_workspace)
 }
+
+######niri-only
+
+enable_center_always() {
+	sed -i '/center-focused-column/c\center-focused-column "always"' "$niri_config"
+	_noti_n " Always center"
+}
+disable_center_always() {
+	sed -i '/center-focused-column/c\center-focused-column "never"' "$niri_config"
+	_noti_n " Nerver center"
+}
+toggle_center_always() {
+	_word=$(rg center-focused-column "$niri_config" | choose 1)
+	if [[ -z "$_word" ]]; then
+		ehco "no center found"
+		exit 1
+	fi
+	if [[ "$_word" == '"never"' ]]; then
+		enable_center_always
+	else
+		disable_center_always
+	fi
+	exit
+}

@@ -1,6 +1,7 @@
 #!/bin/bash
 var_dir=~/.cache/pcp_hypr_var
 rofi_dir=$HOME/.config/rofi
+niri_config="$XDG_CONFIG_HOME/niri/config.kdl"
 
 touchpad_id="cust0001:00-06cb:cdad-touchpad"
 wallpaper_dir=$HOME/Pictures/wallpapers

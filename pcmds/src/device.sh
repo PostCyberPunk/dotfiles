@@ -2,23 +2,31 @@
 
 enable_touchpad_s() {
 	set_var touchpad "0"
-	hyprctl keyword "device[$touchpad_id]:enabled" 1
+	if [[ "$XDG_SESSION_DESKTOP" == "Hyprland" ]]; then
+		hyprctl keyword "device[$touchpad_id]:enabled" 1
+	else
+		sed -i '/touchpad {/!b;n;c\// off' "$niri_config"
+	fi
 	pkill -RTMIN+3 waybar
 }
 
 disable_touchpad_s() {
 	set_var touchpad "1"
-	hyprctl keyword "device[$touchpad_id]:enabled" 0
+	if [[ "$XDG_SESSION_DESKTOP" == "Hyprland" ]]; then
+		hyprctl keyword "device[$touchpad_id]:enabled" 0
+	else
+		sed -i '/touchpad {/!b;n;c\off' "$niri_config"
+	fi
 	pkill -RTMIN+3 waybar
 }
 
 enable_touchpad() {
-	_noti_n "󰍽 Enabling Touchpad"
 	enable_touchpad_s
+	_noti_n "󰍽 Enabling Touchpad"
 }
 disable_touchpad() {
-	_noti_n "󰎀 Disabling Touchpad"
 	disable_touchpad_s
+	_noti_n "󰎀 Disabling Touchpad"
 }
 toggle_touchpad() {
 	mstate=$(get_var touchpad)
