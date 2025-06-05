@@ -30,8 +30,8 @@ nvd diff <old_system> /run/current-system
 # nsp
 nix-shell -p <pkg>
 
-# flake fowllow system
-nix flake lock --override-input nixpkgs github:NixOS/nixpkgs/$(jq .nodes.nixpkgs.locked.rev ~/Snowfield/flake.lock)
+# flake follow system
+nix flake lock --override-input nixpkgs github:NixOS/nixpkgs/$(jq -j .nodes.nixpkgs.locked.rev ~/Snowfield/flake.lock)
 
 # npr profile remove
 nix profile remove <profile>
