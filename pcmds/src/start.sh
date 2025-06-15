@@ -1,5 +1,4 @@
 #!/bin/bash
-source "$lib_dir/term.sh"
 
 #Apps
 term() {
