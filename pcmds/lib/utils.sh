@@ -16,10 +16,10 @@ _set_var() {
 }
 
 #wm
-get_active_workspace() {
+_get_active_workspace() {
 	hyprctl monitors -j | jq -r -c '.[]|.activeWorkspace|.name'
 }
-get_special_workspace() {
+_get_special_workspace() {
 	hyprctl monitors -j | jq -r -c '.[]|.specialWorkspace|.name'
 }
 

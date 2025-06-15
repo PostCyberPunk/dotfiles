@@ -127,9 +127,9 @@ close_special() {
 	fi
 }
 drop_special() {
-	local spw=$(get_special_workspace)
+	local spw=$(_get_special_workspace)
 	if [[ $spw != "" ]]; then
-		hyprctl dispatch movetoworkspace $(get_active_workspace)
+		hyprctl dispatch movetoworkspace $(_get_active_workspace)
 	else
 		hyprctl dispatch movetoworkspacesilent special:$1
 	fi
@@ -138,7 +138,7 @@ grab_special() {
 	hyprctl dispatch togglespecialworkspace $1
 	sleep 0.2
 	easyfocus-hyprland
-	hyprctl dispatch movetoworkspace $(get_active_workspace)
+	hyprctl dispatch movetoworkspace $(_get_active_workspace)
 }
 
 ######niri-only
