@@ -24,7 +24,7 @@ _get_special_workspace() {
 }
 
 #system
-get_lan_ip() {
+_get_lan_ip() {
 	$(ip addr show | grep inet | awk '{ print $2 }' | grep '192.168' | cut -d/ -f1 | head -n 1)
 }
 

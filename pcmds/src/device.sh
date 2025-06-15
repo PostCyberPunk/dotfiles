@@ -132,7 +132,7 @@ cmd_adb() {
 cmd_wayvnc() {
 	pkill wayvnc
 	if [[ $1 == "1" ]]; then
-		wayvnc $(get_lan_ip) -f 60 &
+		wayvnc $(_get_lan_ip) -f 60 &
 	else
 		wayvnc -f 60 &
 	fi
