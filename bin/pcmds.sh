@@ -4,7 +4,6 @@ src_dir="$root_cmd_dir/src"
 lib_dir="$root_cmd_dir/lib"
 source "$root_cmd_dir/ref.sh"
 source "$lib_dir/utils.sh"
-source "$lib_dir/term.sh"
 
 _help() {
 	declare -F | awk '{print $3}' | grep -v '^_' | tr '\n' '\t' | fold -sw $(tput cols)
