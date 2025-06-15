@@ -94,3 +94,6 @@ _startup() {
 	echo 6
 	exit
 }
+init_var() {
+	_init_var
+}

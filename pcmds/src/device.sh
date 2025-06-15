@@ -1,7 +1,7 @@
 #!/bin/bash
 
 enable_touchpad_s() {
-	set_var touchpad "0"
+	_set_var touchpad "0"
 	if [[ "$XDG_SESSION_DESKTOP" == "Hyprland" ]]; then
 		hyprctl keyword "device[$touchpad_id]:enabled" 1
 	else
@@ -11,7 +11,7 @@ enable_touchpad_s() {
 }
 
 disable_touchpad_s() {
-	set_var touchpad "1"
+	_set_var touchpad "1"
 	if [[ "$XDG_SESSION_DESKTOP" == "Hyprland" ]]; then
 		hyprctl keyword "device[$touchpad_id]:enabled" 0
 	else
@@ -29,7 +29,7 @@ disable_touchpad() {
 	_noti_n "󰎀 Disabling Touchpad"
 }
 toggle_touchpad() {
-	mstate=$(get_var touchpad)
+	mstate=$(_get_var touchpad)
 	echo "$mstate"
 	if [[ $mstate = "1" ]]; then
 		enable_touchpad
@@ -39,7 +39,7 @@ toggle_touchpad() {
 }
 
 temp_touchpad() {
-	if [[ $(get_var touchpad) = "0" ]]; then
+	if [[ $(_get_var touchpad) = "0" ]]; then
 		exit
 	fi
 	enable_touchpad_s
@@ -105,14 +105,14 @@ enable_edp1() {
 }
 toggle_cooler() {
 	local var_name="cooler"
-	local status=$(get_var "$var_name")
+	local status=$(_get_var "$var_name")
 	if [ "$status" = "1" ]; then
 		sudo isw -b on
-		set_var "$var_name" "0"
+		_set_var "$var_name" "0"
 		_noti_n " ooler:on"
 	else
 		sudo isw -b off
-		set_var "$var_name" "1"
+		_set_var "$var_name" "1"
 		_noti_n "󰠝 Cooler:off"
 	fi
 }

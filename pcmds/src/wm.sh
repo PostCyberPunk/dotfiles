@@ -54,13 +54,13 @@ toggle_split_ratio() {
 		mmax="$1"
 		mmin="$2"
 	fi
-	mstate=$(get_var $varname)
+	mstate=$(_get_var $varname)
 	if [[ $mstate = "1" ]]; then
 		hyprctl dispatch splitratio exact $mmax
-		set_var $varname 0
+		_set_var $varname 0
 	else
 		hyprctl dispatch splitratio exact $mmin
-		set_var $varname 1
+		_set_var $varname 1
 	fi
 }
 change_layout() {
@@ -109,13 +109,13 @@ layout_center_off() {
 }
 toggle_layout_center() {
 	varname="is_center"
-	mstate=$(get_var $varname)
+	mstate=$(_get_var $varname)
 	if [[ $mstate = "1" ]]; then
 		layout_center_on
-		set_var $varname 0
+		_set_var $varname 0
 	else
 		layout_center_off
-		set_var $varname 1
+		_set_var $varname 1
 	fi
 }
 ###########  WORKSPACE

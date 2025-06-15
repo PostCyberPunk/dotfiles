@@ -1,17 +1,17 @@
 #!/bin/bash
 
 #vars
-init_var() {
+_init_var() {
 	varfile=$root_cmd_dir/variable.txt
 	while read -r line; do
 		echo "1" >$var_dir/$line
 	done <$varfile
 }
-get_var() {
+_get_var() {
 	mval=$(cat $var_dir/$1)
 	echo $mval
 }
-set_var() {
+_set_var() {
 	echo "$2" >$var_dir/$1
 }
 

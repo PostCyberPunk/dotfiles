@@ -42,7 +42,7 @@ Center() {
 	_term -1 &
 	sleep 0.1
 	layout_center_on
-	set_var 'is_center' 1
+	_set_var 'is_center' 1
 	sleep 0.1
 	_term -1 fish -C btm &
 	sleep 0.1
