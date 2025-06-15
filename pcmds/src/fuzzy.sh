@@ -74,3 +74,9 @@ monitor_switcher() {
 	notify-send "Monitor layout Switched"
 	hyprctl reload
 }
+
+nvim_workspace() {
+	ws_dir=$(tv nvim-session)
+	cd $ws_dir
+	direnv exec . nvim -c "set shell=fish"
+}

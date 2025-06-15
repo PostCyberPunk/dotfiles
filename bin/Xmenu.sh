@@ -14,6 +14,7 @@ declare -A menu_options=(
 	#fzf
 	["wp WallpaperSwitcher"]="$term -o 0.5 -t 'WallpaperSwitcher' -c flkt_fzf bash $pc wall switcher"
 	["cb Clipboard"]="$term -o 0.5 -t \"ClipManager\" -c flkt_fzf bash $pc fuzzy clipboard_manager"
+	["nws nvim-workspace"]="$term --class nvim bash $pc fuzzy nvim_workspace"
 	#waybar
 	["wbo ToggleWaybar"]="$pc bar toggle"
 	["wbu Update Waybar"]="$pc bar update"
