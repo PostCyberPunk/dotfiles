@@ -296,7 +296,7 @@ cmd slink ${{
     while read line; do
       fname=$(basename $line)
       tar="$PWD/$fname"
-      sudo ln $1 $line $tar
+      ln $1 $line $tar
       [ $? -eq 0 ]&& echo "$(tput setaf 2)link created:$(tput sgr0)$tar->$line" || echo "$(tput setaf 1)Failed $line$(tput sgr0)"
     done <<<"$(tail -n +2 $lfile)"
     lf -remote "send $id !date"
