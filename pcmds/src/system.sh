@@ -52,7 +52,7 @@ power_menu() {
 
 #sudo
 get_su() {
-	_term -o 0.8 -c flkt5 -e sudo -v
+	_term -nodetach -o 0.8 -c flkt5 -e sudo -v
 	sudo -nv
 	if sudo -nv; then
 		_noti_n "󰮯 Superuser Auth Succeed"

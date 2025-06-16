@@ -26,7 +26,7 @@ _term() {
 			shift 2
 			;;
 		-nodetach)
-			detach=false
+			_nodetach="yes"
 			shift 1
 			;;
 		--) # end of options
@@ -51,11 +51,10 @@ _term() {
 	done
 	#FIX: will multi line cmd work?
 	local _flag=$title$class$opacity$fontsize${other_flags[*]}
-
-	if [ $detach ]; then
-		kitty $_flag &
-	else
+	if [[ "$_nodetach" == "yes" ]]; then
 		kitty $_flag
+	else
+		kitty $_flag &
 	fi
 }
 editor() {
