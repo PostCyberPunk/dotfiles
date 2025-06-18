@@ -53,11 +53,12 @@ power_menu() {
 #sudo
 get_su() {
 	_term -nodetach -o 0.8 -c flkt5 -e sudo -v
-	sudo -nv
 	if sudo -nv; then
 		_noti_n "󰮯 Superuser Auth Succeed"
+		exit 0
 	else
 		noti_c " Superuser Auth Failed"
+		exit 1
 	fi
 }
 reset_su() {

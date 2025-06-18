@@ -104,6 +104,10 @@ enable_edp1() {
 	hyprctl keyword monitor eDP-1,preferred,auto,1
 }
 toggle_cooler() {
+	sudo -nv || {
+		_noti_n "󰮯 Privilige needed"
+		exit 1
+	}
 	local var_name="cooler"
 	local status=$(_get_var "$var_name")
 	if [ "$status" = "1" ]; then
