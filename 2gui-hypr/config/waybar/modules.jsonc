@@ -32,8 +32,8 @@
       "default": "󰊠",
       "persistent": "󰊠",
       "empty": "",
-      "Aspa": "󱎓",
-      "Aspb": "󱍢 ",
+      "Aspa": " 󱙝 ",
+      "Aspb": " 󱙝 ",
       "fasterm": "󰉁", //󰉁
       "Todo": "",
       "Tops": "", // ﴨ
@@ -72,8 +72,10 @@
       "default": "󰊠",
       "persistent": "󰊠",
       "empty": "",
-      "Aspa": "󱎓",
-      "Aspb": "󱍢 ",
+      "Aspa": "|󱙝",
+      "Aspb": "󱍢|",
+      // "Aspa": "󱎓",
+      // "Aspb": "󱍢 ",
       "fasterm": "󰉁", //󰉁
       "Todo": "",
       "Tops": "", // ﴨ
