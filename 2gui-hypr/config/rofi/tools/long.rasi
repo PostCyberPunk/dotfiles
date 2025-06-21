@@ -1,0 +1,23 @@
+@import "./cmd.rasi"
+window{
+    width:48em;
+    height:24em;
+}
+imagebox{
+		border-radius:16px;
+}
+inputbar{
+    margin:64px 32px 32px 32px;
+		padding:16px;
+		border-radius:16px;
+}
+element-text selected.normal {
+		text-color:@fg1;
+}
+element-text selected.active {
+		text-color:@fg2;
+}
+element alternate.active{
+		background-color:@bg0;
+}
+

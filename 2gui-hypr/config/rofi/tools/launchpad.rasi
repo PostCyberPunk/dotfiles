@@ -1,0 +1,103 @@
+/* MACOS LAUNCHPAD LIKE THEME FOR ROFI */
+/* Author: Newman Sanchez (https://github.com/newmanls) */
+
+configuration {
+
+}
+@import "~/.config/rofi/theme.rasi"
+* {
+
+    bg2:  #f5f5f520;
+    bg3:  #f5f5f540;
+    bg4:  #CBA6F7DF;
+
+    background-color: transparent;
+    text-color:       @fg0;
+    padding:          0px;
+    margin:           0px;
+}
+
+window {
+	// background-image:url("~/.config/rofi/.current_wallpaper", height);
+  fullscreen: true;
+  padding: 1em;
+  background-color: @dim0;
+}
+
+mainbox {
+	margin:2%;
+  padding:  8px;
+  background-color: @bg1t;
+	border-radius:20px;
+}
+
+inputbar {
+  background-color: @bg2;
+
+  margin:   10px calc( 40% - 120px );
+  padding:  12px 4px;
+  spacing:  4px;
+
+  border:         2px;
+  border-radius:  15px;
+  border-color:   @bg3;
+
+  children: [icon-search,entry];
+  children: [entry];
+}
+
+prompt {
+  enabled:  false;
+}
+
+icon-search {
+  expand:   false;
+  padding:  0px 16px;
+  filename: "search";
+  vertical-align: 0.5;
+}
+
+entry {
+  placeholder:        "";
+  placeholder-color:  @bg0;
+  horizontal-align: 0.5;
+	font:"ProFontIIx Nerd Font Mono 14";
+}
+
+listview {
+  margin:   48px calc( 30% - 560px );
+  spacing:  48px;
+  columns:  9;
+  fixed-columns: true;
+}
+
+element {
+  padding:      1em;
+  spacing:      1em;
+
+  orientation:    vertical;
+  border-radius:  16px;
+}
+
+element, element-text, element-icon {
+  cursor: pointer;
+}
+
+
+element selected {
+  background-color: @bg2;
+}
+element-text selected.normal {
+		text-color:@fg1;
+}
+
+element-icon {
+  size: 2.2em;
+  horizontal-align: 0.5;
+}
+
+element-text {
+  horizontal-align: 0.5;
+	// font:"30";
+	text-color:@text;
+}

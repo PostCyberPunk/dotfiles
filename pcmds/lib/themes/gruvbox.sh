@@ -1,0 +1,5 @@
+color_scheme="prefer-dark"
+gtk_theme="Gruvbox-Dark"
+icon_theme="Gruvbox-Dark"
+cursor_theme="catppuccin-mocha-dark-cursors"
+kvan_theme="Gruvbox-Dark"

@@ -125,9 +125,21 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map <c-o> :fzf_jump '--type=d -H'
-map <c-f> :fzf_jump -d=3
-map <a-f> :fzf_jump -H
+cmd tv_jump ${{
+    res=$(fd $1 .| tv --custom-header "FILES" -p "$2" )
+    if [[ -n "$res" ]]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-o> :tv_jump -Htd 'eza -lA --icons always --color=always {}'
+map <c-f> :tv_jump -d=3 ":files:"
+map <a-f> :tv_jump -H ":files:"
 ############ Copy paste ############
 map p :paste;clear;
 map yx :swapmode
@@ -213,7 +225,12 @@ map yn copyname
 # apack
 map yzz push :pack7z<space>
 cmd pack7z ${{
-    apack "$1.7z" $fs
+		if [[ -z $1 ]]; then
+			_mname=$(basename "$fs")
+			apack "$_mname.7z" "$fs"
+		else
+			apack "$1.7z" "$fs"
+		fi
   }}
 ## rsync
 map ys :lfrsync
@@ -279,7 +296,7 @@ cmd slink ${{
     while read line; do
       fname=$(basename $line)
       tar="$PWD/$fname"
-      sudo ln $1 $line $tar
+      ln $1 $line $tar
       [ $? -eq 0 ]&& echo "$(tput setaf 2)link created:$(tput sgr0)$tar->$line" || echo "$(tput setaf 1)Failed $line$(tput sgr0)"
     done <<<"$(tail -n +2 $lfile)"
     lf -remote "send $id !date"
@@ -322,8 +339,9 @@ cmd follow_link %{{
   lf -remote "send ${id} select '$(readlink $f)'"
 }}
 ############ open-----------
-map gwp $bash ~/.config/hypr/scripts/RunCMD.sh change_wallpaper "$f"
+map gwp $bash pcmds wall change "$f"
 map gb $bash "$f"
+map goi $vimiv $f --command 'enter thumbnail'
 map gov $nvim $fx
 map goV $nvim $dir
 map gop $python "$f"
@@ -338,6 +356,7 @@ map gdt $dust -r .|bat -p --paging=always
 map gdT $dust -r -i .|bat -p --paging=always
 map gek $krita "$f"
 map gT thunar .
+map grn $vidir .
 map gti ${{
 	# prev_dir=$PWD
 	# git_root=$(git rev-parse --show-toplevel)
@@ -361,8 +380,21 @@ map gtI ${{
 }}
 map gi
 ########### pager
-map i $bat --paging=always "$f"
+
+map i ${{
+	# if is markdown file use glow else use bat
+  if [[ $f == *.md ]]; then
+    glow "$f" -p
+  else
+    bat -p --paging=always "$f"
+  fi
+}}
 ########### CMDmodes
 cmap <a-l> cmd-word
 cmap <a-h> cmd-word-back
 cmap <a-w> cmd-delete-unix-word
+############# print-selection
+map Q :{{
+    $echo "$fs" > "/proc/$id/fd/1"
+    quit
+}}

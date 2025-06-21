@@ -1,0 +1,13 @@
+@import "~/.config/rofi/colors/mocha.rasi"
+* {
+	font:"ProFontIIx Nerd Font Mono 12";
+	background-color:transparent;
+	border:0px;
+  border-color:transparent;
+	margin:0em;
+  padding:0em;
+  spacing:0em;
+	text-color:@fg0;
+	dim1:#000000AF;
+	dim0:#0000005F;
+}

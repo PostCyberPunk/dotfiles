@@ -1,0 +1,37 @@
+s#!/bin/bash
+
+show_usage() {
+    echo "Usage: $0 [-m] [-c]"
+    echo "  -m : Show number of modified files (staged or unstaged)"
+    echo "  -c : Show number of local commits not pushed to origin"
+    exit 1
+}
+
+show_modified() {
+    # Count files that are modified (staged or unstaged)
+    modified=$(git status --porcelain | grep '^[ MARDU]' | wc -l)
+    echo $modified
+}
+
+show_commits_not_pushed() {
+    # Find the upstream branch
+    upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+    if [ -z "$upstream" ]; then
+        echo "No upstream tracking branch set for this branch."
+        exit 1
+    fi
+    commits=$(git rev-list --count $upstream..HEAD)
+    echo $commits
+}
+
+if [ $# -eq 0 ]; then
+    show_usage
+fi
+
+while getopts "mc" opt; do
+    case $opt in
+        m) show_modified ;;
+        c) show_commits_not_pushed ;;
+        *) show_usage ;;
+    esac
+done

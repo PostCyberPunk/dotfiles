@@ -1,0 +1,5 @@
+color_scheme="prefer-dark"
+gtk_theme="catppuccin-mocha-mauve-standard"
+icon_theme="Catppuccin-Mocha"
+cursor_theme="catppuccin-mocha-mauve-cursors"
+kvan_theme="Catppuccin-Mocha"

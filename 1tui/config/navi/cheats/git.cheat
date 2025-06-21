@@ -1,7 +1,13 @@
 % git, code
-
+$clip: cliphist list | head -1 | awk '{print $2}'|tv
+$commit-hash: tv git-log | cut -d ' ' -f 1
+$source: lf --print-selection
+$target: lf --print-selection
 # gcc
 git clone <repo>
+
+# gccy
+git clone <clip>
 
 # gc1
 git clone --depth 1 <repo>
@@ -17,3 +23,12 @@ git --update-index --no-skip-worktree <file>
 
 # git unskip wroktree
 git ls-files -v . | grep ^S | fzf | awk '{print $2}' | xargs git update-index --no-skip-worktree
+
+# gco git checkout
+git checkout <commit-hash>
+
+# nvim diff two file
+nvim -d <source> <target>
+
+# find commit hash
+<commit-hash>
