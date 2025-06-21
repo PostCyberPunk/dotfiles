@@ -16,6 +16,12 @@ test_github:
 	ssh -T git@github.com
 init_rbw:
 	rbw register
+init_icon:
+	mkdir -p /tmp/CatIcon
+	git clone --depth=1 -b mocha "https://github.com/PostCyberPunk/Catppuccin-GTK-Theme" /tmp/CatIcon
+	mkdir -p ~/.icons
+	mv /tmp/CatIcon/Catppuccin-Mocha ~/.icons/
+	rm -rf /tmp/CatIcon
 
 init_gui_config:
 	export DIDM_TARGET_HOME="$HOME";DidM deploy gui
