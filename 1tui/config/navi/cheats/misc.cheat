@@ -1,0 +1,13 @@
+% misc random software
+
+$files5: fd -d5 -td .|tv -p "eza -lA --color=always --icons=always {0}"
+
+# rclone tera mount
+rclone mount tera: <files5> --config=./.config/rclone/rclone.conf --allow-non-empty --vfs-cache-mode full --vfs-cache-max-age 48h --vfs-cache-max-size 5G --cache-dir /tmp/cache --vfs-read-chunk-size 128M --vfs-read-chunk-size-limit 1G --buffer-size 128M --umask 000 &
+
+# decode 64 urlencoded
+cliphist list | head -1 | base64 -d | python3 -c "import urllib.parse, sys; print(urllib.parse.unquote(sys.stdin.read()))" | tv
+
+$font: fc-list : family | uniq | grep -v , | tv
+# find font
+echo "<font>" | wl-copy -n

@@ -1,0 +1,5 @@
+color_scheme="prefer-dark"
+gtk_theme="Kanagawa-B"
+icon_theme="Kanagawa"
+cursor_theme="catppuccin-mocha-dark-cursors"
+kvan_theme="Kanagawa-B"

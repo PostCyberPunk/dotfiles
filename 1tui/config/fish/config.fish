@@ -4,6 +4,7 @@ if status is-login
         source ~/.config/fish/extra_login.fish
     end
 end
+# \e=alt \c=ctrl
 function fish_user_key_bindings
     bind \e\cv 'fish_commandline_prepend "proxychains "'
     bind \e\[1\;3P 'fish_commandline_append " -h|nvim -RMn"'
@@ -14,18 +15,22 @@ function fish_user_key_bindings
     bind -M insert \cn down-or-search
     bind -M insert \ef forward-word
     bind -M insert \cf forward-char
+    bind y,y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
     for mode in default insert command
         bind -M $mode \ce 'fish_commandline_prepend "sudo -E nvim"'
         bind -M $mode \c_ accept-autosuggestion execute
         bind -M $mode \e/ 'fish_commandline_prepend "history delete -eC \"";fish_commandline_append "\""'
         bind -M $mode \en 'fish_commandline_append "| nvim"'
         bind -M $mode \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
+        bind -M $mode \eo 'set old_tty (stty -g); stty sane; sudo -E lf; stty $old_tty; commandline -f repaint'
         bind -M $mode \cH backward-kill-word
+        bind -M $mode \cT tv_smart_autocomplete
+        bind -M $mode \cR tv_shell_history
+        bind -M $mode \eg _navi_smart_replace
+        bind -M $mode \cg _my_navi
     end
 
     # navi
-    bind -M insert \eg _navi_smart_replace
-    bind -M insert \cg _my_navi
     # bind -M issert \cg 'navi;'
 end
 
@@ -49,15 +54,18 @@ if status is-interactive
     alias lg="lazygit"
     alias slf="sudo -u $USER lf"
     alias zj="zellij"
+    #######
+    alias z="zoxide"
+    alias cd="z"
     ########### Prompt and Plugins ###########
     ########### Variables ###########
     set fish_greeting
     ###fish fzf
     set fzf_preview_file_cmd fzf_pcp_previewer
     set fish_fzf_default_opts --cycle --layout=reverse --border --height=90% --preview-window=wrap --marker="*"
-    for temp_mode in fzf_directory_opts fzf_git_log_opts fzf_git_status_opts fzf_history_opts fzf_processes_opts fzf_variables_opts
-        set $temp_mode $fish_fzf_default_opts
-    end
+    # for temp_mode in fzf_directory_opts fzf_git_log_opts fzf_git_status_opts fzf_history_opts fzf_processes_opts fzf_variables_opts
+    #     set $temp_mode $fish_fzf_default_opts
+    # end
     ########### Fix ###########
     abbr --add dotdot --regex '^\.\.+$' --function multicd
 end
@@ -71,17 +79,32 @@ set --global tide_prompt_transient_enabled true
 # set --global tide_character_vi_icon_default 
 # set --global tide_character_vi_icon_default 󰻃
 # set --global tide_character_vi_icon_default 
-set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 
+# set --global tide_character_vi_icon_default 󰘧
 # set --global tide_character_vi_icon_default 󰁎
-# set --global tide_character_icon 
-set --global tide_character_icon 
+set --global tide_character_vi_icon_default ?
+# set --global tide_character_vi_icon_default 
+########
+# set --global tide_character_icon 
+# set --global tide_character_icon 
+set --global tide_character_icon 
 ############ path ###########
+fish_add_path ~/.local/bin
 fish_add_path ~/.spicetify
 fish_add_path ~/.cargo/bin
 ########### Variables ###########
-set -gx EDITOR /usr/bin/nvim
-set -gx VISUAL /usr/bin/nvim
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 ########### Enviromental ###########
-export LS_COLORS="$(vivid generate catppuccin-mocha)"
-export FZF_DEFAULT_OPTS='--bind "ctrl-y:execute-silent(echo -n $(pwd)/{} | wl-copy)+abort"'
+set -gx LS_COLORS "$(vivid generate catppuccin-mocha)"
+set -gx MANPAGER "nvim -c 'Man!'"
+set -gx FZF_DEFAULT_OPTS "\
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#313244,label:#CDD6F4"
+###### init #########
+zoxide init fish | head -n-3 | source
+tv init fish | source
