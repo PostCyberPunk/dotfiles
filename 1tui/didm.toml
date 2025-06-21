@@ -1,0 +1,14 @@
+"$schema" = "./didm.schema.json"
+[sketch.tui]
+source_path = "./config"
+target_path = "$DIDM_TARGET_HOME/.config"
+ignore = ["fish/completions", "fish/conf.d", "fish/functions/"]
+# empty_files = ["git/local"]
+post_build_commands = [
+	"[[ -f $HOME/.config/git/local ]] || touch $HOME/.config/git/local ",
+]
+extra_entries = [
+	{ source_path = "fish/completions/", target_path = "fish/completions/", mode = "symlink" },
+	{ source_path = "fish/conf.d", target_path = "fish/conf.d", mode = "symlink" },
+	{ source_path = "fish/functions/", target_path = "fish/functions/", mode = "symlink" },
+]

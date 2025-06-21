@@ -1,0 +1,21 @@
+"$schema" = "./didm.schema.json"
+include = [
+	"./1tui/didm.toml",
+	"./2gui-hypr/didm.toml",
+	"./3gui-theme/didm.toml",
+]
+# [behaviour]
+# overwrite_existed = true
+# backup_existed = false
+[sketch.pcmds]
+source_path = "./pcmds/lib"
+target_path = "./pcmds/lib"
+ignore = ["nothing_nothing"]
+mode = "symlink"
+only_ignore = true
+extra_entries = [
+	{ source_path = "profile/kitty.sh", target_path = "term.sh" },
+	{ source_path = "themes/catppuccin.sh", target_path = "current_theme.sh" },
+]
+[composition.gui]
+sketch = ["tui", "gui-config", "gui-local", "gui-home", "kvan-qt"]
