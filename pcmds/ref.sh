@@ -25,3 +25,4 @@ icon_dir="$HOME/.config/swaync/icons"
 icon_yes=" "
 icon_no=" "
 cursor_size=24
+gtk_font="JetBrainsMono Nerd Font Medium Italic 11"

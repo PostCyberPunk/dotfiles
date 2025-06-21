@@ -1,5 +1,9 @@
 "$schema" = "./didm.schema.json"
-include = ["./1tui/didm.toml", "./2gui-hypr/didm.toml"]
+include = [
+	"./1tui/didm.toml",
+	"./2gui-hypr/didm.toml",
+	"./3gui-theme/didm.toml",
+]
 # [behaviour]
 # overwrite_existed = true
 # backup_existed = false
@@ -14,4 +18,4 @@ extra_entries = [
 	{ source_path = "themes/catppuccin.sh", target_path = "current_theme.sh" },
 ]
 [composition.gui]
-sketch = ["tui", "gui-config", "gui-local", "gui-home"]
+sketch = ["tui", "gui-config", "gui-local", "gui-home", "kvan-qt"]
