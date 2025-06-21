@@ -1,0 +1,7 @@
+{
+  "players": ["spotify", "lollypop", "org.mpris.MediaPlayer2.mpv"],
+  "use_active_player": true,
+  "debug": false,
+  "width": 20,
+  "height": 20
+}

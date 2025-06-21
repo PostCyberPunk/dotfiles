@@ -1,0 +1,43 @@
+% nix,nixos
+
+$old_system: sudo fd -tl . --full-path /nix/var/nix/profiles/ | sort --reverse | tv -p "eza -lA --icons always --color always"
+$pkg: nh search <SearchNixpkgs> | fzf --ansi | awk '{print $1}'
+$profile : nix profile list | tv |  awk '{print $2}'
+# nrb
+nh os switch ~/Snowfield/ -H $hostname
+
+# ndrb
+nh os switch -n ~/Snowfield/ -H $hostname
+
+# nuv update_pcp_nvim
+nix flake update --flake ~/Snowfield/  pcp-nvim
+
+# nus update_secrets
+nix flake update --flake ~/Snowfield/  mySecrets
+
+# nun udpate_nixpkgs
+nix flake update --flake ~/Snowfield/  nixpkgs
+
+# nuu udpate_nixpkgs
+nix flake update --flake ~/Snowfield/  nixpkgs-unstable
+
+# nHH history of current systme
+nix profile diff-closures --profile /nix/var/nix/profiles/system
+
+# nvd compare 2 version
+nvd diff <old_system> /run/current-system
+
+# nsp
+nix-shell -p <pkg>
+
+# flake follow system
+nix flake lock --override-input nixpkgs github:NixOS/nixpkgs/$(jq -j .nodes.nixpkgs.locked.rev ~/Snowfield/flake.lock)
+
+# npr profile remove
+nix profile remove <profile>
+
+# npl profile list
+nix profile list
+
+# clean profile
+nh clean profile -k <GenerationToKeep> /nix/var/nix/profiles/system/

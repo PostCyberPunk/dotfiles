@@ -1,0 +1,2 @@
+selector-args='rofi -theme ~/.config/rofi/tools/calc.rasi'
+typing-key-delay=50

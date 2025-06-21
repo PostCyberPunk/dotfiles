@@ -2,39 +2,29 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Configuration For Rofi Version: 1.7.3
  **/
-
-
-//@import "~/.config/rofi/colors/catppuccin.rasi"
-//@import "~/.config/rofi/launchers/type-1/style-7.rasi"
-@import "global.rasi"
-
 configuration {
 	/*---------- General setting ----------*/
-	modi: "drun,run,filebrowser,window";
+	modi: "drun,filebrowser,window";
 	case-sensitive: false;
 	cycle: true;
 	filter: "";
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-//	icon-theme: "Papirus";
+	icon-theme: "oomox-Catppuccin-Mocha";
+  icon {
+      theme: "oomox-Catppuccin-Mocha";
+  }
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/
 
 	/*---------- Matching setting ----------*/
-	matching: "normal";
+	matching: "fuzzy";
 	tokenize: true;
-
-	/*---------- SSH settings ----------*/
-	ssh-client: "ssh";
-	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
-	parse-hosts: true;
-	parse-known-hosts: true;
-
 	/*---------- Drun settings ----------*/
 	drun-categories: "";
 	drun-match-fields: "name,generic,exec,categories,keywords";
@@ -49,33 +39,25 @@ configuration {
 		/** Parse system desktop files. */
 		parse-system: true;
     }
-
-	/*---------- Run settings ----------*/
-	run-command: "{cmd}";
-	run-list-command: "";
-	run-shell-command: "{terminal} -e {cmd}";
-
-	/*---------- Fallback Icon ----------*/
 	run,drun {
+  	prefer-icon-theme: true;
 		fallback-icon: "application-x-addon";
 	}
-
 	/*---------- Window switcher settings ----------*/
-	window-match-fields: "title,class,role,name,desktop";
+	window-match-fields: "title,class";
 	window-command: "wmctrl -i -R {window}";
 	window-format: "{w} - {c} - {t:0}";
-	window-thumbnail: false;
-
-	/*---------- Combi settings ----------*/
-/*	combi-modi: "window,run";*/
-/*	combi-hide-mode-prefix: false;*/
-/*	combi-display-format: "{mode} {text}";*/
-
+	window-thumbnail: true;
+	window-close-on-delete: false;
+	window {
+		close-on-delete: false;
+    prefer-icon-theme: true;
+		hide-active-window: true;
+	}
 	/*---------- History and Sorting ----------*/
 	disable-history: false;
 	sorting-method: "normal";
 	max-history-size: 25;
-
 	/*---------- Display setting ----------*/
 	display-window: "Windows";
 	display-windowcd: "Window CD";
@@ -85,24 +67,15 @@ configuration {
 	display-combi: "Combi";
 	display-keys: "Keys";
 	display-filebrowser: "Files";
-
 	/*---------- Misc setting ----------*/
-	terminal: "rofi-sensible-terminal";
-  font: "CaskaydiaCove Nerd Font Mono 12";
+	// terminal: "rofi-sensible-terminal";
+	//  font: "CaskaydiaCove Nerd Font Mono 12";
 	//font: "Mono 12";
 	sort: false;
 	threads: 0;
 	click-to-exit: true;
 /*	ignored-prefixes: "";*/
 /*	pid: "/run/user/1000/rofi.pid";*/
-
-	/*---------- File browser settings ----------*/
-    filebrowser {
-/*	  directory: "/home";*/
-      directories-first: true;
-      sorting-method:    "name";
-    }
-
 	/*---------- Other settings ----------*/
     timeout {
       action: "kb-cancel";
