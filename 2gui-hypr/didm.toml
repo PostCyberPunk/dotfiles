@@ -2,8 +2,10 @@
 [sketch.gui-config]
 source_path = "./config/"
 target_path = "$DIDM_TARGET_HOME/.config"
+ignore = ["kitty/themes"]
 mode = "symlink"
 extra_entries = [
+	{ source_path = "kitty/themes/Catppuccin-Mocha.conf", target_path = "kitty/current_theme.conf", mode = "symlink" },
 	{ source_path = "hypr/lib/GPU/1Default.conf", target_path = "hypr/configs/GPU.conf", mode = "symlink" },
 	{ source_path = "hypr/lib/Monitor/1Default.conf", target_path = "hypr/configs/Monitors.conf", mode = "symlink" },
 	{ source_path = "/dev/null", target_path = "hypr/configs/Shader.conf", mode = "symlink" },
