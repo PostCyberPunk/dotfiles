@@ -15,6 +15,9 @@ nix flake update --flake ~/Snowfield/  pcp-nvim
 # nus update_secrets
 nix flake update --flake ~/Snowfield/  mySecrets
 
+# nud update_didm
+nix flake update --flake ~/Snowfield/  didm
+
 # nun udpate_nixpkgs
 nix flake update --flake ~/Snowfield/  nixpkgs
 
