@@ -11,12 +11,18 @@ set() {
 	fi
 }
 apply() {
-	gsettings set org.gnome.desktop.interface color-scheme "'$color_scheme'" >/dev/null 2>&1 &
+	dconf write /org/gnome/desktop/interface/color-scheme "'$color_scheme'" >/dev/null 2>&1 &
 	dconf write /org/gnome/desktop/interface/gtk-theme "'$gtk_theme'" >/dev/null 2>&1 &
 	dconf write /org/gnome/desktop/interface/icon-theme "'$icon_theme'" >/dev/null 2>&1 &
 	dconf write /org/gnome/desktop/interface/cursor-theme "'$cursor_theme'" >/dev/null 2>&1 &
 	dconf write /org/gnome/desktop/interface/cursor-size "'$cursor_size'" >/dev/null 2>&1 &
+	dconf write /org/gnome/desktop/interface/font "'$gtk_font'" >/dev/null 2>&1 &
 	kvantummanager --set "$kvan_theme"
+}
+
+list_themes() {
+	cd $lib_dir/themes || exit 1
+	fd | sed -e 's/\.sh$//g'
 }
 
 apply_hypr_cursor() {
