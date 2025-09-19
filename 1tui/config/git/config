@@ -41,14 +41,7 @@
   keepBackup = false
 [mergetool "diffview"]
   cmd = nvim -n -c "DiffviewOpen" "$MERGE"
-
-
 [url "https://www.github.com/"]
 	insteadOf = "gh:"
-[url "https://www.github.com/PostCyberPunk/"]
-	insteadOf = "ghp:"
-
 [url "git@github.com:"]
 	insteadOf = "ghs:"
-[url "git@github.com:PostCyberPunk/"]
-	insteadOf = "ghsp:"
