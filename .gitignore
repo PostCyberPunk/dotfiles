@@ -31,3 +31,4 @@ pcmds/lib/current_theme.sh
 2gui-hypr/config/Kvantum/kvantum.kvconfig
 didm.schema.json
 didm_backup
+1tui/config/git/local
