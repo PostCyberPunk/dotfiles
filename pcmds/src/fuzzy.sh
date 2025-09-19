@@ -43,7 +43,7 @@ linker_fzf() {
 		exit 1
 	fi
 	# use fzf to select a file from target directory
-	file_selected="$(find $source_dir -type f -printf "%f\n" | fzf --header "now:"$_filename --ansi --reverse --preview "bat --color=always --style=header,numbers $source_dir/{}" \
+	file_selected="$(find $source_dir -type l -printf "%f\n" | fzf --header "now:"$_filename --ansi --reverse --preview "bat --color=always --style=header,numbers $source_dir/{}" \
 		--preview-window "wrap" --bind ctrl-y:preview-up,ctrl-e:preview-down,ctrl-b:preview-page-up,ctrl-f:preview-page-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down)"
 
 	if [ -z $file_selected ]; then
