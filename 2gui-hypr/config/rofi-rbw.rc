@@ -1,2 +1,3 @@
 selector-args='rofi -theme ~/.config/rofi/tools/calc.rasi'
 typing-key-delay=50
+keybindings='ctrl+1:type:username,ctrl+2:type:password'

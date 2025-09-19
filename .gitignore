@@ -29,3 +29,5 @@
 pcmds/lib/term.sh
 pcmds/lib/current_theme.sh
 2gui-hypr/config/Kvantum/kvantum.kvconfig
+didm.schema.json
+didm_backup
