@@ -6,6 +6,7 @@ init_pcmds:
 link_bin:
 	ln -si $(realpath ./bin/pcmds.sh) $XDG_BIN_HOME/pcmds
 	ln -si $(realpath ./bin/Xmenu.sh) $XDG_BIN_HOME/Xmenu
+	ln -si $(realpath ./bin/nvo.sh) $XDG_BIN_HOME/nvo
 init_hypr_var:
   mkdir -p ~/.cache/pcp_hypr_var
 
