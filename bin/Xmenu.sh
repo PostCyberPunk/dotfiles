@@ -54,7 +54,7 @@ declare -A menu_options=(
 	["ttp ToggleTouchPad"]="$pc device toggle_touchpad"
 	["DM0"]="$pc device disable_edp1"
 	["DM1"]="$pc device enable_edp1"
-	["cl toggle fan mode"]="$pc device toggle_cooler"
+	["fan toggle fan mode"]="$pc device toggle_cooler"
 	["sdv validate superuser credential"]="$pc system get_su"
 	["sdk reset superuser privilege"]="$pc system reset_su"
 	#App
