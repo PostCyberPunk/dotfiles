@@ -32,3 +32,4 @@ pcmds/lib/current_theme.sh
 didm.schema.json
 didm_backup
 1tui/config/git/local
+2gui-hypr/config/ulauncher/ext_preferences
