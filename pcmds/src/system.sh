@@ -93,7 +93,11 @@ _startup() {
 	echo 5
 	nm-applet --indicator &
 	echo 6
-	[ "$CLASH_STARTUP" = "1" ] && clash-verge
+	ulauncher &
+	echo 7
+	[ "$CLASH_STARTUP" = "1" ] && clash-verge &
+	sleep 1
+	ulauncher-toggle &
 	exit
 }
 init_var() {
