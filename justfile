@@ -53,3 +53,5 @@ test_github:
 init_rbw:
 	rbw register
 
+setup_vr:
+  sudo setcap CAP_SYS_NICE+ep ~/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrcompositor-launcher
