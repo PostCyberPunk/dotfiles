@@ -60,8 +60,8 @@ declare -A menu_options=(
 	#App
 	["ff firefox"]="firefox"
 	["uu tebrowser"]="qutebrowser"
-	["vb VitrualBox"]="virtualbox"
-	["vm VitrualBox"]="vboxmanage startvm Larch"
+	# ["vb VitrualBox"]="virtualbox"
+	["vm VitrualBox"]="VBoxManage startvm tiny10"
 	["v2 v2raya"]="firefox http://localhost:2017/"
 	["cls clash"]="clash-verge"
 	["sp Spotify"]="spotify"
