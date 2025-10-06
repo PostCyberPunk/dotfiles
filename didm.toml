@@ -18,4 +18,4 @@ extra_entries = [
 	{ source_path = "themes/catppuccin.sh", target_path = "current_theme.sh" },
 ]
 [composition.gui]
-sketch = ["tui", "gui-config", "gui-local", "gui-home", "kvan-qt"]
+sketch = ["tui", "gui-config", "gui-local", "gui-home", "kvan-qt", "gtk"]
