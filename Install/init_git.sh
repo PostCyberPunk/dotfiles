@@ -1,7 +1,7 @@
 #!/bin/bash
 _mail=$(gum input --header "Email address for git")
 _user=$(gum input --header "User name for git")
-cat <<EOL >~/.config/git/local.test
+cat <<EOL >~/.config/git/local
 [user]
 email = $_mail
 name = $_user
