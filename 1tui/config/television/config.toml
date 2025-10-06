@@ -72,35 +72,6 @@ theme = "catppuccin"
 #
 # Channel mode
 # ------------------------
-[keybindings]
-# Quit the application
-quit = ["esc", "ctrl-c"]
-# Scrolling through entries
-select_next_entry = ["down", "ctrl-n", "ctrl-j"]
-select_prev_entry = ["up", "ctrl-p", "ctrl-k"]
-select_next_page = "ctrl-d"
-select_prev_page = "ctrl-u"
-# Scrolling the preview pane
-scroll_preview_half_page_down = "ctrl-f"
-scroll_preview_half_page_up = "ctrl-b"
-# Add entry to selection and move to the next entry
-toggle_selection_down = "tab"
-# Add entry to selection and move to the previous entry
-toggle_selection_up = "backtab"
-# Confirm selection
-confirm_selection = "enter"
-# Copy the selected entry to the clipboard
-copy_entry_to_clipboard = "ctrl-y"
-# Toggle the remote control mode
-toggle_remote_control = "ctrl-r"
-# Toggle the send to channel mode
-toggle_send_to_channel = "ctrl-s"
-# Toggle the help bar
-toggle_help = "ctrl-g"
-# Toggle the preview panel
-toggle_preview = "ctrl-o"
-
-
 # Shell integration
 # ----------------------------------------------------------------------------
 #

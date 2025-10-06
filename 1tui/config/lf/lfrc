@@ -126,7 +126,7 @@ cmd fzf_jump ${{
     fi
 }}
 cmd tv_jump ${{
-    res=$(fd $1 .| tv --custom-header "FILES" -p "$2" )
+    res=$(fd $1 .| tv --input-header "FILES" -p "$2" )
     if [[ -n "$res" ]]; then
         if [ -d "$res" ]; then
             cmd="cd"

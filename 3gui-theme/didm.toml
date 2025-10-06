@@ -5,3 +5,8 @@ override_behaviour.backup_existed = false
 source_path = "./qt"
 target_path = "$DIDM_TARGET_HOME/.config"
 mode = "copy"
+[sketch.gtk]
+override_behaviour.overwrite_existed = true
+override_behaviour.backup_existed = false
+source_path = "./gtk"
+target_path = "$DIDM_TARGET_HOME/.config"

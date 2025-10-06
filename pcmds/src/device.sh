@@ -113,7 +113,7 @@ toggle_cooler() {
 	if [ "$status" = "1" ]; then
 		sudo isw -b on
 		_set_var "$var_name" "0"
-		_noti_n " ooler:on"
+		_noti_n " Cooler:on"
 	else
 		sudo isw -b off
 		_set_var "$var_name" "1"
