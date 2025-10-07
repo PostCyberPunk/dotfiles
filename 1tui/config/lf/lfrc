@@ -17,6 +17,7 @@ set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
+set relativenumber true
 # EventCMD-----------
 ############# Print PWD on Tittle
 
@@ -79,9 +80,33 @@ map F :set findlen 3;find
 #######visual mode Selection######
 map J :updir; set dironly true; down; set dironly false; open
 map K :updir; set dironly true; up; set dironly false; open
-map v :invert-below
 
-map VV :invert
+nmap v
+nmap V
+map v :visual
+vmap v :visual-accept
+vmap <space> :visual-accept
+vmap x :visual-unselect
+
+vmap dd :visual-aceppt:cut
+vmap yy :visual-aceppt;copy
+#map v :visual;set relativenumber true
+#vmap <space> :visual-accept;set relativenumber false
+#vmap x :visual-unselect;set  relativenumber false
+##cmd vis-enter &{{
+#	visual
+#	set relativenumber true
+#}}
+#cmd vis-aceppt &{{
+#	visual-accept
+#	set relativenumber false
+#}}
+#cmd vis-unselect &{{
+#	visual-unselect
+#	set relativenumber false
+#}}
+
+#map vi :invert
 map <c-a> :unselect;invert
 
 map VF :select-files
