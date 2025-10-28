@@ -423,3 +423,85 @@ map Q :{{
     $echo "$fs" > "/proc/$id/fd/1"
     quit
 }}
+### Merge Files
+cmd merge ${{
+    set -f
+    
+    # Count selected files
+    file_count=$(echo "$fx" | wc -l)
+    
+    if [ $file_count -eq 0 ]; then
+        lf -remote "send $id echo No files selected"
+        exit 1
+    fi
+    
+    # Display selected files
+    echo "Selected $file_count file(s):"
+    echo "$fx" | sed 's/^/  - /'
+    echo ""
+    
+    # Input filename
+    printf "Output filename (save to ~/Documents/): "
+    read filename
+    
+    if [ -z "$filename" ]; then
+        lf -remote "send $id echo Operation cancelled"
+        exit 1
+    fi
+    
+    output="$HOME/Documents/$filename"
+    
+    # Check if file already exists
+    if [ -f "$output" ]; then
+        printf "File exists, overwrite? (y/N): "
+        read confirm
+        if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+            lf -remote "send $id echo Operation cancelled"
+            exit 1
+        fi
+    fi
+    
+    # Find git root
+    git_root=""
+    if git rev-parse --show-toplevel >/dev/null 2>&1; then
+        git_root=$(git rev-parse --show-toplevel)
+    fi
+    
+    # Merge files with path annotations
+    > "$output"  # Clear output file
+    
+    for file in $fx; do
+        # Determine display path
+        if [ -n "$git_root" ]; then
+            # Get relative path from git root
+            display_path=$(realpath --relative-to="$git_root" "$file")
+        else
+            # Use absolute path
+            display_path=$(realpath "$file")
+        fi
+        
+        # Add file header
+        echo "========================================" >> "$output"
+        echo "File: $display_path" >> "$output"
+        echo "========================================" >> "$output"
+        
+        # Add file content with line numbers
+        cat "$file" >> "$output"
+        
+        # Add separator
+        echo "" >> "$output"
+        echo "" >> "$output"
+    done
+    
+    if [ $? -eq 0 ]; then
+        if [ -n "$git_root" ]; then
+            lf -remote "send $id echo ✓ Merged $file_count file(s) to: $output (git repo mode)"
+        else
+            lf -remote "send $id echo ✓ Merged $file_count file(s) to: $output (absolute path mode)"
+        fi
+    else
+        lf -remote "send $id echo ✗ Merge failed!"
+    fi
+}}
+
+map yM merge
